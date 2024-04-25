@@ -6,6 +6,6 @@
 
 --
 
-¡[goku](https://tinyurl.com/33eaus85)
+¡[Goku](https://tinyurl.com/33eaus85)
 
 [ADSO files DRIVE](https://tinyurl.com/wnkk334u)
