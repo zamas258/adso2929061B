@@ -6,7 +6,7 @@
 
 --
 
-¡[Goku](https://tinyurl.com/ytnp3j2j)
+[Goku](https://tinyurl.com/ytnp3j2j)
 
 | ID | THEME      | Description                             |
 |-   |---         |---                                      |
