@@ -1,0 +1,80 @@
+/* - - - - - - - - - - - -*/
+/* 01 - R E S E T  */
+/* - - - - - - - - - - - -*/
+*, *::before, *::after{
+    box-sizing: border-box; 
+}
+
+*{
+    margin: 0; 
+    padding: 0; 
+}
+
+ul[role='list'], ol[role='list']{
+    list-style: none; 
+}
+
+html:focus-within{
+    scroll-behavior: smooth; 
+}
+
+a:not([class]){
+    text-decoration-skip-ink: auto; 
+}
+
+img, picture, svg, video, canvas{
+    max-width: 100%;
+    height: auto; 
+    vertical-align: middle; 
+    font-style: italic; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+input, button, textarea, select{
+    font: inherit; 
+}
+
+@media (prefers-reduced-motion: reduce){
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+body, html{
+    height: 100%; 
+    scroll-behavior: smooth; 
+}
+/* - - - - - - - - - - - -*/
+/* 02 - F O N T S  */
+/*- - - - - - - - - - - - */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,900&display=swap');
+/* - - - - - - - - - - - -*/
+/* 03 - V A R I A B L E S */
+/* - - - - - - - - - - - -*/
+:root{
+    --color-1: #fff9;
+    --color-2: #0009;
+    --font-bd: Poppins, sans-serif;
+}
+/* - - - - - - - - - - - -*/
+/* 04 - G E N E R A L */
+/* - - - - - - - - - - - -*/
+body{font-family: var(--font-bd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    main {
+        
+    }
+}
+/* - - - - - - - - - - - -*/
+/* 05 - M A I N  M E N U */
+/* - - - - - - - - - - - -*/
