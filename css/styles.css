@@ -138,8 +138,14 @@ a:is(:link, :visited){
 }
 a:is(hover) {
     background-color: #ffffff;
+    transform: scale(1.05)translate(-4px);}
+    
+   span {
+    border-radius: 20px;
+    background-color: var(--color-2);
     color: var(--color-1);
     font-weight: 600;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,6 +161,3 @@ body.main-menu{
     background-attachment: fixed;
     background-size: cover;
 }
-
-    
-
