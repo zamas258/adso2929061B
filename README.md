@@ -6,7 +6,7 @@
 
 --
 
-[Goku](https://tinyurl.com/ytnp3j2j)
+|[CR7](https://acortar.link/3WKadf)
 
 | ID | THEME      | Description                             |
 |-   |---         |---                                      |
