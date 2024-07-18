@@ -35,10 +35,6 @@ img, picture, svg, video, canvas{
     background-size: cover;
 }
 
-input, button, textarea, select{
-    font: inherit; 
-}
-
 @media (prefers-reduced-motion: reduce){
     html:focus-within {
         scroll-behavior: auto;
@@ -151,8 +147,14 @@ body{
 }
 section {
     padding: 1rem;
+    background-color: var(--color-1);
+    border-radius: 4px;
+    margin-block: 1rem;
+    margin-inline: auto;
+    width: 400px;
     h3 {
-        border-radius: 2px dotted var(--color-2);
+        border-bottom: 2px dotted var(--color-2);
+        border-block: 0,6rem;
     }
     p {
         font-size: 1.6rem;
