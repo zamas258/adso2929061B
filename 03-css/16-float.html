@@ -5,6 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>17 - float</title>
         <link rel="stylesheet" href="../css/styles.css">
+        <style>
+            main header {
+                color: aliceblue;
+            }
+            main  {
+                color: rgb(0, 0, 0);
+            }
+            section article {
+                font-size: 2rem;
+                text-align: justify;
+
+            }
+            main section article img {
+                float: left;
+                width: 200px;
+            }
+            main section article p + p {
+                clear: left;
+            }
+            
+        </style>
     </head> 
     <body class="html">
         <nav>
@@ -14,13 +35,18 @@
         </nav>
         <main>
             <header>
-                <h1>17 - float</h1>
+                <h1>16 - float</h1>
                 <p>
-                    Lorem
+                    Pushes the element to either the left or right side.
                 </p>
          </header>
          <section>
-           
+           <article>
+            <h4>Super Mario Bros</h4>
+            <img src="images/mario.png" alt="Mario">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque veniam consequuntur inventore voluptatibus libero aspernatur repellendus amet eos odit culpa.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim ipsam nobis eius laudantium! Perspiciatis animi deserunt omnis possimus voluptatum earum.</p>
+           </article>
     
          </section>
         </main>

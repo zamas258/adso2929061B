@@ -6,9 +6,57 @@
         <title>16 - Position</title>
         <link rel="stylesheet" href="../css/styles.css">
         <style>
-            main li {
-                color: aliceblue;
+            main li  {
+                color: #fff9;
             }
+            div.parent {
+                border: 2px solid #0009;
+                margin: 2rem auto;
+                padding: 2rem;
+                position: relative;
+                min-height: 100px;
+                width: 260px;
+                
+
+            }
+            div.child {
+                background-color: #0006;
+                color: #fff9;
+                padding: 0.4rem;
+                text-align: center;
+                width: 80px;
+
+            }
+            div.relative {
+                position: relative;
+                top: -20px;
+                left: 200px;
+
+            }
+            div.absolute {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+            }
+            div.fixed {
+                position: fixed;
+                top: 680rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 9;
+            }
+            div.sticky {
+                position: -webkit-sticky;
+                position: sticky;
+                width: 100%;
+                top: 20px;
+            }
+            div.parent p {
+                
+                font-size: 0.8rem !important;
+                text-align: justify;
+            }
+            
         </style>
     </head> 
     <body class="html">
@@ -31,23 +79,24 @@
          <section>
            <h3>Relative</h3>
            <div class="parent">
-            <div class="child relative"></div>
+            <div class="child relative">Box <small>relative</small></div>
            </div>
            <h3>Absolute</h3>
            <div class="parent">
-            <div class="child absolute"></div>
+            <div class="child absolute">Box <small>absolute</small></div>
            </div>
            <h3>Fixed</h3>
            <div class="parent">
-            <div class="child pfixed"></div>
+            <div class="child fixed">Box</div>
            </div>
            <h3>Sticky</h3>
            <div class="parent">
-            <div class="child Sticky"></div>
-           </div>
+            <div class="child Sticky">Box <small>sticky</small></div>
+           
            <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo tempora officia eligendi, soluta omnis adipisci nisi ipsam dicta molestias voluptate delectus libero culpa numquam cumque possimus unde accusamus? Quas, consectetur placeat unde ipsam itaque cum non cupiditate, nostrum quis, voluptatem delectus et error soluta ut asperiores eveniet? Fuga aut eius vero exercitationem corrupti possimus consectetur aperiam expedita officiis provident veniam temporibus doloremque in voluptatum cupiditate, adipisci eligendi delectus est quos, sapiente, quasi dolorem. Maxime quod dolorum veniam ea ipsum consequuntur similique, vel tempore? Corrupti officia porro blanditiis adipisci modi nihil laboriosam perferendis aliquid alias temporibus, molestiae, hic, sit repellendus illum maxime? Laudantium adipisci iste sint quae explicabo soluta, beatae vitae voluptatem porro atque cumque illum itaque iure molestiae nemo voluptate deleniti. Autem labore, necessitatibus tempore omnis voluptatibus eum totam, nobis repudiandae eos hic mollitia earum facilis quas ducimus. Tenetur perspiciatis recusandae maxime quam, vel rerum. Ad, enim quo repellendus tempora iusto, quibusdam odit sed assumenda autem minus mollitia impedit rem pariatur cumque maiores nihil ipsa at officiis? Omnis delectus architecto voluptatem dignissimos nulla sequi hic quisquam saepe quos tempore officia provident ex suscipit iste recusandae veritatis a magnam, nisi repudiandae, ipsam eum assumenda. Minus pariatur velit natus quod, optio ducimus.
            </p>
+        </div>
 
     
          </section>
