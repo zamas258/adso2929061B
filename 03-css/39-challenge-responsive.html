@@ -3,329 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge_responsive😎</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Whisper&display=swap" rel="stylesheet">
-    <style> 
-       * {
-        transition: all 0.2s ease-in;
-        } 
+    <title>Challenge_😎</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        * {
+            transition: all 0.3s ease-in;
+        }
         body {
-        background-color: rgb(255, 255, 255);
-        color: rgb(132, 49, 139);
-        .whisper-regular {
-        font-family: "Whisper", cursive;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 3rem;
-        }
-    }
-        main {
-        padding: 2rem;
-        }
-        main header figure.logo {
-        background: url(images/LOGO2.png) no-repeat center;
-        background-size: 400px 400px;
-        width: 900px;
-        height: 400px;
-        margin: 0 auto;
-        }
-        div.imagenes{
-            align-items: center;
-            display: flex;
-            gap: 3rem;
-            height: 300px;
-            justify-content: center;
-            padding: 1rem;
-            width: 1300px;
-            margin: auto;
-        }
-        div div.prj1 {
-            border: black solid;
-            display: flex;
-            align-items: flex-end;
-            background: url(images/PETER.jpg) no-repeat center /600px;
-            height: 350px;
-            width: 300px;
-            justify-content: center;
-            background-size: 300px;
-        }
-        div div p.gh1 {
-            color: black;
-            background-color: aqua;
-            display: flex;
-            padding: 6px;
-            width: 265px;
-            justify-content: center;
-            top: 300px;
-            transition: transform 0.5s ease-in;
-
-        }
-        p.gh1:is(:hover) {
-            background-color: orange;
-            transform: scale(1.1);
-        }
-        div div.prj2 {
-            border: black solid;
-            display: flex;
-            align-items: flex-end;
-            background: url(images/MEG.jpg) no-repeat center /550px;
-            height: 350px;
-            width: 300px;
-            justify-content: center;
-            background-size: 300px;
-            color: black;
-        }
-        div div p.gh2 {
-            color: black;
-            background-color: aqua;
-            display: flex;
-            padding: 6px;
-            width: 265px;
-            justify-content: center;
-            top: 300px;
-            transition: transform 0.5s ease-in;
-
-        }
-        p.gh2:is(:hover) {
-            background-color: orange;
-            transform: scale(1.1);
-        }
-        div div.prj3 {
-            border: black solid;
-            display: flex;
-            align-items: flex-end;
-            background: url(images/LOIS.jpg) no-repeat center /500px;
-            height: 350px;
-            width: 300px;
-            justify-content: center;
-            background-size: 300px;
-            color: black;
-        }
-        div div p.gh3 {
-            color: black;
-            background-color: aqua;
-            display: flex;
-            padding: 6px;
-            width: 265px;
-            justify-content: center;
-            top: 300px;
-            transition: transform 0.5s ease-in;
-
-        }
-        p.gh3:is(:hover) {
-            background-color: orange;
-            transform: scale(1.1);
-        }
-        div div.prj4 {
-            border: black solid;
-            display: flex;
-            align-items: flex-end;
-            background: url(images/Stewie_griffin.jpg) no-repeat center /450px;
-            height: 350px;
-            width: 300px;
-            justify-content: center;
-            background-size: 300px;
-            color: black;
-        }
-        div div p.gh4 {
-            color: black;
-            background-color: aqua;
-            display: flex;
-            padding: 6px;
-            width: 265px;
-            justify-content: center;
-            top: 300px;
-            transition: transform 0.5s ease-in;
-        }
-        p.gh4:is(:hover) {
-            background-color: orange;
-            transform: scale(1.1);
-        }
-        div.paragraphs{
-            background-color: #0009;
-            display: flex;
-            flex-direction: column;
-            width: 1250px;
-            padding: 0.5rem;
-            gap: 0.5rem;
-            margin: auto;
-            width: 1300px;
-        }
-        div div.contenedor{
-            display: flex;
-            margin: 2px;
-            justify-content: center;
-            top: 2px;
-            position: relative;
-            gap: 2rem;
-            background-color: white;
-
-        }
-        div.dgb2{
-            margin: 10px;
-            height: 320px;
-            width: 1500px;
-            background: url(images/brian2.jpg)no-repeat center;
-            background-size: 520px 270px;
-        }
-        div.dgb3{
-            margin: 10px;
-            height: 320px;
-            width: 1500px;
-            background: url(images/SILLA_RUEDAS.png)no-repeat center;
-            background-size: 420px 270px;
-            
-        }
-        div.box-text {
-                margin: 10px;
-                width: 500px;
-                height: 320px;
-            }
-                h4 {
-                    margin: 5px;
-                    font-size: 1.6rem;
-                    font-family: Poppins,sans-serif;
-                    font-weight: 900;
-                }
-            div p.history{
-                
-                    margin: 5px;
-                    font-size: 17px;
-                    font-family: Poppins,sans-serif;;
-            
-                }
-        p:is(:hover){
-            color: rgb(43, 122, 226);
-            cursor: pointer;
-        }
-        div.brian1 {
-            background: url(images/brian_jugador.png) no-repeat center;
-            background-size: 200px;
-            background-position: 0px 60px;
-            display: flex;
-            position: absolute;
-            width: 1500px;
-            height: 400px;
-        }
-        div.brian2 {
-            background: url(images/mammal.png) no-repeat center;
-            background-size: 200px;
-            background-position: 1100px 250px;
-            display: flex;
-            position: absolute;
-            width: 1500px;
-            height: 400px;
+            background-color: rgb(255, 255, 255);
         }
         
-        @media (max-width: 1250px) {
-            div.imagenes {
-                display: inline;
+
+        header div.logo {
+      
+            background: url(images/LOGO2.png) no-repeat center ; 
+            margin: 0 auto;
+            width: 600px;
+            height: 300px;
+            background-size: 600px 290px;
+        }
+
+        section.caja {
+            margin: 30px auto;
+            width: 1200px;  
+            display: flex;                      
+            justify-content: center;           
+
+        }
+            section div.box {                       
+                margin: 10px auto;
+                height: 280px;
+                width: 280px;
+                position: relative;                
             }
-            div div.prj1, div div.prj2, div div.prj3, div div.prj4 {
-                width: 100%; 
-                position: sticky;
+            section div.uno {                     
+                background: url(images/PETER.jpg) no-repeat center;
+                background-size: 450px 280px;
+            }
+            section div.dos {
+                background: url(images/MEG.jpg) no-repeat center;
+                background-size: 350px 300px;
+            }
+            section div.tres {
+                background: url(images/LOIS.jpg) no-repeat center;
+                background-size: 350px 280px;
+            }
+            section div.cuatro{
+                background: url(images/Stewie_griffin.jpg) no-repeat center;
+                background-size: 350px 280px;
+            }
+                section div p.personaje {
+                text-align: center ;
                 display: flex;
-                border: none;
-            }
-            div.paragraphs {
-                display: bloc;
-                width: 1200px;
-                background-color: transparent;
-            }
-            div div.contenedor {
-                width: 70%;
-                height: 50%;
-                display: inline-block;
-                background-color: transparent;
                 justify-content: center;
-                align-items: center;
+                position: absolute;           
+                height: 50px;
+                width: 100%;
+                bottom: -17px;           
+                background-color: rgba(243, 181, 65, 0.733);
+                color: rgba(0, 0, 0, 0.733);
+                font-family: Poppins,sans-serif;
+                font-weight: 1000;
+                transition: all 0.1s ease-in;    
+            }
+                section div p.personaje:is(:hover) {
+                    height: 90px;
+                    color: #ffffff;
+                    background-color: rgba(6, 102, 89, 0.733);  
+                } 
+            section.cajaLorem{
+            margin: 10px auto;
+            width: 1200px;
+            height: 735px;
+            background-color: rgba(54, 48, 48, 0.747);
+        }
+            div.box2 {          
+            
+                margin: 25px;
+                gap: 2rem;
+                position: relative;       
+                top: 15px;             
+                display: flex;            
+                justify-content: center;  
+                background-color: rgb(243, 243, 243);
+            }
+                section div.box-kag {
+                    margin: 10px;
+                    height: 320px;
+                    width: 320px;
+                    background: url(images/brian2.jpg) no-repeat center;
+                    background-size: 320px 320px;
+                }
+                section div.box-muz {
+                    margin: 10px;
+                    height: 320px;
+                    width: 320px;
+                    background: url(images/SILLA_RUEDAS.png) no-repeat center;
+                    background-size: 320px 380px;
+                }
+                section div.box-text {
+                    margin: 10px;
+                    width: 500px;
+                    height: 320px;
+                }
+                    h4 {
+                        margin: 5px;
+                        font-size: 1.6rem;
+                        font-family: Poppins,sans-serif;
+                        font-weight: 900;
+                    }
+                    section div p.history{
+                    
+                        margin: 5px;
+                        font-size: 17px;
+                        font-family: Poppins,sans-serif;;
+                    }
+                section div.box-no-logo {
+                    margin: 10px;
+                    width: 20px;
+                    height: 320px;                       
+                }
+
+        @media (max-width: 1025px) {               
+            header div.logo {
+            
+                background: url(images/LOGO2.png) no-repeat center;
+                width: 400px;
+                height: 240px;
+                background-size: 350px 240px;
+            }
+        }
+            @media (max-width: 780px) {
+                header div.logo {
+                background: url(images/LOGO2.png) no-repeat center;
+                width: 310px;
+                height: 170px;
+                background-size: 300px 170px;
+                }
+            }
+                @media (max-width: 680px) {
+                    header div.logo {
+                    background: url(images/LOGO.png) no-repeat center;
+                    height: 250px;
+                    width: 430px;
+                    background-size: 430px 250px;
+
+                    }
+                } 
+        @media (max-width: 1235px) {
+            section.caja {
+                margin: 40px auto;
+                width: 620px;
+                height: 600px;
+                display: flex;                       
+                justify-content: center;             
+                position: relative;                
+            }
+                section div.box {                       
+                    margin: 10px auto;
+                    height: 259px;
+                    width: 280px;
+                    position: relative;                
+                }
+                section div.uno {                     
+                    background: url(images/PETER.jpg) no-repeat center;
+                    background-size: 450px 280px;
+                }
+                section div.dos {
+                    background: url(images/MEG.jpg) no-repeat center;
+                    background-size: 350px 280px;
+                }
+                section div.tres {
+                    background: url(images/LOIS.jpg) no-repeat center;
+                    background-size: 350px 280px;
+                    position: absolute;
+                    top:296px;
+                    left: 15px;
+                }
+                section div.cuatro {
+                    background: url(images/Stewie_griffin.jpg) no-repeat center;
+                    background-size: 350px 280px;
+                    position: absolute;
+                    top:296px;
+                    right: 15px;
+                }
+                    section div p.personaje {
+  
+                    text-align: center;
+                    position: absolute;           
+                    height: 60px;
+                    width: 100%;
+                    bottom: -16px;           
+                    background-color: #000b;
+                    color: #fffb;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-weight: 500;
+                    transition: all 0.4s ease-in;     
+                    }
+                    section div p.personaje:is(:hover) {
+                        height: 120px;
+                        color: #fff;
+                        background-color: #000e;  
+                    } 
+        }
+            @media (max-width: 660px ) {
+                section.caja {
+  
+                    margin: 30px auto;
+                    width: 410px;
+                    height: 1170px;
+                    display: flex;                       
+                    justify-content: center;            
+                    position: relative;                 
+                    
+                }
+                    section div.box {                      
+
+                        margin: 10px auto;
+                        height: 280px;
+                        width: 280px;
+                        position: relative;                 
+                    }
+                    section div.uno {                      
+                        background: url(images/PETER.jpg) no-repeat center;
+                        background-size: 450px 280px;
+                    }
+                    section div.dos {
+                        background: url(images/MEG.jpg) no-repeat center;
+                        background-size: 350px 280px;
+                        position: absolute;
+                        top: 290px;
+                        left: 65px;
+                    }
+                    section div.tres {
+                        background: url(images/LOIS.jpg) no-repeat center;
+                        background-size: 350px 280px;
+                        position: absolute;
+                        top: 580px;
+                        left: 65px;
+                        
+                    }
+                    section div.cuatro {
+                        background: url(images/Stewie_griffin.jpg) no-repeat center;
+                        background-size: 350px 280px;
+                        position: absolute;
+                        top: 870px;
+                        right: 65px;
+                        
+                    }
+                        section div p.personaje {
+
+                        text-align: center;
+                        position: absolute;          
+                        height: 60px;
+                        width: 100%;
+                        bottom: -16px;           
+                        background-color: #000b;
+                        color: #fffb;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-weight: 500;
+                        transition: all 0.4s;     
+                        }
+                        section div p.personaje:is(:hover) {
+                            height: 120px;
+                            color: #fff;
+                            background-color: #000e;  
+                        } 
             }
 
-            div div h2 {
-                text-align: center;
-                padding: 0.2rem;
-                background-color: rgb(255, 255, 255);
-                overflow: scroll;
+            @media (max-width: 1235px) {
+            section.cajaLorem {
+
+                margin: 10px auto; 
+                width: 620px;                  
+                height: 620px;
+                background-color: #0006;
+            }
+                div.box2 {         
+                    margin: 10px;
+                    gap: 0rem;
+                    position: relative;
+                    top: 15px;
+                    display: flex;              
+                    justify-content: center;   
+                    background-color: #fff5;
+                }
+                    section div.box-kag {
+
+                        margin: 10px;
+                        height: 270px;  
+                        width: 880px;
+                        background: url(images/brian2.jpg) no-repeat center;
+                        background-size: 270px 270px;
+                    }
+                    section div.box-muz {
+
+                        margin: 10px;
+                        height: 270px;
+                        width: 880px;
+                        background: url(images/SILLA_RUEDAS.png) no-repeat center;
+                        background-size: 270px 270px;
+                    }
+                    section div.box-text {
+
+                        overflow: scroll;             
+                        margin: 10px;
+                        width: 900px;
+                        height: 270px;
+                    }
+                        h4 {
+                            margin: 5px;
+                            font-size: 1.6rem;
+                            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                            font-weight: 900;
+                        }
+                        section div p.history {
+                            margin: 5px;
+                            font-size: 15px;
+                            font-family: Arial, Helvetica, sans-serif;
+                        }
+                    section div.box-no-logo {
                 
-            }
+                        margin: 10px;
+                        width: 200px;
+                        height: 320px;                       
+                    }
         }
-        @media (max-width: 680px) {
-            div.imagenes {
-                display: inline;
-            }
-            div div.prj1, div div.prj2, div div.prj3, div div.prj4 {
-                width: 100%; 
-                position: sticky;
-                display: flex;
-                border: none;
-            }
-            div.paragraphs {
-                width: 600px;
-                background-color: transparent;
-            }
-            div div.contenedor {
-                width: 70%;
-                height: 50%;
-                display: inline-block;
-                background-color: transparent;
-                justify-content: center;
-                align-items: center;
-            }
+            @media (max-width: 660px) {
+                section.cajaLorem {
+       
+                    margin: 10px auto; 
+                    width: 410px;                 
+                    height: 1440px;
+                    background-color: #0006;
+                }
+                    div.box2 {         
 
-            div div h2 {
-                text-align: center;
-                padding: 0.2rem;
-                background-color: rgb(252, 0, 0);
-                overflow: scroll;
+                        margin: 10px;
+                        gap: 0rem;
+                        position: relative;
+                        top: 15px;
+                        display: flex;            
+                        justify-content: center;   
+                        background-color: rgba(59, 55, 55, 0.333);
+                        position: relative;               
+                        height: 700px;
+                    }
+                        section div.box-kag {
+         
+                            margin: 10px;
+                            height: 280px;  
+                            width: 280px;
+                            background: url(images/brian2.jpg) no-repeat center;
+                            background-size: 280px 280px;
+                        }
+                        section div.box-muz {
+   
+                            margin: 10px;
+                            height: 280px;
+                            width: 280px;
+                            background: url(images/SILLA_RUEDAS.png) no-repeat center;
+                            background-size: 280px 280px;
+                        }
+                        section div.box-text {
+
+                            overflow: scroll;            
+                            margin: 10px;
+                            width: 285px;
+                            height: 370px;
+                            position: absolute;
+                            top: 300px;
+                            left: 40px;
+                        }
+                            h4 {
+
+                                margin: 5px;
+                                font-size: 1.6rem;
+                                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                                font-weight: 900;
+                            }
+                            section div p.history {
+                                margin: 5px;
+                                font-size: 15px;
+                                font-family:Arial, Helvetica, sans-serif;
+                            }
+                        section div.box-no-logo {
+                            margin: 10px;
+                            width: 200px;
+                            height: 320px;                       
+                        }
             }
-        }
-    
     </style>
 </head>
 <body>
     <main>
-    <header>
-        <div class="brian1"></div>
-        <div class="brian2"></div>
-        <figure class="logo">
-        </figure>
-        <div class="imagenes">
-            <div class="prj1">
-                <p class="gh1">PETER</p>
+        <header>
+        <div class="logo"></div>
+        </header>
+        <section class="caja">
+            <div class="box uno">
+                <p class="personaje">PETER</p>
             </div>
-            <div class="prj2">
-                <p class="gh2">MEG</p>
+            <div class="box dos">
+                <p class="personaje">MEG</p>
             </div>
-            <div class="prj3">
-                <p class="gh3">LOIS</p>
+            <div class="box tres">
+                <p class="personaje">LOIS</p>
             </div>
-            <div class="prj4">
-                <p class="gh4">STEWIE GRIFFIN</p>
+            <div class="box cuatro">
+                <p class="personaje">STEWE GRIFFILD</p>
             </div>
-        </div>
-        <br>
-        <br>
-        <div class="paragraphs">
-            <div class="contenedor">
-                <div class="dgb2"></div>
-                <div class="box-text"></div>
-                <h4>PET</h4>
-                <p class="history">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem minima voluptatem minus quibusdam nemo enim impedit voluptas culpa dolorem, ratione perspiciatis repellat natus quis est iure quisquam inventore sint. Hic recusandae sit quos, eaque perferendis cumque corporis libero assumenda asperiores quo ratione blanditiis sed nesciunt doloribus, sequi ea dolor quaerat id nostrum! Quisquam, ut consectetur ullam hic nam illo! Aperiam maiores numquam facere nam sed fugiat provident saepe! Iusto, consequatur.</p>
+        </section>
+        <section class="cajaLorem">
+            <div class="box2">
+                <div class="box-kag"></div>
+                <div class="box-text">
+                    <h4>PET</h4>
+                    <p class="history">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus fugit odit debitis sequi dolore consequatur sed facilis voluptates veniam impedit molestias ipsam alias iure porro distinctio incidunt magnam sunt aliquam officiis quaerat, quis inventore recusandae! Eius saepe distinctio repellendus doloribus architecto repellat suscipit corporis impedit! Placeat nesciunt ipsum nostrum repudiandae.
+                    </p>
+                </div>
             </div>
-            <div class="contenedor">
-                <div class="dgb3"></div>
-                <div class="box-text"></div>
-                <h4>FRIEND </h4>
-                <p class="history">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae molestias voluptatibus deleniti assumenda ipsa iure eos quam mollitia temporibus, atque pariatur dolorum perferendis aspernatur at consectetur. Vero atque tempore rerum id, ex sapiente modi facere temporibus ea voluptatum blanditiis laudantium sit libero sint quisquam accusantium illo quaerat architecto. Hic consequuntur voluptas autem voluptatem possimus necessitatibus in quasi expedita magnam quis? Quisquam alias ad natus assumenda, aliquam accusantium ipsum maxime magni!</p>
+            <div class="box2">
+                <div class="box-muz"></div>
+                <div class="box-text">
+                    <h4>FRIEND</h4>
+                    <p class="history">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus fugit odit debitis sequi dolore consequatur sed facilis voluptates veniam impedit molestias ipsam alias iure porro distinctio incidunt magnam sunt aliquam officiis quaerat, quis inventore recusandae! Eius saepe distinctio repellendus doloribus architecto repellat suscipit corporis impedit! Placeat nesciunt ipsum nostrum repudiandae.
+                    </p>
+                </div>
             </div>
-        </div>
-    </header>
-    <section>
-    </section>
-</main>
+        </section>
+    </main>
+    
 </body>
 </html>
