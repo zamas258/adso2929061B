@@ -30,8 +30,8 @@
         width: 900px;
         height: 400px;
         margin: 0 auto;
-       }
-       div.imagenes{
+        }
+        div.imagenes{
             align-items: center;
             display: flex;
             gap: 3rem;
@@ -41,7 +41,7 @@
             width: 1300px;
             margin: auto;
         }
-         div div.prj1 {
+        div div.prj1 {
             border: black solid;
             display: flex;
             align-items: flex-end;
@@ -155,55 +155,52 @@
         }
         div div.contenedor{
             display: flex;
-            flex-direction: row;
+            margin: 2px;
+            justify-content: center;
+            top: 2px;
+            position: relative;
+            gap: 2rem;
             background-color: white;
-            gap: 4rem;
-            height: 200px;
-            align-items: center;
+
         }
         div.dgb2{
-            display: flex;
-            flex-direction: row;
-            width: 1025px;
-            height: 195px;
-            background: url(images/brian2.jpg) ;
-            border: rgb(0, 0, 0) solid;
+            margin: 10px;
+            height: 320px;
+            width: 1500px;
+            background: url(images/brian2.jpg)no-repeat center;
+            background-size: 520px 270px;
         }
         div.dgb3{
-            display: flex;
-            flex-direction: row;
-            width: 975px;
-            height: 195px;
-            background: url(images/SILLA_RUEDAS.png);
-            background-position: -55px -1140px;
-            background-size: 300px;
-            border: rgb(0, 0, 0) solid;
+            margin: 10px;
+            height: 320px;
+            width: 1500px;
+            background: url(images/SILLA_RUEDAS.png)no-repeat center;
+            background-size: 420px 270px;
+            
         }
-        p {
-            font-size: 1.1rem;
-            display: flex;
-            text-align: left;
-            color: black;
-        }
+        div.box-text {
+                margin: 10px;
+                width: 500px;
+                height: 320px;
+            }
+                h4 {
+                    margin: 5px;
+                    font-size: 1.6rem;
+                    font-family: Poppins,sans-serif;
+                    font-weight: 900;
+                }
+            div p.history{
+                
+                    margin: 5px;
+                    font-size: 17px;
+                    font-family: Poppins,sans-serif;;
+            
+                }
         p:is(:hover){
             color: rgb(43, 122, 226);
             cursor: pointer;
         }
-        h2 {
-            font-family: "Permanet Marker", cursive;
-            font-size: 1.4rem;
-            margin: 0;
-            
-        }
-        main header figure figure.shen {
-            background: url() no-repeat; /bola de dragon image/
-            background-size: 900px;
-            background-position: 0px 500px;
-            display: flex;
-            width: 900px;
-            height: 900px;
-        }
-        div.kame {
+        div.brian1 {
             background: url(images/brian_jugador.png) no-repeat center;
             background-size: 200px;
             background-position: 0px 60px;
@@ -212,7 +209,7 @@
             width: 1500px;
             height: 400px;
         }
-        div.roshi {
+        div.brian2 {
             background: url(images/mammal.png) no-repeat center;
             background-size: 200px;
             background-position: 1100px 250px;
@@ -221,6 +218,7 @@
             width: 1500px;
             height: 400px;
         }
+        
         @media (max-width: 1250px) {
             div.imagenes {
                 display: inline;
@@ -263,9 +261,6 @@
                 display: flex;
                 border: none;
             }
-            div.roshi, div.kame {
-                display: none;
-            }
             div.paragraphs {
                 width: 600px;
                 background-color: transparent;
@@ -282,7 +277,7 @@
             div div h2 {
                 text-align: center;
                 padding: 0.2rem;
-                background-color: rgb(0, 0, 0);
+                background-color: rgb(252, 0, 0);
                 overflow: scroll;
             }
         }
@@ -292,10 +287,9 @@
 <body>
     <main>
     <header>
-        <div class="roshi"></div>
-        <div class="kame"></div>
+        <div class="brian1"></div>
+        <div class="brian2"></div>
         <figure class="logo">
-            <figure class="shen"></figure>
         </figure>
         <div class="imagenes">
             <div class="prj1">
@@ -316,15 +310,17 @@
         <div class="paragraphs">
             <div class="contenedor">
                 <div class="dgb2"></div>
-                <h2>PET
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem minima voluptatem minus quibusdam nemo enim impedit voluptas culpa dolorem, ratione perspiciatis repellat natus quis est iure quisquam inventore sint. Hic recusandae sit quos, eaque perferendis cumque corporis libero assumenda asperiores quo ratione blanditiis sed nesciunt doloribus, sequi ea dolor quaerat id nostrum! Quisquam, ut consectetur ullam hic nam illo! Aperiam maiores numquam facere nam sed fugiat provident saepe! Iusto, consequatur.</p>
-                </h2>
+                <div class="box-text"></div>
+                <h4>PET</h4>
+                <p class="history">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem minima voluptatem minus quibusdam nemo enim impedit voluptas culpa dolorem, ratione perspiciatis repellat natus quis est iure quisquam inventore sint. Hic recusandae sit quos, eaque perferendis cumque corporis libero assumenda asperiores quo ratione blanditiis sed nesciunt doloribus, sequi ea dolor quaerat id nostrum! Quisquam, ut consectetur ullam hic nam illo! Aperiam maiores numquam facere nam sed fugiat provident saepe! Iusto, consequatur.</p>
             </div>
             <div class="contenedor">
                 <div class="dgb3"></div>
-                <h2>FRIEND
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae molestias voluptatibus deleniti assumenda ipsa iure eos quam mollitia temporibus, atque pariatur dolorum perferendis aspernatur at consectetur. Vero atque tempore rerum id, ex sapiente modi facere temporibus ea voluptatum blanditiis laudantium sit libero sint quisquam accusantium illo quaerat architecto. Hic consequuntur voluptas autem voluptatem possimus necessitatibus in quasi expedita magnam quis? Quisquam alias ad natus assumenda, aliquam accusantium ipsum maxime magni!</p>
-                </h2>
+                <div class="box-text"></div>
+                <h4>FRIEND </h4>
+                <p class="history">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae molestias voluptatibus deleniti assumenda ipsa iure eos quam mollitia temporibus, atque pariatur dolorum perferendis aspernatur at consectetur. Vero atque tempore rerum id, ex sapiente modi facere temporibus ea voluptatum blanditiis laudantium sit libero sint quisquam accusantium illo quaerat architecto. Hic consequuntur voluptas autem voluptatem possimus necessitatibus in quasi expedita magnam quis? Quisquam alias ad natus assumenda, aliquam accusantium ipsum maxime magni!</p>
             </div>
         </div>
     </header>
