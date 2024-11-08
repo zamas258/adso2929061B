@@ -277,11 +277,9 @@ main {
 /* 10 S A S S */
 /* - - - - - - - - - - - -*/
 body.sass {
-    background-color: #8A0884;
-    background-image: url("blob:https://www.svgbackgrounds.com/b373a4ef-3c15-4ce2-b1b7-1f64fbcd3e72");
+    background-color: #3C0D3C;
+    background-image: url("blob:https://www.svgbackgrounds.com/c610d02c-9f61-4cb0-b6b8-5998dd59634a");
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: top left;
 main {
     header {
         img { 

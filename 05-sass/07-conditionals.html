@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02- Parent (SASS)</title>
+    <title>07- Conditionals (SCSS)</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="css/02-parent.css">
+    <link rel="stylesheet" href="css/07-conditionals.css">
 </head>
 <body class="sass">
     <nav>
@@ -15,28 +15,22 @@
     </nav>
     <main>
         <header>
-            <h1>02- Parent (SASS)</h1>
+            <h1>07- Conditionals (SCSS)</h1>
             <p>
-                References the parent selector for contextual styling.
+                Applies styles conditionally based on specified criteria.
             </p>
         </header>
         <section class="content">
-            <article>
-                <figure>
-                    <div>
-                        <button>Instagram</button>
-                        <button>TikTok</button>
-                    </div>
-                </figure>
-            </article>
-            <article>
-                <figure>
-                    <div>
-                        <button>Instagram</button>
-                        <button>TikTok</button>
-                    </div>
-                </figure>
-            </article>
+            <a href="#showModal" class="btn">Calculate</a>
+            <div id="showModal" class="modal">
+                <div>
+                    <a href="#hideModal" class="close"> &times; </a>
+                    <h2 class="message"></h2>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero laborum mollitia cum minima, doloremque, animi omnis esse fuga consequatur dolores, ipsum aut? Soluta, perspiciatis vel?
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 </body>
