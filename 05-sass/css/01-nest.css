@@ -1,0 +1,17 @@
+/* Error: Expected identifier.
+ *   ,
+ * 1 | body main section.content h2:after background: linear-gradient(to right, #fff0, #d94d9b) content: "" height: 10px display: block left: 50% position: absolute transform: translateX(-50%) skew(-50deg) top: calc(100% + 20px) width: 80% h2 border-bottom: none color: #d94d9b font-size: 2.4em margin: 150px 0px position: relative text-align: center h2:before background: linear-gradient(to right, #d94d9b, #fff0) content: "" height: 10px display: block left: 50% position: absolute transform: translateX(-50%) skew(-50deg) top: calc(-100% + 20px) width: 80%
+ *   |                                               ^
+ *   '
+ *   sass\01-nest.sass 1:47  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Expected identifier.\a   \2577 \a 1 \2502  body main section.content h2:after background: linear-gradient(to right, #fff0, #d94d9b) content: "" height: 10px display: block left: 50% position: absolute transform: translateX(-50%) skew(-50deg) top: calc(100% + 20px) width: 80% h2 border-bottom: none color: #d94d9b font-size: 2.4em margin: 150px 0px position: relative text-align: center h2:before background: linear-gradient(to right, #d94d9b, #fff0) content: "" height: 10px display: block left: 50% position: absolute transform: translateX(-50%) skew(-50deg) top: calc(-100% + 20px) width: 80%\a   \2502                                                ^\a   \2575 \a   sass\\01-nest.sass 1:47  root stylesheet';
+}

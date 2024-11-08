@@ -4,15 +4,15 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title 17 Challenge 
-        link(rel="stylesheet", href="../../css/style.css")
+        link(rel="stylesheet", href="../../css/styles.css")
         style.
             li {
-            height: 70px;
+            height: 60px;
             }
             p.list {
             display: flex;
             height: 100%;
-            width: 70px;
+            width: 60px;
             align-items: center;
             justify-content: center;
             background-color: #0008;
@@ -28,7 +28,7 @@ html(lang="en")
                 h1 17 Challenge 
                 p Provides an exercise to apply the learned concepts.
             section
-                ul
+            ul
                     each val, index in ['#08fafa', '#17c8fa', '#3296fa', '#4b64fa', '#6432fa', '#7d01fa', '#9601fa', '#af01fa', '#c801fa', '#e101fa',]
                         li(style='list-style: none; border-bottom: 2px solid #Fff; background-color:'+val)
-                            p.list= index+1
+                            p.list= index+2
