@@ -312,6 +312,9 @@ body.bootstrap {
             }
         }
         menu {
+            h3{
+                color: white;
+            }
             a {
                 span {
                     background-color: #7110f3;
