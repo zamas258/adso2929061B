@@ -313,7 +313,7 @@ body.bootstrap {
         }
         menu {
             h3{
-                color: white;
+                color: rgb(255, 255, 255);
             }
             a {
                 span {
@@ -323,3 +323,30 @@ body.bootstrap {
         }
     }
 }
+/* - - - - - - - - - - - - - - */
+/* F O N T S */
+/* - - - - - - - - - - - - - - */
+@font-face {
+    font-family: 'Poppins-200';
+    src: url(../fonts/Poppins-200.ttf);
+}
+@font-face {
+    font-family: 'Poppins-400';
+    src: url(../fonts/Poppins-400.ttf);
+}
+@font-face {
+    font-family: 'Poppins-600';
+    src: url(../fonts/Poppins-600.ttf);
+}
+/* - - - - - - - - - - - - - - */
+/* V A R I A B L E S */
+/* - - - - - - - - - - - - - - */
+:root {
+    --color-1: #fff9;
+    --color-2: #0009;
+    --font-200: 'Poppins-400', sans-serif;
+    --font-400: 'Poppins-400', sans-serif;
+    --font-600: 'Poppins-600', sans-serif;
+}
+font-family: var(--font-400);
+font-family: var(--font-400);
