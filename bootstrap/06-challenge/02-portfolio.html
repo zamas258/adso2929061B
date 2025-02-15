@@ -1,277 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Challenge</title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomas Orrego Berrio</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style>
+        .triangle-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .triangle-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, white 50%, #45a049 50%);
+            z-index: -1;
+        }
+        .progress {
+            background-color: #e0e0e0;
+        }
+        .progress-bar {
+            background-color: #4CAF50;
+        }
+    </style>
 </head>
-<body class="bg-light">
-<header class="text-dark position-relative" style="background: linear-gradient(90deg, #96C2DB 50%, #E5EDF1 50%);">
-    <div class="container">
-      <div class="d-flex justify-content-between align-items-center py-2">         
-        <nav class="z-3 px-lg-5 px-3 navbar navbar-expand-lg py-3 d-flex justify-content-between w-100">
-          <!-- Contenedor del logo y nombre alineado a la izquierda -->
-          <div class="d-flex align-items-center ms-3"> <!-- Se usa ms-3 para dejar un poco de margen izquierdo -->
-            <svg style="width: 60px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000">
-              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18.22a8.18 8.18 0 0 1-5.03-1.72 8.18 8.18 0 0 1 10.06 0A8.18 8.18 0 0 1 12 20.22Zm6.32-2.97C16.6 15.84 14.4 15 12 15s-4.6.84-6.32 2.25a8.22 8.22 0 1 1 12.64 0ZM12 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Z"></path>
-            </svg>
-            <h2 class="my-auto fw-bolder">
-              <span style="color: #024166">Tomas </span>Orrego
-            </h2>
-          </div>
-        
-          <!-- Botón del menú hamburguesa -->
-          <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" type="button">
-            <span style="filter: invert(1);" class="navbar-toggler-icon"></span>
-          </button>
-        
-          <!-- Menú de navegación alineado a la derecha -->
-          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a href="#home" class="nav-link text-black fs-5">Home</a>
-              </li>
-              <li class="nav-item">
-                <a href="#about" class="nav-link text-black fs-5">About</a>
-              </li>
-              <li class="nav-item">
-                <a href="#services" class="nav-link text-black fs-5">Services</a>
-              </li>
-              <li class="nav-item">
-                <a href="#portfolio" class="nav-link text-black fs-5">Portfolio</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <div class="row align-items-center py-2"> 
-        <div class="col-md-6 text-start">
-          <h1 id="home" class="display-4 text-dark">Hello, I am</h1>
-          <h2 class="fw-bold text-dark">Tomas Orrego</h2>
-          <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <a href="#hire_me" class="btn btn-secondary   btn-d">Hire Me</a>
-        </div>
-        <div class="col-md-6">
-          <img src="../images/holaemojijs.png" alt="Header Image" class="img-fluid">
-        </div>
-      </div>
-    </div>
-</header>
-
-<section class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <img src="../images/señalarbitmoji.png" alt="About Image" class="img-fluid rounded-square">
-      </div>
-      <div class="col-md-6">
-        <h5 id="about" class="fw-bold text-dark">About</h5>
-        <h2 id="hire_me" class="fw-bold">Why You Hire Me?</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam aperiam corporis dolor modi, sunt nulla atque nisi quos velit nobis impedit vel quisquam asperiores perspiciatis id enim quo esse sequi?</p>
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">
-    <div class="d-flex flex-column">
-      <h5 class="fw-bold text-muted">UI/UX Design</h5>
-      <div class="progress">
-        <div class="progress-bar bg-danger" style="width: 60%;"></div>
-      </div>
-    </div>
-  </li>
-  <li class="list-group-item">
-    <div class="d-flex flex-column">
-      <h5 class="fw-bold text-muted">Web Design</h5>
-      <div class="progress">
-        <div class="progress-bar bg-success" style="width: 70%;"></div>
-      </div>
-    </div>
-  </li>
-  <li class="list-group-item">
-    <div class="d-flex flex-column">
-      <h5 class="fw-bold text-muted">HTML/CSS</h5>
-      <div class="progress">
-        <div class="progress-bar bg-success" style="width: 80%;"></div>
-      </div>
-    </div>
-  </li>
-  <li class="list-group-item">
-    <div class="d-flex flex-column">
-      <h5 class="fw-bold text-muted">Sketch</h5>
-      <div class="progress">
-        <div class="progress-bar bg-success" style="width: 50%;"></div>
-      </div>
-    </div>
-  </li>
-</ul>
-      </div>
-    </div>
-  </section>
-  
-      <section class="py-5" style="background-color: #96C2DB;">
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <h5 id="services" class="fw-bold text-black text-center">Services</h5>
-          <h2 class="text-center fw-bold mb-3">Services | What I Provide</h2>
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <div class="icon-container p-2 mb-3" style="background-color: #96C2DB; width: 70px; height: 70px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                    <i class="bi bi-brush text-black" style="font-size: 1.5rem;"></i>
-                  </div>
-                  <h5 class="fw-bold text-secondary">Frontend</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
+            <a class="navbar-brand" href="#">Tomas Orrego Berrio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                </ul>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <div class="icon-container p-2 mb-3" style="background-color: #96C2DB; width: 70px; height: 70px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                    <i class="bi bi-terminal-dash text-dark" style="font-size: 1.5rem;"></i>
-                  </div>
-                  <h5 class="fw-bold text-secondary">Backend</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <div class="icon-container p-2 mb-3" style="background-color: #96C2DB; width: 70px; height: 70px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                    <i class="bi bi-people text-dark" style="font-size: 1.5rem;"></i>
-                  </div>
-                  <h5 class="fw-bold text-secondary">UI/UX Design</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <div class="icon-container p-2 mb-3" style="background-color: #96C2DB; width: 70px; height: 70px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                    <i class="bi bi-motherboard text-dark" style="font-size: 1.5rem;"></i>
-                  </div>
-                  <h5 class="fw-bold text-secondary">programming logic</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <div class="icon-container p-2 mb-3" style="background-color: #96C2DB; width: 70px; height: 70px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                    <i class="bi bi-journal-code text-dark" style="font-size: 1.5rem;"></i>
-                  </div>
-                  <h5 class="fw-bold text-secondary">Sketch</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow-sm">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <div class="icon-container p-2 mb-3" style="background-color: #96C2DB; width: 70px; height: 70px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-                    <i class="bi bi-bar-chart text-dark" style="font-size: 1.5rem;"></i>
-                  </div>
-                  <h5 class="fw-bold text-secondary">Data Analysis</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+    </nav>
 
-  <section class="container py-5">
-    <h5 id="portfolio" class="fw-bold text-secondary text-start">Portfolio</h5>
-    <h2 class="text-start fw-bold mb-4">Latest Projects</h2>
-    <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="card shadow-sm">
-                <img src="../images/Jacobo app.jpeg" class="card-img-top" alt="Project 1" style="object-fit: cover; height: 300px;">
-              </div>
+    <!-- Sección Hero -->
+    <section id="home" class="text-dark triangle-bg">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4">Hello I am</h1>
+                    <h2>Yerson Herrera</h2>
+                    <p class="lead">Professional Freelance Web Designer</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#" class="btn btn-success">Hire Me</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="../images/WhatsApp_Image_2024-06-26_at_7.51.26_AM-removebg-preview (1) 1.png" style="width: 400px; height: 400px; object-fit: cover;">
+                </div>
             </div>
-            <div class="col-md-4">
-              <div class="card shadow-sm">
-                <img src="../images/proyecto ofac.png" class="card-img-top" alt="Project 2" style="object-fit: cover; height: 300px;">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card shadow-sm">
-                <img src="../images/coming soon.avif" class="card-img-top" alt="Project 3" style="object-fit: cover; height: 300px;">
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="carousel-item">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="card shadow-sm">
-                <img src="../images/coming soon.avif" class="card-img-top" alt="Project 4" style="object-fit: cover; height: 300px;">
-              </div>
+    </section>
+
+    <!-- Sección About -->
+    <section id="about" class="py-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="../images/WhatsApp_Image_2024-06-26_at_8.39.12_AM-removebg-preview 1.png" style="width: 400px; height: 300px; object-fit: cover;">
+                </div>
+                <div class="col-md-6">
+                    <h2>About</h2>
+                    <h3>Why you Hire Me?</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="mb-3">
+                        <strong>UI/UX Design</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%;">80%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Web Design</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 70%;">70%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>HTML/CSS</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%;">90%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Sketch</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 65%;">65%</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-              <div class="card shadow-sm">
-                <img src="../images/coming soon.avif" class="card-img-top" alt="Project 5" style="object-fit: cover; height: 300px;">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card shadow-sm">
-                <img src="../images/coming soon.avif" class="card-img-top" alt="Project 6" style="object-fit: cover; height: 300px;">
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+    </section>
+
+    <!-- Sección Services -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container-fluid">
+            <h6 class="text-center text-success">Services</h6>
+            <h2 class="text-center mb-5">Services | Provide</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-code fa-2x text-success mb-3"></i>
+                            <img src="../images/25185 1.png" style="width: 50px; height: 50px;">
+                            <h5 class="card-title">Graphic Design</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fab fa-css3 fa-2x text-success mb-3"></i>
+                            <img src="../images/Vector.png" style="width: 50px; height: 50px;">
+                            <h5 class="card-title">Web Design</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-mobile-alt fa-2x text-success mb-3"></i>
+                            <img src="../images/Vector (1).png" style="width: 50px; height: 50px;">
+                            <h5 class="card-title">UI/UX Design</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-laptop-code fa-2x text-success mb-3"></i>
+                            <img src="../images/Vector_.png" style="width: 50px; height: 50px;">
+                            <h5 class="card-title">Frontend Development</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-chart-line fa-2x text-success mb-3"></i>
+                            <img src="../images/Vector_2.png" style="width: 50px; height: 50px;">
+                            <h5 class="card-title">Business Analysis</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-bullhorn fa-2x text-success mb-3"></i>
+                            <img src="../images/Vector.png" style="width: 50px; height: 50px;">
+                            <h5 class="card-title">Digital Marketing</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Projects -->
+    <!-- Sección Projects -->
+<section id="portfolio" class="py-5">
+    <div class="container-fluid">
+        <h6 class="text-center text-success">Portfolio</h6>
+        <h2 class="text-center mb-5">Latest Projects</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark text-white">
+                    <img src="../images/Captura de pantalla 2024-07-26 091801.png" class="card-img" style="height: 300px; object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark text-white">
+                    <img src="../images/Captura de pantalla 2024-07-26 090013.png" class="card-img" style="height: 300px; object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark text-white">
+                    <img src="../images/Rectangle 7.png" class="card-img" style="height: 300px;">
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
-  
-  <footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-      <div class="d-flex justify-content-center align-items-center mt-3 mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle me-4 text-dark" viewBox="0 0 16 16">
-          <path d="M13.468 12.37C12.758 11.226 11.482 10.5 10 10.5s-2.758.726-3.468 1.87A6.986 6.986 0 0 0 8 15a6.986 6.986 0 0 0 1.468-.63z"/>
-          <path fill-rule="evenodd" d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 1a6 6 0 1 0 0 12A6 6 0 0 0 8 2zm0 1a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
-        </svg>
-        <span class="fw-bold fs-2 text-white">Jacobo <span class="text-white">Sambrano</span></span>
-      </div>
-      <div class="mb-3">
-        <a href="https://www.instagram.com/_.sambrano._" class="btn btn-white btn-circle me-3" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://github.com/Jsambrano06" class="btn btn-white btn-circle" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <p class="mb-3 fs-4">sambranojacobo@gmail.com</p>
-      <ul class="nav justify-content-center mb-3">
-        <li class="nav-item"><a href="#home" class="nav-link text-white"><h5>Home</h5></a></li>
-        <li class="nav-item">
-            <a href="#about" class="nav-link text-white">
-              <h5>About</h5>
-            </a>
-          </li>
-        <li class="nav-item"><a href="#services" class="nav-link text-white"><h5>Services</h5></a></li>
-        <li class="nav-item"><a href="#portfolio" class="nav-link text-white"><h5>Portfolio</h5></a></li>
-      </ul>
-      <p class="mb-0">&copy; 2024 All rights reserved.</p>
-    </div>
-  </footer>
+</section>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Footer -->
+    <section class="bg-light text-center py-4">
+        <div class="container-fluid">
+            <img src="path_to_profile_image.jpg" alt="Yerson Herrera Obando" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+            <div class="mb-3">
+                <a href="https://www.facebook.com/?locale=es_LA" class="text-dark me-3"><i class="fab fa-facebook-f"></i>
+                <img src="../images/facebook-f-brands-solid.svg" style="width: 20px; height: 20px;">
+                </a>
+                <a href="https://github.com/yerson14" class="text-dark me-3"><i class="fab fa-github"></i>
+                <img src="../images/github-brands-solid.svg" style="width: 20px; height: 20px;">
+                </a>
+                <a href="https://www.instagram.com/" class="text-dark"><i class="fab fa-instagram"></i>
+                <img src="../images/instagram-brands-solid.svg" style="width: 20px; height: 20px;">
+                </a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#home" class="text-dark">Home</a></li>
+                <li class="list-inline-item"><a href="#about" class="text-dark">About</a></li>
+                <li class="list-inline-item"><a href="#services" class="text-dark">Services</a></li>
+                <li class="list-inline-item"><a href="#projects" class="text-dark">Portfolio</a></li>
+            </ul>
+            <p class="mb-3">@soy.sena.edu.co</p>
+        </div>
+    </section>
 
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
