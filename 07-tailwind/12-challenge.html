@@ -1,39 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <tite>Template</title>
+    <title>Sección Fallout</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body{
+            background: url(../images/los-25-mejores-fondos-de-pantalla-del-real-madrid-para-movil.jpg);
+            background-size: cover;
+        }
+        .button {
+            background-color: #ffffff;
+            color: black;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        .container {
+            width: 90%; 
+            max-width: 400px; 
+            text-align: center; 
+            border-radius: 20px;
+            position: relative; 
+        }
+        .container img {
+            max-width: 100%; 
+            height: auto; 
+            margin: 0 auto; 
+        }
+        .hidden-section {
+            display: none;
+        }
+        .circle-number {
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            border-radius: 50%;
+            background-color: gray;
+            color: black;
+            text-align: center;
+            margin-right: 0.8rem;
+        }
+        .back-arrow {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            cursor: pointer;
+        }
+        @media (min-width: 640px) {
+            .container {
+                width: 60%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                width: 40%;
+            }
+        }
+        .box {
+            border: 2px solid #ffffff; 
+            border-radius: 12px; 
+            padding: 1rem;
+            background-color: #1e3a8a;
+            margin-bottom: 1rem; 
+            font-size: 0.875rem; 
+            text-align: left; 
+        }
+        .additional-text {
+            color: white; 
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 1rem; 
+        }
+    </style>
+    <script>
+        function showSection(sectionToShow) {
+            document.getElementById('fallout-section').style.display = 'none';
+            document.getElementById('mejores-trofeos').style.display = 'none';
+            document.getElementById('galacticos').style.display = 'none';
+            document.getElementById(sectionToShow).style.display = 'block';
+        }
+    </script>
 </head>
-<body>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>00 - Template</title>
-        <link rel="stylesheet" href="../css/styles.css">
-    </head> 
-    <body class="Tailwind">
-        <nav>
-            <a href="../">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-            </a>
-        </nav>
-        <main>
-            <header>
-                <h1>00 - Template</h1>
-                <p>
-                    Lorem
-                </p>
-         </header>
-         <section>
-           
-    
-         </section>
-        </main>
-    <script src="js/tailwind.js"></script>
-     </body>
-    </html>
+<body class="bg-gray-800 flex items-center justify-center min-h-screen relative">
+
+    <div id="fallout-section" class="container bg-gray-700 p-5 text-white">
+        <img src="../images/real-madrid-levanta-trofeo-uefa.jpeg" alt="Logo de Fallout" class="w-96">
+        <img src="../images/descarga.jpg" alt="" class="w-96">
+        <p class="mt-1">Es un club muy exitoso con 33 títulos de La Liga, 19 trofeos de Copa del Rey, 13 Copas de Europa y 2 Copas de la UEFA. El Real Madrid ha sido el club más apoyado en Madrid durante la mayor parte de su historia, especialmente durante su rivalidad con Barcelona y Atlético de Madrid.</p>
+        <button class="button" onclick="showSection('mejores-trofeos')">Conoce más acerca de los Merengues</button>
+    </div>
+
+
+    <div id="mejores-trofeos" class="container bg-gray-700 p-5 text-white mt-10 hidden-section half-yellow">
+        <div class="back-arrow" onclick="showSection('fallout-section')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">LOS MEJOR TROFEOS</h2>
+        <div class="mb-4 flex items-start">
+            <span class="circle-number">1</span>
+            <div>
+                <h3 class="text-xl font-semibold"><strong>CHAMPIONS</strong></h3>
+                <p>Los Merengues consiguieron su decimoquinto título de la máxima competencia de clubes y confirman ser uno de los mejores equipos en la historia del futbol mundial.</p>
+                <img src="../images/15champions.jpg" alt="" class="w-full mt-2">
+            </div>
+        </div>
+        <div class="mb-4 flex items-start">
+            <span class="circle-number">2</span>
+            <div>
+                <h3 class="text-xl font-semibold">SUPERCOPA</h3>
+                <p>El 12 de enero de 2020, el Real Madrid levantó su undécima Supercopa de España en el estadio Rey Abdullah de Yeda (Arabia Saudí).</p>
+                <img src="../images/Vinicius-levanta-la-Supercopa-de-Espana.ml_.webp" alt="">
+            </div>
+        </div>
+        <div class="mb-4 flex items-start">
+            <span class="circle-number">3</span>
+            <div>
+                <h3 class="text-xl font-semibold">Yao Guai</h3>
+                <p>Actualmente, los dirigidos por Carlo Ancelotti obtuvieron una nueva corona tras someter en la Final al Pachuca (3-0) de la Liga MX.</p>
+                <img src="../images/intercontinental.avif" alt="">
+            </div>
+        </div>
+        <div class="mb-4 flex items-start">
+            <span class="circle-number">4</span>
+            <div>
+                <h3 class="text-xl font-semibold">LALIGA</h3>
+                <p>El Real Madrid se coronó campeón de LaLiga 2023-24. En el Bernabéu, por la jornada 34, venció 3-0 al Cádiz.</p>
+                <img src="../images/laliga.jpg" alt="">
+            </div>
+        </div>
+        <button class="button mt-4" onclick="showSection('galacticos')">Conoce acerca de los GALACTICOS</button>
+    </div>
+
+
+    <div id="galacticos" class="container bg-gray-700 p-5 text-white mt-10 hidden-section half-yellow">
+        <div class="back-arrow" onclick="showSection('mejores-trofeos')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">LOS GALACTICOS</h2>
+        <div class="box">
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">1</span>
+                <div>
+                    <h3 class="text-lg font-semibold">Zinedine Zidane</h3>
+                    <p>Un genio. Zinedine Zidane marcó una época en el fútbol mundial con su elegancia y calidad técnica. Dotado de un talento natural para este deporte, el centrocampista francés lo ganó todo con sus clubes y la selección francesa. Un jugador mágico que eligió cerrar su histórica carrera deportiva en el Real Madrid, conquistando juntos la Liga de Campeones de 2002.</p>
+                    <img src="../images/ZINEDINEZINADE.jpg" alt="">
+                </div>
+            </div>
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">2</span>
+                <div>
+                    <h3 class="text-lg font-semibold">Ronaldo Nazario</h3>
+                    <p>Con unas condiciones técnicas sólo al alcance de los elegidos, Ronaldo dejó para el recuerdo jugadas y goles memorables. Su magia con el balón será para siempre recordada por los madridistas. Coleccionista de éxitos, colectivos e individuales, como los dos Balones de Oro que ganó (1997 y 2002), el delantero brasileño es uno de los grandes de la historia del fútbol.</p>
+                    <img src="../images/ronaldo-nazario-futbolista-real-madrid.jpg" alt="">
+                </div>
+            </div>
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">3</span>
+                <div>
+                    <h3 class="text-lg font-semibold">Roberto Carlos</h3>
+                    <p>Su zurda fue decisiva para que el Real Madrid conquistara más de una decena de títulos. El brasileño siempre será recordado por su simpatía, regularidad, prodigiosa velocidad (llegó a correr los 100 metros en 10,9 segundos) y tremenda pegada (sus disparos alcanzaban los 140 km/h).</p>
+                    <img src="../images/ROBERTOCARLOS.webp" alt="">
+                </div>
+            </div>
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">4</span>
+                <div>
+                    <h3 class="text-lg font-semibold">Raúl González </h3>
+                    <p>Un símbolo del Real Madrid. El eterno capitán que a día de hoy ostenta el récord de partidos en la historia de nuestro club y que representó sobre el campo los valores del madridismo. Raúl fue un delantero con un instinto casi infinito. Un ejemplo a seguir por su máxima entrega en cada encuentro. Se dejaba la piel en cada acción, haciendo patente su hambre insaciable. Siempre atento a los rechaces. Un buen espejo en el que mirarse para todo el que sueñe con ser futbolista.</p>
+                    <img src="../images/RAUL.jpg.webp" alt="">
+                </div>
+            </div>
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">5</span>
+                <div>
+                    <h3 class="text-lg font-semibold">Luís Figo</h3>
+                    <p>Rey del desborde y el regate, sus perfectas asistencias fueron un lujo para todos los delanteros que jugaron junto a él. Un líder sobre el césped en el que el Real Madrid encontró un arma ofensiva sin igual para seguir aumentando su palmarés. Junto a Hierro, Raúl, Zidane y Ronaldo, entre otros, formó un equipo de ensueño.</p>
+                    <img src="../images/LUISfigo.webp" alt="">
+                </div>
+            </div>
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">6</span>
+                <div>
+                    <h3 class="text-lg font-semibold">Iker Casillas</h3>
+                    <p>Leyenda blanca, Iker Casillas es el mejor guardameta de la historia del Real Madrid y del fútbol español. Llegó al club con 9 años y defendió la camiseta madridista durante veinticinco. A lo largo de ese tiempo se convirtió en uno de los grandes referentes de la historia del Real Madrid, ganándose el respeto, el cariño y la admiración del madridismo.</p>
+                    <img src="../images/CASILLASimages.jpg" alt="">
+                </div>
+            </div>
+            <div class="mb-4 flex items-start">
+                <span class="circle-number">7</span>
+                <div>
+                    <h3 class="text-lg font-semibold">
+                        David Beckham
+                        </h3>
+                        <p>Madera de líder. El centrocampista inglés siempre fue pieza clave en todos sus equipos. A su excelente toque de balón con la pierna derecha, que le permitió ser un gran lanzador de faltas, hay que añadir una entrega y un sacrificio al alcance de muy pocas estrellas.</p>
+                    <img src="../images/BECKHAMGOAL_-_Blank_WEB_-_Facebook_-_2023-07-04T111410.969.png.webp" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="additional-text">
+            <p>Zinedine Zidane, Ronaldo, Roberto Carlos, Luís Figo, Raúl, David Beckham, Iker Casillas, a quien luego entrené en el Porto… ¡Era una plantilla impresionante! En cierto modo, eran figuras que iban más allá del fútbol, que aparecían a menudo en otras secciones del periódico</p>
+        </div>
+        <button class="button mt-4" onclick="showSection('fallout-section')">Regresar</button>
+    </div>
 </body>
 </html>
