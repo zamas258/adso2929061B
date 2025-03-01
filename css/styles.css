@@ -353,6 +353,34 @@ body.Tailwind {
     }
 }
 /* - - - - - - - - - - - - - - */
+/* J A V A S C R I P  */
+/* - - - - - - - - - - - - - - */
+body.js {
+    background-color: #918D1C;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%237e7b17' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%236c6a11' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%2359580c' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23474706' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23343501' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover
+    main {
+        header {
+            img {
+                background-color: #fffa;
+                object-fit: contain;
+                border-color: var(--color-1);
+            }
+        }
+        menu {
+            h3{
+                color: rgb(255, 255, 255);
+            }
+            a {
+                span {
+                    background-color: #323330;
+                }
+            }
+        }
+    }
+}
+/* - - - - - - - - - - - - - - */
 /* F O N T S */
 /* - - - - - - - - - - - - - - */
 @font-face {
