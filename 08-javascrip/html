@@ -64,23 +64,23 @@
             text: 'Functions'
         },
         {
-            url: '09-challenge-calculator.html', 
+            url: '09-operadors-arithmetics.html', 
             text: 'Challenge Calculator'
         },
         {
-            url: '10-operators-arithmetics.html', 
+            url: '10-operators-assignment.html', 
             text: 'Operators Arithmetics'
         },
         {
-            url: '11-operators-assignment.html', 
+            url: '11-operators-comparison.html', 
             text: 'Operators Assigment'
         },
         {
-            url: '12-operators-comparison.html', 
+            url: '12-operators-logital.html', 
             text: 'Operators Comparison'
         },
         {
-            url: '13-operators-logical.html', 
+            url: '13-challenge-calculator.html', 
             text: 'Operators Logical'
         },
         {
