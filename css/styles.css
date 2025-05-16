@@ -355,236 +355,32 @@ body.Tailwind {
 /* - - - - - - - - - - - - - - */
 /* J A V A S C R I P  */
 /* - - - - - - - - - - - - - - */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
-
-body {
-    background-color: #ffaa00;
-     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%237e7b17' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%236c6a11' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%2359580c' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23474706' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23343501' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+body.js {
+    background-color: #918D1C;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%237e7b17' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%236c6a11' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%2359580c' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23474706' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23343501' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
     background-attachment: fixed;
-    background-size: cover;
-background-attachment: fixed;
-background-size: cover;
-    background-attachment: fixed;
-    background-size: cover;
-    font-family: poopins, sans-serif;
-    color: rgb(255, 237, 39);
-}
-
-nav.controls {
-    position: fixed;
-    a:is(:link, :visited) {
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #0009;
-        height: 40px;
-        transform: scale(0.8);
-        opacity: 0.6;
-        padding: 10px;
-        width: 40px;
-        transition: all 0.4s ease-in;
-
-        
-    }
-
-    a:is(:hover) {
-        opacity: 1;
-        transform: scale(1);
-    }
-    svg {
-        width: 40px;
-    }
-    
-}
-
-main {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-    min-height: 100vh;
-
-    header {
-        h1, h2 {
-            color: #0009;
-            text-align: center;
-            margin: 0;
-        }
-        h1 {
-            font-size: 3.4rem;
-            font-weight: 400;
-        }
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 300;
-        }
-    }
-
-    menu {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        gap: 0.4rem;
-        
-        a:is(:link, :visited) {
-            background-color: #0009;
-            border-radius: 50px;
-            display: flex;
-            color: #fffd;
-            gap: 1rem;
-            align-items: center;
-            padding: 1rem;
-            text-decoration: none;
-            transition: all 0.5s ease-in;
-            width: 280px;
-
-            i {
-                background-color: #afa400;
-                border-radius: 20px;
-                color: #0009;
-                font-style: normal;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.5s ease-in;
-                height: 34px;
-                width: 34px;
+    background-size: cover
+    main {
+        header {
+            img {
+                background-color: #fffa;
+                object-fit: contain;
+                border-color: var(--color-1);
             }
         }
-
-        a:is(:hover) {
-            transform: translate(-10px);
-            background-color: #000c;
-        }
-
-        a:is(:hover) i {
-            transform: scale(1.4);
-        }
-    }
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        h1, h2 {
-            color: #0009;
-            text-align: center;
-            margin: 0;
-        }
-        h1 {
-            font-size: 3.4rem;
-            font-weight: 400;
-        }
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 300;
-        }
-        img {
-            border-radius: 50%;
-            width: 160px;
-            border: 10px solid #fff9;
+        menu {
+            h3{
+                color: rgb(255, 255, 255);
+            }
+            a {
+                span {
+                    background-color: #323330;
+                }
+            }
         }
     }
-
-
-    section {
-        border-radius: 10px;
-        background-color: #fff9;
-        color: #0009;
-        padding: 10px;
-        width: 400px;
-        h3 {
-            border-bottom: 2px dotted #0004;
-            color: #0006;
-            font-size: 1.6rem;
-            margin: 0;
-            width: fit-content;
-        }
-        p {
-            font-size: 1.4rem;
-            margin: 10px 0;
-        }
-        xmp {
-            border-radius: 10px;
-            background-color: #0009;
-            color: #fff9;
-            padding: 0 10px 10px 10px;
-        }
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
-
-body {
-    background-color: #ffaa00;
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    margin: 0;
-    padding: 0;
 }
 
-nav.controls {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-}
-
-nav.controls a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    transition: all 0.3s ease-in-out;
-}
-
-nav.controls a:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-section {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
-    color: #000;
-}
-
-h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-p small {
-    font-size: 0.9rem;
-    color: #444;
-}
-
-}
 /* - - - - - - - - - - - - - - */
 /* F O N T S */
 /* - - - - - - - - - - - - - - */
