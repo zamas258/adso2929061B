@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clima con fondo día/noche</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: transparent;
+      color: #333;
+      position: relative;
+      z-index: 0;
+    }
+
+    /* Fondo wireframe */
+    .background-wireframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.5s ease;
+    }
+
+    .background-wireframe.day {
+      background-image: url('images/01-WireframeDAY.svg');
+    }
+
+    .background-wireframe.night {
+      background-image: url('images/01-WireframeNOCHE.svg');
+    }
+
+    .query {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .query h5 {
+      margin: 0;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .query input {
+      width: 260px;
+      padding: 0.6rem;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .query input:focus {
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+    }
+
+    .query button {
+      width: 260px;
+      padding: 0.6rem;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #5f72be, #9b23ea);
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .query button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(45deg, #6a89cc, #a569bd);
+    }
+
+    section {
+      width: 360px;
+      min-height: 460px;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      background: #fff;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+    }
+
+    section.day {
+      background: linear-gradient(135deg, #ffeb99, #ffd54f);
+      color: #333;
+    }
+
+    section.night {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: #ecf0f1;
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    .temp {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .icon {
+      width: 100px;
+      height: 100px;
+      margin: 10px auto;
+    }
+
+    .info, .extra, .update {
+      font-family: 'Poppins', sans-serif;
+      margin: 10px 0;
+    }
+
+    .info {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .extra {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #555;
+    }
+
+    .update {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-wireframe day" id="background"></div>
+
+  <div class="query">
+    <h5>Type City:</h5>
+    <input type="text" id="cityInput" placeholder="e.g., Bogotá">
+    <button id="searchButton">Show</button>
+  </div>
+
+  <section class="day">
+    <h1 class="city">Manizales</h1>
+    <h2 class="country">Colombia</h2>
+    <img src="" alt="Ícono del clima" class="icon">
+    <p class="temp">--°C</p>
+    <p class="info">Condición: --</p>
+    <p class="extra">Humedad: --% <br> Nubes: --%</p>
+    <p class="update">Actualizado: --</p>
+  </section>
+
+  <script>
+    const apiKey = "9711613e634d413785c161102241511";
+    const section = document.querySelector("section");
+    const city = document.querySelector(".city");
+    const country = document.querySelector(".country");
+    const temp = document.querySelector(".temp");
+    const icon = document.querySelector(".icon");
+    const info = document.querySelector(".info");
+    const extra = document.querySelector(".extra");
+    const update = document.querySelector(".update");
+    const cityInput = document.getElementById("cityInput");
+    const searchButton = document.getElementById("searchButton");
+    const background = document.getElementById("background");
+
+    const loadWeather = async (cityName) => {
+      try {
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        city.textContent = data.location.name;
+        country.textContent = data.location.country;
+        temp.textContent = `${data.current.temp_c}°C`;
+        icon.setAttribute("src", `https:${data.current.condition.icon}`);
+        info.textContent = `Condición: ${data.current.condition.text}`;
+        extra.innerHTML = `Humedad: ${data.current.humidity}% <br> Nubes: ${data.current.cloud}%`;
+        update.textContent = `Actualizado: ${data.location.localtime}`;
+
+        if (data.current.is_day === 1) {
+          section.classList.remove("night");
+          section.classList.add("day");
+
+          background.classList.remove("night");
+          background.classList.add("day");
+        } else {
+          section.classList.remove("day");
+          section.classList.add("night");
+
+          background.classList.remove("day");
+          background.classList.add("night");
+        }
+      } catch (error) {
+        console.error("Error al cargar datos:", error);
+        alert("No se pudo obtener el clima para la ciudad ingresada.");
+      }
+    };
+
+    searchButton.addEventListener("click", () => {
+      const cityName = cityInput.value.trim();
+      if (cityName) {
+        loadWeather(cityName);
+      } else {
+        alert("Por favor, ingresa una ciudad válida.");
+      }
+    });
+
+    loadWeather("Manizales");
+  </script>
+</body>
+</html>
