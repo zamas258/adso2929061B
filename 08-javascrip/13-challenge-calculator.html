@@ -1,272 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>13 - Challenge Calculator</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        div.calculator {
-            background: url(images/calculadora/calculator2.svg) no-repeat center;
-            border-radius: 20px;
-            transition: all 0.4s ease-in;
-            height: 625px;
-            width: 360px;
-            header {
-                position: relative;
-                border-radius: 10px;
-                width: 330px;
-                height: 162px;
-                margin: 0 auto;
-                button.btn-mode{
-                    background: url(images/calculadora/Group\ 21.svg) no-repeat;
-                    cursor: pointer;
-                    position: absolute;
-                    top: 20px;
-                    border-radius: 10px;
-                    border: none;
-                    height: 30px;
-                    width: 120px;
-                    transition: all 0.2s ease-in;
-                }
-            }
-            input.oper {
-                border: none;
-                outline: none;
-                display: flex;
-                background-color: transparent;
-                position: absolute;
-                top: 75px;
-                right: 0;
-                text-align: right;
-                font-size: 18px;
-                font-weight: 500;
-                width: 100%;
-            }
-            h4.result {
-                font-size: 40px;
-                text-align: right;
-                font-weight: 600;
-                position: absolute;
-                top: 58px;
-                right: 0;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora con Imágenes</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
 
-            }
-            footer{
-                display: grid;
-                grid-template-columns: repeat(4, 80px);
-                width: 310px;
-                gap: 5px;
-                margin: 0.6rem auto 0 auto;
-                button{
-                    transition: all 0.4s ease-in;
-                    cursor: pointer;
-                    border: none;
-                    height: 85px;
-                    width: 90px;
-                    position: relative;
-                &.btn-clear{
-                    background: url(images/calculadora/Group\ 3.svg) no-repeat;
-                }
-                &.btn-del{
-                    background: url(images/calculadora/Group\ 4.svg)no-repeat;
-                }
-                &.btn-pow{
-                    background: url(images/calculadora/Group\ 5.svg)no-repeat;
-                }
-                &.btn-mod{
-                    background: url(images/calculadora/Group\ 6.svg)no-repeat;
-                }
-                &.btn-one{
-                    background: url(images/calculadora/Group\ 7.svg)no-repeat;
-                }
-                &.btn-two{
-                    background: url(images/calculadora/Group\ 2.svg)no-repeat;
-                }
-                &.btn-three{
-                    background: url(images/calculadora/Group\ 8.svg)no-repeat;
-                }
-                &.btn-multiply{
-                    background: url(images/calculadora/Group\ 9.svg)no-repeat;
-                }
-                &.btn-four{
-                    background: url(images/calculadora/Group\ 10.svg)no-repeat;
-                }
-                &.btn-five{
-                    background: url(images/calculadora/Group\ 11.svg)no-repeat;
-                }
-                &.btn-six{
-                    background: url(images/calculadora/Group\ 12.svg)no-repeat;
-                }
-                &.btn-rest{
-                    background: url(images/calculadora/Group\ 13.svg)no-repeat;
-                }
-                &.btn-seven{
-                    background: url(images/calculadora/Group\ 14.svg)no-repeat;
-                }
-                &.btn-eight{
-                    background: url(images/calculadora/Group\ 15.svg)no-repeat;
-                }
-                &.btn-nine{
-                    background: url(images/calculadora/Group\ 16.svg)no-repeat;
-                }
-                &.btn-sum{
-                    background: url(images/calculadora/Group\ 17.svg)no-repeat;
-                }
-                &.btn-div{
-                    background: url(images/calculadora/Group\ 18.svg)no-repeat;
-                }
-                &.btn-zero{
-                    background: url(images/calculadora/Group\ 19.svg)no-repeat;
-                }
-                &.btn-dote{
-                    background: url(images/calculadora/Group\ 20.svg)no-repeat;
-                }
-                &.btn-equal{
-                    background: url(images/calculadora/Group\ 1.svg)no-repeat;
-                }
-                }
-            }
-        }
+    div.calculator {
+      background: url(images/calculadora/calculator2.svg) no-repeat center;
+      background-size: cover;
+      border-radius: 20px;
+      transition: all 0.4s ease-in;
+      height: 625px;
+      width: 360px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
-        div.calculator.dark{
-            background: url(images/calculadora/Rectangle\ 2.svg) no-repeat center;
-            header {
-                button.btn-mode{
-                    background: url(images/calculadora/calculator.svg);
-                }
-            }
-            input.oper {
-                color: #ffff;
-            }
-            h4.result{
-                color: #ffff;
-            }
-            footer{
-                button{
-                    transition: all 0.4s ease-in;
+    div.calculator header {
+      position: relative;
+      border-radius: 10px;
+      width: 330px;
+      height: 162px;
+      margin: 0 auto;
+    }
 
-                &.btn-clear{
-                    background: url(images/calculadora/Group\ 10.svg);
-                }
-                &.btn-del{
-                    background: url(images/calculator/btn-del-dark.svg);
-                }
-                &.btn-pow{
-                    background: url(images/calculator/btn-pow-dark.svg);
-                }
-                &.btn-mod{
-                    background: url(images/calculator/btn-mod-dark.svg);
-                }
-                &.btn-one{
-                    background: url(images/calculator/btn-one-dark.svg);
-                }
-                &.btn-two{
-                    background: url(images/calculator/btn-two-dark.svg);
-                }
-                &.btn-three{
-                    background: url(images/calculator/btn-three-dark.svg);
-                }
-                &.btn-multiply{
-                    background: url(images/calculator/btn-multiply-dark.svg);
-                }
-                &.btn-four{
-                    background: url(images/calculator/btn-four-dark.svg);
-                }
-                &.btn-five{
-                    background: url(images/calculator/btn-five-dark.svg);
-                }
-                &.btn-six{
-                    background: url(images/calculator/btn-six-dark.svg);
-                }
-                &.btn-rest{
-                    background: url(images/calculator/btn-rest-dark.svg);
-                }
-                &.btn-seven{
-                    background: url(images/calculator/btn-seven-dark.svg);
-                }
-                &.btn-eight{
-                    background: url(images/calculator/btn-eight-dark.svg);
-                }
-                &.btn-nine{
-                    background: url(images/calculator/btn-nine-dark.svg);
-                }
-                &.btn-sum{
-                    background: url(images/calculator/btn-sum-dark.svg);
-                }
-                &.btn-div{
-                    background: url(images/calculator/btn-div-dark.svg);
-                }
-                &.btn-zero{
-                    background: url(images/calculator/btn-zero-dark.svg);
-                }
-                &.btn-dote{
-                    background: url(images/calculator/btn-dote-dark.svg);
-                }
-                &.btn-equal{
-                    background: url(images/calculator/btn-equal-dark.svg);
-                }
-                }
-            }
-        }
-    </style>
+    div.calculator header button.btn-mode {
+      background: url(images/calculadora/Group\ 21.svg) no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      border-radius: 10px;
+      border: none;
+      height: 30px;
+      width: 120px;
+      transition: all 0.2s ease-in;
+    }
+
+    div.calculator input.oper {
+      border: none;
+      outline: none;
+      display: flex;
+      background-color: transparent;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      text-align: right;
+      font-size: 18px;
+      font-weight: 500;
+      width: 100%;
+      padding-right: 15px;
+      color: #333;
+    }
+
+    div.calculator h4.result {
+      font-size: 36px;
+      text-align: right;
+      font-weight: 600;
+      position: absolute;
+      top: 45px;
+      right: 15px;
+      color: #000;
+    }
+
+    div.calculator footer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      width: 100%;
+      max-width: 330px;
+      gap: 10px;
+      margin: 0.6rem auto 0 auto;
+    }
+
+    div.calculator footer button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.4s ease-in;
+      cursor: pointer;
+      border: none;
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      background-color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    div.calculator footer button:hover {
+      background-color: #e6e6e6;
+    }
+
+    /* Estilos para el modo oscuro */
+    div.calculator.dark {
+      background: url(images/calculadora/Rectangle\ 2.svg) no-repeat center;
+      background-size: cover;
+    }
+
+    div.calculator.dark header button.btn-mode {
+      background: url(images/calculadora/calculator.svg) no-repeat center;
+      background-size: contain;
+    }
+
+    div.calculator.dark input.oper,
+    div.calculator.dark h4.result {
+      color: #fff;
+    }
+
+    div.calculator.dark footer button {
+      background-color: #444;
+      color: #fff;
+    }
+
+    div.calculator.dark footer button:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
-<body class="js">
-    <nav>
-        <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-        </a>
-    </nav>
-    <main>
-        <header>
-            <h1>13 - Challenge Calculator</h1>
-            <p>
-                Build a basic calculator using JavaScript.
-            </p>
-        </header>
-        <section>
-            <div class="calculator">
-                <header>
-                    <button class="btn-mode"></button>
-                    <input type="text" class="oper" value="308 x 42" readonly>
-                    <h4 class="result">12.936</h4>
-                </header>
-                <footer>
-                    <button class="btn-clear"></button>
-                    <button class="btn-del"></button>
-                    <button class="btn-pow" data-opr="**"></button>
-                    <button class="btn-mod" data-opr="%"></button>
-                    <button class="btn-one" data-num="1"></button>
-                    <button class="btn-two" data-num="2"></button>
-                    <button class="btn-three" data-num="3"></button>
-                    <button class="btn-multiply" data-opr="*"></button>
-                    <button class="btn-four" data-num="4"></button>
-                    <button class="btn-five" data-num="5"></button>
-                    <button class="btn-six" data-num="6"></button>
-                    <button class="btn-rest" data-opr="-"></button>
-                    <button class="btn-seven" data-num="7"></button>
-                    <button class="btn-eight" data-num="8"></button>
-                    <button class="btn-nine" data-num="9"></button>
-                    <button class="btn-sum" data-opr="+"></button>
-                    <button class="btn-div" data-opr="/"></button>
-                    <button class="btn-zero" data-num="0"></button>
-                    <button class="btn-dote" data-opr="."></button>
-                    <button class="btn-equal"></button>
-                </footer>
-            </div>
-        </section>
-    </main>
-    <script>
-        document.addEventListener('keyup', fuction(e){
-            console.log(e.keyCode)
-        })
-        //buttons
-        const btnMode = document.querySelector('.btn-mode');
-        const divCal = document.querySelector('.calculator');
-        //Events
-        btnMode.addEventListener('click', () => {
-            divCal.classList.toggle('dark');
+<body>
+  <div class="calculator">
+    <header>
+      <button class="btn-mode"></button>
+      <input type="text" class="oper" readonly>
+      <h4 class="result">0</h4>
+    </header>
+    <footer>
+      <button class="btn-clear">C</button>
+      <button class="btn-del">⌫</button>
+      <button class="btn-pow" data-opr="**">^</button>
+      <button class="btn-mod" data-opr="%">%</button>
+      <button class="btn-one" data-num="1">1</button>
+      <button class="btn-two" data-num="2">2</button>
+      <button class="btn-three" data-num="3">3</button>
+      <button class="btn-multiply" data-opr="*">×</button>
+      <button class="btn-four" data-num="4">4</button>
+      <button class="btn-five" data-num="5">5</button>
+      <button class="btn-six" data-num="6">6</button>
+      <button class="btn-rest" data-opr="-">−</button>
+      <button class="btn-seven" data-num="7">7</button>
+      <button class="btn-eight" data-num="8">8</button>
+      <button class="btn-nine" data-num="9">9</button>
+      <button class="btn-sum" data-opr="+">+</button>
+      <button class="btn-div" data-opr="/">÷</button>
+      <button class="btn-zero" data-num="0">0</button>
+      <button class="btn-dote" data-opr=".">.</button>
+      <button class="btn-equal">=</button>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btnMode = document.querySelector('.btn-mode');
+      const divCal = document.querySelector('.calculator');
+      const displayOper = document.querySelector('.oper');
+      const displayResult = document.querySelector('.result');
+      const buttons = document.querySelectorAll('footer button');
+
+      let currentOperand = '0';
+      let previousOperand = '';
+      let operation = undefined;
+      let resetScreen = false;
+
+      function updateDisplay() {
+        displayResult.textContent = currentOperand;
+        displayOper.value = previousOperand + (operation ? ' ' + operation + ' ' : '');
+      }
+
+      function appendNumber(number) {
+        if (currentOperand === '0' || resetScreen) {
+          currentOperand = number;
+          resetScreen = false;
+        } else {
+          currentOperand += number;
+        }
+      }
+
+      function appendDecimal() {
+        if (resetScreen) {
+          currentOperand = '0.';
+          resetScreen = false;
+          return;
+        }
+        if (!currentOperand.includes('.')) {
+          currentOperand += '.';
+        }
+      }
+
+      function chooseOperation(op) {
+        if (currentOperand === '') return;
+        if (previousOperand !== '') {
+          compute();
+        }
+        operation = op;
+        previousOperand = currentOperand;
+        currentOperand = '';
+      }
+
+      function compute() {
+        let computation;
+        const prev = parseFloat(previousOperand);
+        const current = parseFloat(currentOperand);
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (operation) {
+          case '+':
+            computation = prev + current;
+            break;
+          case '-':
+            computation = prev - current;
+            break;
+          case '*':
+            computation = prev * current;
+            break;
+          case '/':
+            computation = prev / current;
+            break;
+          case '%':
+            computation = prev % current;
+            break;
+          case '**':
+            computation = prev ** current;
+            break;
+          default:
+            return;
+        }
+
+        currentOperand = computation.toString();
+        operation = undefined;
+        previousOperand = '';
+        resetScreen = true;
+      }
+
+      function clear() {
+        currentOperand = '0';
+        previousOperand = '';
+        operation = undefined;
+      }
+
+      function deleteLast() {
+        if (currentOperand.length === 1 || (currentOperand.length === 2 && currentOperand.startsWith('-'))) {
+          currentOperand = '0';
+        } else {
+          currentOperand = currentOperand.slice(0, -1);
+        }
+      }
+
+      btnMode.addEventListener('click', () => {
+        divCal.classList.toggle('dark');
+      });
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (button.classList.contains('btn-clear')) {
+            clear();
+          } else if (button.classList.contains('btn-del')) {
+            deleteLast();
+          } else if (button.classList.contains('btn-equal')) {
+            compute();
+          } else if (button.hasAttribute('data-num')) {
+            appendNumber(button.getAttribute('data-num'));
+          } else if (button.hasAttribute('data-opr')) {
+            const op = button.getAttribute('data-opr');
+            if (op === '.') {
+              appendDecimal();
+            } else {
+              chooseOperation(op);
+            }
+          }
+          updateDisplay();
         });
-    </script>
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key >= '0' && e.key <= '9') {
+          appendNumber(e.key);
+        } else if (e.key === '.') {
+          appendDecimal();
+        } else if (['+', '-', '*', '/', '%'].includes(e.key)) {
+          chooseOperation(e.key);
+        } else if (e.key === 'Enter' || e.key === '=') {
+          compute();
+        } else if (e.key === 'Escape') {
+          clear();
+        } else if (e.key === 'Backspace') {
+          deleteLast();
+        }
+        updateDisplay();
+      });
+
+      updateDisplay();
+    });
+  </script>
 </body>
 </html>
