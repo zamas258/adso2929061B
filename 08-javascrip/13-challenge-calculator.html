@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calculadora con Imágenes</title>
+  <title>Calculadora</title>
   <style>
     body {
       display: flex;
@@ -14,118 +14,105 @@
       background-color: #f5f5f5;
     }
 
-    div.calculator {
+    .calculator {
       background: url(images/calculadora/calculator2.svg) no-repeat center;
       background-size: cover;
       border-radius: 20px;
-      transition: all 0.4s ease-in;
       height: 625px;
       width: 360px;
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
-    div.calculator header {
+    header {
       position: relative;
-      border-radius: 10px;
-      width: 330px;
-      height: 162px;
-      margin: 0 auto;
+      height: 180px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 0 10px;
+      box-sizing: border-box;
+      color: #333;
     }
 
-    div.calculator header button.btn-mode {
+    .btn-mode {
       background: url(images/calculadora/Group\ 21.svg) no-repeat center;
       background-size: contain;
       cursor: pointer;
       position: absolute;
-      top: 20px;
-      left: 10px;
+      top: 10px;
+      left: 0;
       border-radius: 10px;
       border: none;
       height: 30px;
       width: 120px;
-      transition: all 0.2s ease-in;
     }
 
-    div.calculator input.oper {
-      border: none;
-      outline: none;
-      display: flex;
-      background-color: transparent;
-      position: absolute;
-      top: 75px;
-      right: 0;
-      text-align: right;
+    .operation {
       font-size: 18px;
-      font-weight: 500;
+      color: #555;
+      height: 24px;
       width: 100%;
-      padding-right: 15px;
-      color: #333;
-    }
-
-    div.calculator h4.result {
-      font-size: 36px;
       text-align: right;
-      font-weight: 600;
-      position: absolute;
-      top: 45px;
-      right: 15px;
-      color: #000;
+      word-wrap: break-word;
     }
 
-    div.calculator footer {
+    .result {
+      font-size: 32px;
+      font-weight: bold;
+      height: 40px;
+      width: 100%;
+      text-align: right;
+      word-wrap: break-word;
+    }
+
+    footer {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       justify-items: center;
       align-items: center;
-      width: 100%;
-      max-width: 330px;
-      gap: 10px;
-      margin: 0.6rem auto 0 auto;
     }
 
-    div.calculator footer button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.4s ease-in;
-      cursor: pointer;
-      border: none;
+    footer button {
       height: 70px;
       width: 70px;
       border-radius: 50%;
       background-color: #fff;
+      border: none;
       font-size: 22px;
       font-weight: bold;
       color: #333;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
     }
 
-    div.calculator footer button:hover {
-      background-color: #e6e6e6;
-    }
-
-    /* Estilos para el modo oscuro */
-    div.calculator.dark {
+    .calculator.dark {
       background: url(images/calculadora/Rectangle\ 2.svg) no-repeat center;
       background-size: cover;
     }
 
-    div.calculator.dark header button.btn-mode {
+    .calculator.dark .btn-mode {
       background: url(images/calculadora/calculator.svg) no-repeat center;
       background-size: contain;
     }
 
-    div.calculator.dark input.oper,
-    div.calculator.dark h4.result {
+    .calculator.dark header {
       color: #fff;
     }
 
-    div.calculator.dark footer button {
+    .calculator.dark footer button {
       background-color: #444;
       color: #fff;
     }
 
-    div.calculator.dark footer button:hover {
+    .calculator.dark footer button:hover {
       background-color: #555;
     }
   </style>
@@ -134,175 +121,125 @@
   <div class="calculator">
     <header>
       <button class="btn-mode"></button>
-      <input type="text" class="oper" readonly>
-      <h4 class="result">0</h4>
+      <div class="operation" id="operationText"></div>
+      <div class="result" id="resultText">0</div>
     </header>
     <footer>
       <button class="btn-clear">C</button>
       <button class="btn-del">⌫</button>
-      <button class="btn-pow" data-opr="**">^</button>
-      <button class="btn-mod" data-opr="%">%</button>
-      <button class="btn-one" data-num="1">1</button>
-      <button class="btn-two" data-num="2">2</button>
-      <button class="btn-three" data-num="3">3</button>
-      <button class="btn-multiply" data-opr="*">×</button>
-      <button class="btn-four" data-num="4">4</button>
-      <button class="btn-five" data-num="5">5</button>
-      <button class="btn-six" data-num="6">6</button>
-      <button class="btn-rest" data-opr="-">−</button>
-      <button class="btn-seven" data-num="7">7</button>
-      <button class="btn-eight" data-num="8">8</button>
-      <button class="btn-nine" data-num="9">9</button>
-      <button class="btn-sum" data-opr="+">+</button>
-      <button class="btn-div" data-opr="/">÷</button>
-      <button class="btn-zero" data-num="0">0</button>
-      <button class="btn-dote" data-opr=".">.</button>
+      <button class="btn-op" data-op="**">^</button>
+      <button class="btn-op" data-op="%">%</button>
+      <button class="btn-num" data-num="1">1</button>
+      <button class="btn-num" data-num="2">2</button>
+      <button class="btn-num" data-num="3">3</button>
+      <button class="btn-op" data-op="*">×</button>
+      <button class="btn-num" data-num="4">4</button>
+      <button class="btn-num" data-num="5">5</button>
+      <button class="btn-num" data-num="6">6</button>
+      <button class="btn-op" data-op="-">−</button>
+      <button class="btn-num" data-num="7">7</button>
+      <button class="btn-num" data-num="8">8</button>
+      <button class="btn-num" data-num="9">9</button>
+      <button class="btn-op" data-op="+">+</button>
+      <button class="btn-op" data-op="/">÷</button>
+      <button class="btn-num" data-num="0">0</button>
+      <button class="btn-op" data-op=".">.</button>
       <button class="btn-equal">=</button>
     </footer>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const btnMode = document.querySelector('.btn-mode');
-      const divCal = document.querySelector('.calculator');
-      const displayOper = document.querySelector('.oper');
-      const displayResult = document.querySelector('.result');
-      const buttons = document.querySelectorAll('footer button');
+    const btnMode = document.querySelector('.btn-mode');
+    const calculator = document.querySelector('.calculator');
+    const operationText = document.getElementById('operationText');
+    const resultText = document.getElementById('resultText');
+    const buttons = document.querySelectorAll('footer button');
 
-      let currentOperand = '0';
-      let previousOperand = '';
-      let operation = undefined;
-      let resetScreen = false;
+    let currentInput = '';
+    let lastValidResult = '0';
 
-      function updateDisplay() {
-        displayResult.textContent = currentOperand;
-        displayOper.value = previousOperand + (operation ? ' ' + operation + ' ' : '');
-      }
-
-      function appendNumber(number) {
-        if (currentOperand === '0' || resetScreen) {
-          currentOperand = number;
-          resetScreen = false;
+    function updateDisplay() {
+      operationText.textContent = currentInput;
+      try {
+        const evalResult = eval(currentInput);
+        if (!isNaN(evalResult) && evalResult !== undefined && currentInput !== '') {
+          lastValidResult = evalResult;
+          resultText.textContent = evalResult;
         } else {
-          currentOperand += number;
+          resultText.textContent = lastValidResult;
         }
+      } catch {
+        resultText.textContent = lastValidResult;
       }
+    }
 
-      function appendDecimal() {
-        if (resetScreen) {
-          currentOperand = '0.';
-          resetScreen = false;
-          return;
-        }
-        if (!currentOperand.includes('.')) {
-          currentOperand += '.';
-        }
-      }
-
-      function chooseOperation(op) {
-        if (currentOperand === '') return;
-        if (previousOperand !== '') {
-          compute();
-        }
-        operation = op;
-        previousOperand = currentOperand;
-        currentOperand = '';
-      }
-
-      function compute() {
-        let computation;
-        const prev = parseFloat(previousOperand);
-        const current = parseFloat(currentOperand);
-        if (isNaN(prev) || isNaN(current)) return;
-
-        switch (operation) {
-          case '+':
-            computation = prev + current;
-            break;
-          case '-':
-            computation = prev - current;
-            break;
-          case '*':
-            computation = prev * current;
-            break;
-          case '/':
-            computation = prev / current;
-            break;
-          case '%':
-            computation = prev % current;
-            break;
-          case '**':
-            computation = prev ** current;
-            break;
-          default:
-            return;
-        }
-
-        currentOperand = computation.toString();
-        operation = undefined;
-        previousOperand = '';
-        resetScreen = true;
-      }
-
-      function clear() {
-        currentOperand = '0';
-        previousOperand = '';
-        operation = undefined;
-      }
-
-      function deleteLast() {
-        if (currentOperand.length === 1 || (currentOperand.length === 2 && currentOperand.startsWith('-'))) {
-          currentOperand = '0';
-        } else {
-          currentOperand = currentOperand.slice(0, -1);
-        }
-      }
-
-      btnMode.addEventListener('click', () => {
-        divCal.classList.toggle('dark');
-      });
-
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          if (button.classList.contains('btn-clear')) {
-            clear();
-          } else if (button.classList.contains('btn-del')) {
-            deleteLast();
-          } else if (button.classList.contains('btn-equal')) {
-            compute();
-          } else if (button.hasAttribute('data-num')) {
-            appendNumber(button.getAttribute('data-num'));
-          } else if (button.hasAttribute('data-opr')) {
-            const op = button.getAttribute('data-opr');
-            if (op === '.') {
-              appendDecimal();
-            } else {
-              chooseOperation(op);
-            }
+    function handleButtonClick(button) {
+      if (button.classList.contains('btn-clear')) {
+        currentInput = '';
+        lastValidResult = '0';
+      } else if (button.classList.contains('btn-del')) {
+        currentInput = currentInput.slice(0, -1);
+      } else if (button.classList.contains('btn-num')) {
+        currentInput += button.dataset.num;
+      } else if (button.classList.contains('btn-op')) {
+        currentInput += button.dataset.op;
+      } else if (button.classList.contains('btn-equal')) {
+        try {
+          const res = eval(currentInput);
+          if (!isNaN(res)) {
+            currentInput = res.toString();
+            lastValidResult = res;
           }
-          updateDisplay();
-        });
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key >= '0' && e.key <= '9') {
-          appendNumber(e.key);
-        } else if (e.key === '.') {
-          appendDecimal();
-        } else if (['+', '-', '*', '/', '%'].includes(e.key)) {
-          chooseOperation(e.key);
-        } else if (e.key === 'Enter' || e.key === '=') {
-          compute();
-        } else if (e.key === 'Escape') {
-          clear();
-        } else if (e.key === 'Backspace') {
-          deleteLast();
+        } catch {
+          // no error displayed
         }
-        updateDisplay();
-      });
-
+      }
       updateDisplay();
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        handleButtonClick(button);
+      });
     });
+
+    // Mapeo de teclas a botones
+    const keyMap = {
+      '0': '0', '1': '1', '2': '2', '3': '3', '4': '4',
+      '5': '5', '6': '6', '7': '7', '8': '8', '9': '9',
+      '+': '+', '-': '−', '*': '×', '/': '÷', '.': '.',
+      '^': '^', '%': '%', 'Enter': '=', 'Backspace': '⌫',
+      'Escape': 'C'
+    };
+
+    // Función para encontrar el botón correspondiente a una tecla
+    function findButtonByKey(key) {
+      const buttonText = keyMap[key];
+      if (!buttonText) return null;
+      
+      const allButtons = Array.from(buttons);
+      return allButtons.find(btn => btn.textContent === buttonText);
+    }
+
+    // Event listener para el teclado
+    document.addEventListener('keydown', (e) => {
+      const button = findButtonByKey(e.key);
+      if (button) {
+        // Simular click visual
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          button.style.transform = '';
+        }, 100);
+        
+        handleButtonClick(button);
+      }
+    });
+
+    btnMode.addEventListener('click', () => {
+      calculator.classList.toggle('dark');
+    });
+
+    updateDisplay();
   </script>
 </body>
 </html>
