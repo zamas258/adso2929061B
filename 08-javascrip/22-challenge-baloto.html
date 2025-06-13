@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tu Astro Ganador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    .figma-button {
+  margin-top: 40px;
+  padding: 12px 24px;
+  background-color: #00ffff;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.figma-button:hover {
+  background-color: #00cccc;
+  box-shadow: 0 0 10px #00ffff;
+}
+  .number-container {
+    position: absolute;
+    width: 120px; 
+    height: 100px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .number-container img {
+    width: 120px; 
+    height: auto;
+    display: block;
+    animation-play-state: paused;
+  }
+
+  .star-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    color: #00ffff;
+    font-size: 2.5rem; 
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    font-family: 'Orbitron', sans-serif;
+    animation: pulse 1.5s infinite;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: black;
+      color: white;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .astro-image-container {
+      position: relative;
+      width: 300px;
+    }
+
+    .astro-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .number-container {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .number-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      animation-play-state: paused;
+    }
+
+    .star-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      color: #00ffff;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      animation: pulse 1.5s infinite;
+      pointer-events: none;
+      opacity: 0;
+    }
+    @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+    @keyframes pulse {
+      0%   { text-shadow: 0 0 5px #9000ff, 0 0 10px #9000ff; }
+      50%  { text-shadow: 0 0 15px #9000ff, 0 0 30px #9000ff; }
+      100% { text-shadow: 0 0 5px #9000ff, 0 0 10px #9000ff; }
+    }
+
+
+    .spinning {
+      animation: spin 2s ease-out forwards;
+    }
+
+    
+    .star1 { top: 30%; left: 20%; }
+    .star2 { top: 30%; left: 65%; }
+    .star3 { top: 50%; left: 10%; }
+    .star4 { top: 50%; left: 75%; }
+
+   
+    #btnDice {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: auto;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease-in-out;
+      filter: drop-shadow(0 0 5px #00ffff);
+    }
+
+    #btnDice:hover {
+      filter: drop-shadow(0 0 15px #00ffff);
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    #btnDice:active {
+      transform: translateX(-50%) scale(0.95);
+      filter: drop-shadow(0 0 25px #00ffff);
+    }
+
+    nav svg {
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+      </svg>
+    </a>
+  </nav>
+
+  <main>
+    
+    <div class="astro-image-container">
+      
+      <img src="images/01-Wireframe (1).png" alt="Tu Astro Ganador" class="astro-image" />
+
+      
+      <div class="number-container star1">
+        <img src="images/Star 4.svg" alt="estrella" class="star-img">
+        <div class="star-number">0</div>
+      </div>
+
+      <div class="number-container star2">
+        <img src="images/Star 4.svg" alt="estrella" class="star-img">
+        <div class="star-number">0</div>
+      </div>
+
+      <div class="number-container star3">
+        <img src="images/Star 4.svg" alt="estrella" class="star-img">
+        <div class="star-number">0</div>
+      </div>
+
+      <div class="number-container star4">
+        <img src="images/Star 4.svg" alt="estrella" class="star-img">
+        <div class="star-number">0</div>
+      </div>
+
+      
+      <img src="images/btn.svg" alt="Botón Jugar" id="btnDice" />
+    </div>
+     <a href="https://www.figma.com/design/ISCzeT3TjheFuyF4jle8Po/Untitled?node-id=1-2&t=Kt8ibA5Y5CyH84MH-0" class="figma-button" target="_blank">
+  Ver diseño en Figma
+</a>
+  </main>
+
+ <script>
+  const btnDice = document.getElementById('btnDice');
+  const containers = document.querySelectorAll('.number-container');
+  const starNumbers = document.querySelectorAll('.star-number');
+  const arrayDice = ['0','1','2','3','4','5','6','7','8','9'];
+
+  btnDice.addEventListener('click', function () {
+    
+    btnDice.style.pointerEvents = "none";
+    btnDice.style.opacity = 0.5;
+
+   
+    containers.forEach(container => {
+      const starImg = container.querySelector('img');
+      const number = container.querySelector('.star-number');
+
+      number.style.opacity = 0;
+      starImg.style.animation = "spin 1s linear infinite";
+    });
+
+    
+    containers.forEach((container, index) => {
+      const starImg = container.querySelector('img');
+      const number = container.querySelector('.star-number');
+
+      setTimeout(() => {
+        const rand = Math.floor(Math.random() * arrayDice.length);
+        number.textContent = arrayDice[rand];
+
+        
+        starImg.style.animation = "none";
+        number.style.opacity = 1;
+
+     
+        if (index === containers.length - 1) {
+          btnDice.style.pointerEvents = "auto";
+          btnDice.style.opacity = 1;
+        }
+      }, index * 1000); 
+    });
+  });
+</script>
+</body>
+</html>
