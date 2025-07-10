@@ -7,27 +7,45 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        .full-section-image {
-            width: 800px;
-            height: 60vh;
+        .frame-container {
+            width: 370px;
+            height: 80vh;
+            position: relative;
+            margin: 0 auto; /* Centra el contenedor */
+        }
+        .frame-image {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            position: absolute;
             top: 0;
             left: 0;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: opacity 0.3s ease;
         }
-        .full-section-image:hover {
-            transform: scale(1.02);
+        /* Ocultar el segundo frame inicialmente */
+        #frame2 {
+            opacity: 0;
+            pointer-events: none;
         }
-        .image-button {
-            background: none;
-            border: none;
-            padding: 0;
-            margin: 0;
-            display: inline-block;
+        
+        /* Contenedor para la imagen PNG */
+        .png-container {
+            position: absolute;
+            top: 28%;
+            left: 34%;
+            left: 120px;    
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 80%;
+            text-align: center;
         }
-        a {
-            text-decoration: none;
+        .png-container img {
+            max-width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -44,12 +62,35 @@
         </header>
         <section>
             <div class="app">
-                <!-- Enlace que abre el SVG en nueva pestaña -->
-                <a href="images/Frame-2.svg" class="image-button" target="_blank">
-                    <img src="images/Frame2.svg" alt="Challenge Array" class="full-section-image">
-                </a>
+                <!-- Contenedor de ambos frames (misma posición) -->
+                <div class="frame-container">
+                    <!-- Frame 1 (visible inicialmente) -->
+                    <img src="images/Frame2.svg" alt="Frame 1" class="frame-image" id="frame1" onclick="switchFrames()">
+                    
+                    <!-- Frame 2 (oculto inicialmente) -->
+                    <img src="images/Frame-2.svg" alt="Frame 2" class="frame-image" id="frame2">
+                    
+                    <!-- Contenedor para la imagen PNG (centrada sobre los frames) -->
+                    <div class="png-container">
+                        <img src="images/Rectangle 7.svg" alt="Imagen convertida">
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
+    <script>
+        function switchFrames() {
+            const frame1 = document.getElementById('frame1');
+            const frame2 = document.getElementById('frame2');
+            
+            // Ocultar Frame 1 y mostrar Frame 2 con transición suave
+            frame1.style.opacity = '0';
+            frame1.style.pointerEvents = 'none';
+            
+            frame2.style.opacity = '1';
+            frame2.style.pointerEvents = 'auto';
+        }
+    </script>
 </body>
 </html>
