@@ -53,6 +53,25 @@
       left: 0px;
     }
 
+    .life-hearts {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 11;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .life-hearts img {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+
     .bullet {
       position: absolute;
       width: 20px;
@@ -76,6 +95,21 @@
       z-index: 15;
       pointer-events: none;
       animation: explode 0.5s ease-out forwards;
+    }
+
+    .speed-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      z-index: 20;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     @keyframes explode {
@@ -114,9 +148,22 @@
           <img src="images/Frame-22.svg" alt="Frame 1" class="frame-image" id="frame1" onclick="switchFrames()" />
           <img src="images/Frame-2.svg" alt="Frame 2" class="frame-image" id="frame2" />
 
+          <!-- Indicador de velocidad -->
+          <div class="speed-indicator" id="speedIndicator">
+            Nivel: 1<br>
+            Velocidad: Normal
+          </div>
+
           <!-- Cohete -->
           <div class="rocket-container" id="rocketContainer">
             <img src="images/Rectangle1.svg" alt="Cohete" />
+          </div>
+
+          <!-- Corazones de vida -->
+          <div class="life-hearts" id="lifeHearts">
+            <img src="images/corazonvida2.png" alt="Vida 1" id="heart1" />
+            <img src="images/corazonvida1.png" alt="Vida 2" id="heart2" />
+            <img src="images/corazonvida1.png" alt="Vida 3" id="heart3" />
           </div>
         </div>
       </div>
@@ -126,13 +173,22 @@
   <script>
     let meteorInterval;
     let heartInterval;
+    let speedInterval;
     let bullets = [];
     let meteors = [];
+    let hearts = [];
+    let lives = 1; // Cambiar a 1 vida inicial
+    let gameOver = false;
+    let currentSpeed = 4; // Velocidad inicial de caída
+    let speedLevel = 1;
+    let gameStartTime = 0;
 
     function switchFrames() {
       const frame1 = document.getElementById('frame1');
       const frame2 = document.getElementById('frame2');
       const rocketContainer = document.getElementById('rocketContainer');
+      const lifeHearts = document.getElementById('lifeHearts');
+      const speedIndicator = document.getElementById('speedIndicator');
 
       frame1.style.opacity = '0';
       frame1.style.pointerEvents = 'none';
@@ -143,9 +199,19 @@
       rocketContainer.style.opacity = '1';
       rocketContainer.style.pointerEvents = 'auto';
 
+      lifeHearts.style.opacity = '1';
+      lifeHearts.style.pointerEvents = 'auto';
+
+      speedIndicator.style.opacity = '1';
+
+      // Actualizar la visualización de vidas al comenzar
+      updateLifeDisplay();
+      
+      gameStartTime = Date.now();
       startMeteorRain();
       startHeartRain();
       startCollisionDetection();
+      startSpeedIncrease();
     }
 
     const cohete = document.querySelector('#rocketContainer img');
@@ -153,7 +219,9 @@
     let position = 0;
     cohete.style.left = '0px';
 
-    document.addEventListener('keydown', (event) => {
+    function handleKeyDown(event) {
+      if (gameOver) return;
+      
       const containerWidth = frameContainer.clientWidth;
       const coheteWidth = cohete.clientWidth;
       const maxRight = containerWidth - coheteWidth;
@@ -179,7 +247,9 @@
       if (event.code === 'Space') {
         shootBullet();
       }
-    });
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
 
     function shootBullet() {
       const bullet = document.createElement('img');
@@ -222,7 +292,6 @@
       }, 30);
     }
 
-    // Diferentes tipos de meteoritos con sus explosiones específicas
     const meteorTypes = [
       { 
         images: ['images/meteoritovertical1.png'], 
@@ -230,9 +299,9 @@
         explosion: 'images/explocionmeteoritoazul.png'
       },
       { 
-        images: ['images/meteoritovertical2.png'], // Cambiado: imagen del meteorito rojo real
+        images: ['images/meteoritovertical2.png'],
         color: 'red', 
-        explosion: 'images/explocionmeteoritorojo.png'  // Esta es la explosión roja
+        explosion: 'images/explocionmeteoritorojo.png'
       },
       { 
         images: ['images/meteoritoverical3.png'], 
@@ -269,12 +338,16 @@
 
       if (className === 'meteor') {
         meteors.push(objData);
+      } else if (className === 'heart') {
+        hearts.push(objData);
       }
 
       let y = -60;
+      // Usar la velocidad actual para meteoritos, velocidad fija para corazones
+      const fallSpeed = className === 'meteor' ? currentSpeed : 4;
 
       const fall = setInterval(() => {
-        y += 4;
+        y += fallSpeed;
         obj.style.top = `${y}px`;
         objData.y = y;
 
@@ -283,6 +356,9 @@
           objData.active = false;
           if (className === 'meteor') {
             meteors = meteors.filter(m => m.active);
+            // Se eliminó la llamada a loseLife() aquí para que no baje vidas al llegar al fondo
+          } else if (className === 'heart') {
+            hearts = hearts.filter(h => h.active);
           }
           clearInterval(fall);
         }
@@ -303,7 +379,170 @@
       }, 500);
     }
 
+    function updateLifeDisplay() {
+      for (let i = 1; i <= 3; i++) {
+        const heart = document.getElementById(`heart${i}`);
+        if (i <= lives) {
+          heart.src = 'images/corazonvida2.png';
+        } else {
+          heart.src = 'images/corazonvida1.png';
+        }
+      }
+    }
+
+    function updateSpeedDisplay() {
+      const speedIndicator = document.getElementById('speedIndicator');
+      const speedNames = ['Normal', 'Rápido', 'Muy Rápido', 'Súper Rápido', 'Extremo'];
+      const speedName = speedNames[Math.min(speedLevel - 1, speedNames.length - 1)];
+      speedIndicator.innerHTML = `Nivel: ${speedLevel}<br>Velocidad: ${speedName}`;
+    }
+
+    function increaseSpeed() {
+      if (gameOver) return;
+      
+      speedLevel++;
+      currentSpeed += 2; // Aumentar velocidad en 2 pixels por frame
+      
+      // Limitar la velocidad máxima para que el juego siga siendo jugable
+      if (currentSpeed > 16) {
+        currentSpeed = 16;
+      }
+      
+      updateSpeedDisplay();
+      
+      // Mostrar notificación visual del aumento de velocidad
+      const notification = document.createElement('div');
+      notification.style.position = 'absolute';
+      notification.style.top = '50%';
+      notification.style.left = '50%';
+      notification.style.transform = 'translate(-50%, -50%)';
+      notification.style.background = 'rgba(255, 0, 0, 0.9)';
+      notification.style.color = 'white';
+      notification.style.padding = '20px';
+      notification.style.borderRadius = '10px';
+      notification.style.fontSize = '18px';
+      notification.style.fontWeight = 'bold';
+      notification.style.zIndex = '25';
+      notification.style.animation = 'fadeInOut 2s ease-in-out';
+      notification.textContent = `¡VELOCIDAD AUMENTADA! Nivel ${speedLevel}`;
+      
+      // Agregar animación CSS
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fadeInOut {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+          50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+          100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      frameContainer.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.remove();
+      }, 2000);
+    }
+
+    function startSpeedIncrease() {
+      if (!speedInterval) {
+        speedInterval = setInterval(() => {
+          increaseSpeed();
+        }, 30000); // 30 segundos
+      }
+    }
+
+    function loseLife() {
+      lives--;
+      updateLifeDisplay();
+      
+      if (lives <= 0) {
+        explodeShip();
+      }
+    }
+
+    function gainLife() {
+      if (lives < 3) {
+        lives++;
+        updateLifeDisplay();
+      }
+    }
+
+    function explodeShip() {
+      if (gameOver) return;
+      
+      gameOver = true;
+      
+      // Detener todos los intervalos
+      if (meteorInterval) {
+        clearInterval(meteorInterval);
+        meteorInterval = null;
+      }
+      if (heartInterval) {
+        clearInterval(heartInterval);
+        heartInterval = null;
+      }
+      if (speedInterval) {
+        clearInterval(speedInterval);
+        speedInterval = null;
+      }
+      
+      document.removeEventListener('keydown', handleKeyDown);
+      
+      const rocketRect = cohete.getBoundingClientRect();
+      const frameRect = frameContainer.getBoundingClientRect();
+      const rocketX = rocketRect.left - frameRect.left;
+      const rocketY = rocketRect.top - frameRect.top;
+      
+      cohete.style.opacity = '0';
+      
+      const explosionImages = [
+        'images/explosiones1.png',
+        'images/explosiones2.png',
+        'images/explosiones3.png',
+        'images/explosiones4.png',
+        'images/explosiones5.png',
+        'images/explosiones6.png'
+      ];
+      
+      let currentExplosionFrame = 0;
+      
+      function showExplosionFrame() {
+        const prevExplosion = document.querySelector('.ship-explosion');
+        if (prevExplosion) {
+          prevExplosion.remove();
+        }
+        
+        if (currentExplosionFrame < explosionImages.length) {
+          const explosionImg = document.createElement('img');
+          explosionImg.src = explosionImages[currentExplosionFrame];
+          explosionImg.classList.add('ship-explosion');
+          explosionImg.style.position = 'absolute';
+          explosionImg.style.left = `${rocketX - 40}px`;
+          explosionImg.style.top = `${rocketY - 40}px`;
+          explosionImg.style.width = '120px';
+          explosionImg.style.height = '120px';
+          explosionImg.style.zIndex = '20';
+          explosionImg.style.objectFit = 'contain';
+          
+          frameContainer.appendChild(explosionImg);
+          
+          currentExplosionFrame++;
+          setTimeout(showExplosionFrame, 200);
+        } else {
+          const survivalTime = Math.floor((Date.now() - gameStartTime) / 1000);
+          setTimeout(() => {
+            alert(`Game Over! Sobreviviste ${survivalTime} segundos y alcanzaste el nivel ${speedLevel}. Presiona OK para reiniciar`);
+            location.reload();
+          }, 500);
+        }
+      }
+      
+      showExplosionFrame();
+    }
+
     function checkCollisions() {
+      // Colisiones balas con meteoritos
       bullets.forEach((bullet, bulletIndex) => {
         if (!bullet.active) return;
 
@@ -329,10 +568,8 @@
               bulletRect.y < meteorRect.y + meteorRect.height &&
               bulletRect.y + bulletRect.height > meteorRect.y) {
             
-            // Colisión detectada
             createExplosion(meteor.x + 20, meteor.y + 20, meteor.type.explosion);
             
-            // Remover bala y meteorito
             bullet.element.remove();
             meteor.element.remove();
             bullet.active = false;
@@ -341,13 +578,86 @@
         });
       });
 
-      // Limpiar arrays
+      // Colisiones meteoritos con nave
+      meteors.forEach((meteor, meteorIndex) => {
+        if (!meteor.active) return;
+
+        const rocketRect = cohete.getBoundingClientRect();
+        const frameRect = frameContainer.getBoundingClientRect();
+        
+        const rocketX = rocketRect.left - frameRect.left;
+        const rocketY = rocketRect.top - frameRect.top;
+
+        const meteorRect = {
+          x: meteor.x,
+          y: meteor.y,
+          width: 40,
+          height: 40
+        };
+
+        const rocketHitbox = {
+          x: rocketX,
+          y: rocketY,
+          width: cohete.clientWidth,
+          height: cohete.clientHeight
+        };
+
+        if (meteorRect.x < rocketHitbox.x + rocketHitbox.width &&
+            meteorRect.x + meteorRect.width > rocketHitbox.x &&
+            meteorRect.y < rocketHitbox.y + rocketHitbox.height &&
+            meteorRect.y + meteorRect.height > rocketHitbox.y) {
+          
+          createExplosion(meteor.x + 20, meteor.y + 20, meteor.type.explosion);
+          meteor.element.remove();
+          meteor.active = false;
+          
+          loseLife();
+        }
+      });
+
+      // Colisiones corazones con nave
+      hearts.forEach((heart, heartIndex) => {
+        if (!heart.active) return;
+
+        const rocketRect = cohete.getBoundingClientRect();
+        const frameRect = frameContainer.getBoundingClientRect();
+        
+        const rocketX = rocketRect.left - frameRect.left;
+        const rocketY = rocketRect.top - frameRect.top;
+
+        const heartRect = {
+          x: heart.x,
+          y: heart.y,
+          width: 40,
+          height: 40
+        };
+
+        const rocketHitbox = {
+          x: rocketX,
+          y: rocketY,
+          width: cohete.clientWidth,
+          height: cohete.clientHeight
+        };
+
+        if (heartRect.x < rocketHitbox.x + rocketHitbox.width &&
+            heartRect.x + heartRect.width > rocketHitbox.x &&
+            heartRect.y < rocketHitbox.y + rocketHitbox.height &&
+            heartRect.y + heartRect.height > rocketHitbox.y) {
+          
+          heart.element.remove();
+          heart.active = false;
+          
+          gainLife();
+        }
+      });
+
       bullets = bullets.filter(b => b.active);
       meteors = meteors.filter(m => m.active);
+      hearts = hearts.filter(h => h.active);
     }
 
     function startCollisionDetection() {
-      setInterval(checkCollisions, 16); // ~60 FPS
+      setInterval(checkCollisions, 16);
     }
 
     function startMeteorRain() {
