@@ -148,18 +148,18 @@
           <img src="images/Frame-22.svg" alt="Frame 1" class="frame-image" id="frame1" onclick="switchFrames()" />
           <img src="images/Frame-2.svg" alt="Frame 2" class="frame-image" id="frame2" />
 
-          <!-- Indicador de velocidad -->
+          
           <div class="speed-indicator" id="speedIndicator">
             Nivel: 1<br>
             Velocidad: Normal
           </div>
 
-          <!-- Cohete -->
+          
           <div class="rocket-container" id="rocketContainer">
             <img src="images/Rectangle1.svg" alt="Cohete" />
           </div>
 
-          <!-- Corazones de vida -->
+          
           <div class="life-hearts" id="lifeHearts">
             <img src="images/corazonvida2.png" alt="Vida 1" id="heart1" />
             <img src="images/corazonvida1.png" alt="Vida 2" id="heart2" />
@@ -177,9 +177,9 @@
     let bullets = [];
     let meteors = [];
     let hearts = [];
-    let lives = 1; // Cambiar a 1 vida inicial
+    let lives = 1; 
     let gameOver = false;
-    let currentSpeed = 4; // Velocidad inicial de caída
+    let currentSpeed = 4; 
     let speedLevel = 1;
     let gameStartTime = 0;
 
@@ -204,7 +204,7 @@
 
       speedIndicator.style.opacity = '1';
 
-      // Actualizar la visualización de vidas al comenzar
+      
       updateLifeDisplay();
       
       gameStartTime = Date.now();
@@ -343,7 +343,7 @@
       }
 
       let y = -60;
-      // Usar la velocidad actual para meteoritos, velocidad fija para corazones
+  
       const fallSpeed = className === 'meteor' ? currentSpeed : 4;
 
       const fall = setInterval(() => {
@@ -356,7 +356,7 @@
           objData.active = false;
           if (className === 'meteor') {
             meteors = meteors.filter(m => m.active);
-            // Se eliminó la llamada a loseLife() aquí para que no baje vidas al llegar al fondo
+
           } else if (className === 'heart') {
             hearts = hearts.filter(h => h.active);
           }
@@ -401,16 +401,12 @@
       if (gameOver) return;
       
       speedLevel++;
-      currentSpeed += 2; // Aumentar velocidad en 2 pixels por frame
-      
-      // Limitar la velocidad máxima para que el juego siga siendo jugable
+      currentSpeed += 2; 
       if (currentSpeed > 16) {
         currentSpeed = 16;
       }
       
       updateSpeedDisplay();
-      
-      // Mostrar notificación visual del aumento de velocidad
       const notification = document.createElement('div');
       notification.style.position = 'absolute';
       notification.style.top = '50%';
@@ -425,8 +421,7 @@
       notification.style.zIndex = '25';
       notification.style.animation = 'fadeInOut 2s ease-in-out';
       notification.textContent = `¡VELOCIDAD AUMENTADA! Nivel ${speedLevel}`;
-      
-      // Agregar animación CSS
+
       const style = document.createElement('style');
       style.textContent = `
         @keyframes fadeInOut {
@@ -448,7 +443,7 @@
       if (!speedInterval) {
         speedInterval = setInterval(() => {
           increaseSpeed();
-        }, 30000); // 30 segundos
+        }, 30000); 
       }
     }
 
@@ -473,7 +468,7 @@
       
       gameOver = true;
       
-      // Detener todos los intervalos
+      
       if (meteorInterval) {
         clearInterval(meteorInterval);
         meteorInterval = null;
@@ -542,7 +537,7 @@
     }
 
     function checkCollisions() {
-      // Colisiones balas con meteoritos
+      
       bullets.forEach((bullet, bulletIndex) => {
         if (!bullet.active) return;
 
@@ -578,7 +573,7 @@
         });
       });
 
-      // Colisiones meteoritos con nave
+      
       meteors.forEach((meteor, meteorIndex) => {
         if (!meteor.active) return;
 
@@ -615,7 +610,7 @@
         }
       });
 
-      // Colisiones corazones con nave
+      
       hearts.forEach((heart, heartIndex) => {
         if (!heart.active) return;
 
