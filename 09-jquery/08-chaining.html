@@ -62,7 +62,23 @@
     <script src="js/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {
-            
+            $('.btn').click(function (e) {
+                $(this).css({
+                    'cursor': 'not-allowed',
+                    'opacity': '0.5',
+                    'pointer-events': 'none'
+                })
+                $('img.goku').animate({left: '+=200px'}, 1000)
+                .animate({top: '+=180px'}, 1000)
+                .animate({left: '-=200px'}, 1000)
+                .animate({top: '-=180px'}, 1000, () => {
+                    $(this).css({
+                        'cursor': 'pointer',
+                        'opacity': '1',
+                        'pointer-events': 'auto'
+                    })
+                });
+            });
         });
     </script>
 </body>
