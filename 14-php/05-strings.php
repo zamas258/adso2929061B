@@ -1,17 +1,20 @@
 <?php
-    $title = '04- Variables';
-    $description = 'How to assign values.';
 
-    include 'template/header.php';
+    $tittle = "04 - Variables";
+    $descripcion = "How to assing values";
 
-    echo "<section>";
+include 'template/header.php';
+    echo '<section>';
 
-    $string1 = "Lorem Ipsum dolor";
-    $string2 = "sit amet consecutare...";
+    $string1 = "Lorem ipsum dolor ";
+    $string2 = "sit amet consectetur...";
 
-    echo "<p>$string1 $string2</p>";
-    echo "Characters Lengt is: " . strlen($string1 . $string2);
-    
-    
+    echo "<p>" . $string1 .' '. $string2 . "</p>";
+    echo "Character length: " . strlen($string1 . $string2);
+    echo '<br>';
+    echo "Position if ADSO into Hello ADSO: " . strpos('Hello ADSO', 'ADSO');
+    echo '<br>';
+    echo "Last 5 words of Visualization: " . substr('Visualization', -5);
 
-    include 'template/footer.php';
+
+include 'template/footer.php';

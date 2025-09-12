@@ -6,31 +6,173 @@
     <title>12-challenge-memory-game</title>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body.jquery {
+            min-height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+        }
+                section.memory-frame {
+            width: 415px;
+            height: 834px;
+            background: url('images/Frame 1.svg') no-repeat center center;
+            background-size: 100% 100%; /* <-- Ajusta el frame al tamaño de la sección */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .memory-header {
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-family: 'Impact', 'Arial Black', Arial, sans-serif;
+            margin-top: 32px;
+            margin-bottom: 8px;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #000;
+            line-height: 1.1;
+        }
+        .memory-header .de {
+            color: #e53935;
+            background: #fff;
+            padding: 0 8px;
+            border-radius: 4px;
+            font-size: 2.2rem;
+            font-family: inherit;
+            letter-spacing: 2px;
+            margin: 0 4px;
+        }
+        .memory-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 100px 0 0 0;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 6px #000;
+        }
+        .memory-info .icon {
+            margin: 100px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 18px;
+            width: 90%;
+        }
+        .card {
+            background: rgba(0,0,0,0.7);
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 110px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card img {
+            width: 80px;
+            height: 100px;
+            object-fit: contain;
+            filter: grayscale(0.7) brightness(0.9);
+            transition: filter 0.2s;
+        }
+        .card.flipped img {
+            filter: grayscale(0) brightness(1.1);
+        }
+        .reset-btn {
+            margin: 32px auto 0 auto;
+            display: block;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.6rem;
+            font-family: 'Impact', 'Arial Black', Arial, sans-serif;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-shadow: 2px 2px 8px #000;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .reset-btn img {
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+        }
+        span.moves {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
     </style>
 </head>
 <body class="jquery">
     <nav>
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28"><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
     <main>
-        <header>
-            <h1> 12-challenge-memory-game </h1>
-            <p>
-                - **English**: Build a memory game using jQuery. <br>
-- **Español**: Construye un juego de memoria usando jQuery.
-            </p>
-        </header>
-        <section>
-          
+        <section class="memory-frame">
+            <div class="memory-header">
+            </div>
+            <div class="memory-info">
+                <span> 00:00</span>
+                <span>MOVES <img src="images/Rectangle 19.svg" alt=""></span>
+            </div>
+            <div class="memory-grid">
+                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
+                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
+            </div>
+            <button class="reset-btn">
+                RESET <img src="images/Rectangle 19.svg" alt="">
+            </button>
         </section>
     </main>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {
-            
+            $('.card').on('click', function() {
+                $(this).toggleClass('flipped');
+            });
+            $('.reset-btn').on('click', function() {
+                $('.card').removeClass('flipped');
+            });
         });
     </script>
 </body>
