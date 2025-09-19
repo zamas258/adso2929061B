@@ -11,22 +11,27 @@
             margin: 0;
             padding: 0;
         }
-        body.jquery {
-            min-height: 100vh;
-            width: 100vw;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #222;
+        
+        nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
         }
-                section.memory-frame {
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        section.memory-frame {
             width: 415px;
             height: 834px;
             background: url('images/Frame 1.svg') no-repeat center center;
-            background-size: 100% 100%; /* <-- Ajusta el frame al tamaño de la sección */
+            background-size: 100% 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,6 +41,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
             overflow: hidden;
         }
+        
         .memory-header {
             width: 100%;
             text-align: center;
@@ -48,6 +54,7 @@
             text-shadow: 2px 2px 8px #000;
             line-height: 1.1;
         }
+        
         .memory-header .de {
             color: #e53935;
             background: #fff;
@@ -58,28 +65,38 @@
             letter-spacing: 2px;
             margin: 0 4px;
         }
+        
         .memory-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 90%;
-            margin: 100px 0 0 0;
+            margin: 130px 0 0 0;
             color: #fff;
             font-weight: bold;
             font-size: 1.1rem;
             text-shadow: 1px 1px 6px #000;
         }
+        
         .memory-info .icon {
             margin: 100px;
             vertical-align: middle;
             margin-right: 6px;
         }
+        
+        span.moves {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
         .memory-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 18px;
+            grid-gap: 15px;
             width: 90%;
         }
+        
         .card {
             background: rgba(0,0,0,0.7);
             border-radius: 18px;
@@ -89,20 +106,76 @@
             align-items: center;
             justify-content: center;
             height: 110px;
-            transition: box-shadow 0.2s, transform 0.2s;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            perspective: 1000px;
         }
+        
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+        }
+        
+        .card-front {
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .card-back {
+            background: rgba(255,255,255,0.1);
+            transform: rotateY(180deg);
+        }
+        
         .card img {
-            width: 80px;
-            height: 100px;
+            height: 1500px;
             object-fit: contain;
             filter: grayscale(0.7) brightness(0.9);
-            transition: filter 0.2s;
+            transition: filter 0.2s, transform 0.4s;
+            border-radius: 18px;
         }
+        
         .card.flipped img {
             filter: grayscale(0) brightness(1.1);
         }
+        
+        .custom-card img {
+            object-fit: cover;
+        }
+        
+        .card.matched {
+            opacity: 0.6;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+        
+        .card.matched .card-back {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
         .reset-btn {
             margin: 32px auto 0 auto;
             display: block;
@@ -122,16 +195,45 @@
             align-items: center;
             gap: 8px;
         }
+        
         .reset-btn img {
             width: 32px;
-            height: 32px;
+            height: 130px;
             vertical-align: middle;
         }
-        span.moves {
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        
+        .game-complete {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(76, 175, 80, 0.95);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
         }
+            #figma-link {
+        text-align: center;
+        margin-top: 80px;
+        }
+
+        #figma-link img {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        }
+
+        #figma-link img:hover {
+        transform: scale(1.2);
+        }
+            
     </style>
 </head>
 <body class="jquery">
@@ -145,35 +247,297 @@
             <div class="memory-header">
             </div>
             <div class="memory-info">
-                <span> 00:00</span>
-                <span>MOVES <img src="images/Rectangle 19.svg" alt=""></span>
+                <span>
+                    <img src="images/Rectangle 17.svg" alt="Icon" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;">
+                    <span id="timer">00:00</span>
+                </span>
+                <span class="moves">
+                    MOVES <img src="images/Rectangle 19.svg" alt="" style="width:24px;height:24px;vertical-align:middle;">
+                    <span id="moves">0</span>
+                </span>
             </div>
             <div class="memory-grid">
-                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 10.svg" alt="Card"></div>
-                <div class="card"><img src="images/Rectangle 17.svg" alt="Card"></div>
+                <div class="card" data-back="images/Rectangle 24.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 24.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 25.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 25.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 26.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 26.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 27.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 27.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 28.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 28.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 29.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 29.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 24.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 24.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 25.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 25.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 26.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 26.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 27.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 27.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 28.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 28.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-back="images/Rectangle 29.svg">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="images/Rectangle 10.svg" alt="Card Front">
+                        </div>
+                        <div class="card-face card-back">
+                            <img src="images/Rectangle 29.svg" alt="Card Back">
+                        </div>
+                    </div>
+                </div>
             </div>
             <button class="reset-btn">
-                RESET <img src="images/Rectangle 19.svg" alt="">
+                <img src="images/Rectangle 23.svg" alt=""style="width:100px;height:120px;">
             </button>
+            <div class="game-complete">
+                <div>¡FELICITACIONES!</div>
+                <div>Completaste el juego</div>
+            </div>
+            <div id="figma-link">
+                <a href="https://www.figma.com/design/JyeQaYc9jh0mbm5KXnFOA2/Untitled?node-id=1-3&t=mFcfmaP3mo5Uy9em-0" target="_blank">
+                <img src="images/figmaa.png" alt="Figma">
+                </a>
+            </div>
         </section>
     </main>
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.card').on('click', function() {
-                $(this).toggleClass('flipped');
-            });
-            $('.reset-btn').on('click', function() {
-                $('.card').removeClass('flipped');
-            });
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    function shuffleCards() {
+        var $grid = $('.memory-grid')
+        var $cards = $grid.children('.card').toArray()
+        for (var i = $cards.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1))
+            var temp = $cards[i]
+            $cards[i] = $cards[j]
+            $cards[j] = temp
+        }
+        $grid.empty().append($cards)
+    }
+
+    function flipCard($card) {
+        $card.addClass('flipped')
+    }
+
+    function checkForMatch() {
+        $('body').data('isProcessing', true)
+        var flippedCards = $('body').data('flippedCards')
+        var $card1 = flippedCards[0]
+        var $card2 = flippedCards[1]
+        var image1 = $card1.data('back')
+        var image2 = $card2.data('back')
+
+        setTimeout(function () {
+            if (image1 === image2) {
+                $card1.addClass('matched')
+                $card2.addClass('matched')
+                $('body').data('matches', $('body').data('matches') + 1)
+
+                if ($('body').data('matches') === 6) {
+                    gameComplete()
+                }
+            } else {
+                $card1.removeClass('flipped')
+                $card2.removeClass('flipped')
+            }
+            $('body').data('flippedCards', [])
+            $('body').data('isProcessing', false)
+        }, 1000)
+    }
+
+    function startTimer() {
+        var timerInterval = setInterval(function () {
+            $('body').data('timer', $('body').data('timer') + 1)
+            updateTimer()
+        }, 1000)
+        $('body').data('timerInterval', timerInterval)
+    }
+
+    function updateTimer() {
+        var timer = $('body').data('timer')
+        var minutes = Math.floor(timer / 60)
+        var seconds = timer % 60
+        $('#timer').text(
+            minutes.toString().padStart(2, '0') + ':' +
+            seconds.toString().padStart(2, '0')
+        )
+    }
+
+    function updateMoves() {
+        $('#moves').text($('body').data('moves'))
+    }
+
+    function gameComplete() {
+        clearInterval($('body').data('timerInterval'))
+        $('.game-complete').show()
+        setTimeout(function () {
+            $('.game-complete').hide()
+        }, 3000)
+    }
+
+    function resetGame() {
+        $('body').data({
+            flippedCards: [],
+            matches: 0,
+            moves: 0,
+            timer: 0,
+            gameStarted: false,
+            isProcessing: false
+        })
+
+        clearInterval($('body').data('timerInterval'))
+        updateTimer()
+        updateMoves()
+        $('.game-complete').hide()
+        $('.card').removeClass('flipped matched')
+        shuffleCards()
+        showCardsAtStart()
+    }
+
+    function showCardsAtStart() {
+        $('.card').addClass('flipped')
+        setTimeout(function () {
+            $('.card').removeClass('flipped')
+        }, 2000);
+    }
+
+    $(document).ready(function () {
+        $('body').data({
+            flippedCards: [],
+            matches: 0,
+            moves: 0,
+            timer: 0,
+            gameStarted: false,
+            isProcessing: false,
+            timerInterval: null
         });
-    </script>
+
+        shuffleCards()
+        showCardsAtStart()
+
+        $(document).on('click', '.card', function () {
+            var $card = $(this)
+
+            if ($('body').data('isProcessing') || $card.hasClass('flipped') || $card.hasClass('matched')) {
+                return
+            }
+
+            if (!$('body').data('gameStarted')) {
+                startTimer()
+                $('body').data('gameStarted', true)
+            }
+
+            flipCard($card)
+
+            var flippedCards = $('body').data('flippedCards')
+            flippedCards.push($card)
+            $('body').data('flippedCards', flippedCards)
+
+            if (flippedCards.length === 2) {
+                $('body').data('moves', $('body').data('moves') + 1)
+                updateMoves()
+                checkForMatch()
+            }
+        });
+
+        $('.reset-btn').on('click', function () {
+            resetGame()
+        })
+    })
+</script>
+
 </body>
 </html>
