@@ -118,7 +118,7 @@
         </a>
         <a href="26-ssi.php">
             <span>26</span>
-            Server Side Inclide (SSI)
+            Server Side Include (SSI)
         </a>
         <a href="27-file-text.php">
             <span>27</span>
