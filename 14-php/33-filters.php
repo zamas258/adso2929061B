@@ -1,18 +1,29 @@
 <?php
-    // Validate and sanitize user input
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_NUMBER_INT);
 
-        // Validate email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "<p>Invalid email format</p>";
-        }
+    $title = "33 - Filters";
+    $description = "Learn how to use filters in PHP.";
 
-        // Validate age
-        if ($age < 0) {
-            echo "<p>Invalid age</p>";
-        }
+include 'template/header.php';
+    echo '<section>';
+
+    $email = "user@example.com";
+    $url = "http://example.com";
+
+    // Validate email
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Valid email address.";
+    } else {
+        echo "Invalid email address.";
     }
-    ?>
+
+    // Validate URL
+    if (filter_var($url, FILTER_VALIDATE_URL)) {
+        echo "Valid URL.";
+    } else {
+        echo "Invalid URL.";
+    }
+
+
+    echo '</section>';
+
+include 'template/footer.php'; ?>

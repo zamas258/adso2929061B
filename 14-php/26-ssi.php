@@ -1,9 +1,17 @@
 <?php
-    $description = " Display the current date and time using PHP's DateTime class with SSI";
-    $title = "26 - Date and Time";
-    include 'template/header.php';
+
+    $title = "26 - SSI";
+    $description = "Learn how to use Server Side Includes (SSI) in PHP.";
+
+include 'template/header.php';
     echo '<section>';
-    
-    echo "<p>Current Date and Time: " . $formattedDate . "</p>";
+
+    echo '<p>Server Side Includes (SSI) are a server-side scripting language used for including content from one file into another.</p>';
+    echo '<p>To use SSI, you need to have the following line in your .htaccess file:</p>';
+    echo '<pre>Options +Includes<br>AllowOverride All</pre>';
+    echo '<p>Then, you can include files using the following syntax:</p>';
+    echo '<pre><!--#include virtual="/path/to/file.php" --></pre>';
+
     echo '</section>';
-    include 'template/footer.php';
+
+include 'template/footer.php'; ?>
