@@ -4,7 +4,6 @@
     include 'template/header.php';
     echo '<section style="max-width:400px;margin:2rem auto;padding:2rem;background:#222;color:#fff;border-radius:16px;text-align:center;">';
 
-    // Formulario para ingresar el año
     echo '<form method="post" style="margin-bottom:2rem;">
             <label for="year">Ingresa un año:</label>
             <input type="number" name="year" id="year" min="1" max="' . date('Y') . '" required style="margin:0 1rem;">

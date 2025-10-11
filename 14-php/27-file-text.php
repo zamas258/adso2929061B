@@ -8,7 +8,6 @@ include 'template/header.php';
 
     echo '<h2>File Handling</h2>';
     $filename = 'example.txt';
-    // Create or open the file
     $file = fopen($filename, "a+") or die("Unable to open file!");
     fwrite($file, "Hello, World!\n");
     fclose($file);
