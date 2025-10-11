@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "06 - Oper Arithmetics";
-    $descripcion = "Perform mathematical calculations using numeric values";
+    $title = "06 - Oper Arithmetics";
+    $description = "Perform mathematical calculations using numeric values";
 
 include 'template/header.php';
     echo '<section>';

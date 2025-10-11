@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "11 - Conditional SWITCH";
-    $descripcion = "Perform conditional operations on variables";
+    $title = "11 - Conditional SWITCH";
+    $description = "Perform conditional operations on variables";
 
 include 'template/header.php';
     echo '<section>';

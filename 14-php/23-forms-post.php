@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "23 - Form Post";
-    $descripcion = "A simple form that uses the POST method to submit data";
+    $title = "23 - Form Post";
+    $description = "A simple form that uses the POST method to submit data";
 
 include 'template/header.php';
     echo '<section>';

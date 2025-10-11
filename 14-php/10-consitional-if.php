@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "10 - Conditional IF";
-    $descripcion = "Perform conditional operations on variables";
+    $title = "10 - Conditional IF";
+    $description = "Perform conditional operations on variables";
 
 include 'template/header.php';
     echo '<section>';

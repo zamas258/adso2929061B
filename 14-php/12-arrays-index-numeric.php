@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "12 - Arrays Index Numeric";
-    $descripcion = "Learn about numeric indexed arrays";
+    $title = "12 - Arrays Index Numeric";
+    $description = "Learn about numeric indexed arrays";
 
 include 'template/header.php';
     echo '<section>';

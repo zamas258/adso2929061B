@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "18 - Loop Foreach";
-    $descripcion = "Loop that iterates over each element in an array";
+    $title = "18 - Loop Foreach";
+    $description = "Loop that iterates over each element in an array";
 
 include 'template/header.php';
     echo '<section>';

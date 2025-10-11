@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "15 - Loop While";
-    $descripcion = "A loop that repeats code while a condition is true";
+    $title = "15 - Loop While";
+    $description = "A loop that repeats code while a condition is true";
 
 include 'template/header.php';
     echo '<section style=" display: flex; gap: 0.2rem>';

@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "14 - Arrays Multidimensionals";
-    $descripcion = "Array that contains other nested arrays";
+    $title = "14 - Arrays Multidimensionals";
+    $description = "Array that contains other nested arrays";
 
 include 'template/header.php';
     echo '<section>';

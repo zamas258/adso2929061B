@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "08 - Oper Comparison";
-    $descripcion = "Perform comparison operations on variables";
+    $title = "08 - Oper Comparison";
+    $description = "Perform comparison operations on variables";
 
 include 'template/header.php';
     echo '<section>';

@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "04 - Variables";
-    $descripcion = "How to assing values";
+    $title = "04 - Variables";
+    $description = "How to assing values";
 
 include 'template/header.php';
     echo '<section>';

@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "07 - Oper Assignment";
-    $descripcion = "Perform assignment operations on variables";
+    $title = "07 - Oper Assignment";
+    $description = "Perform assignment operations on variables";
 
 include 'template/header.php';
     echo '<section>';

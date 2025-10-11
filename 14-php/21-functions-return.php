@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "21 - Functions Return";
-    $descripcion = "functions that return a value after execution";
+    $title = "21 - Functions Return";
+    $description = "functions that return a value after execution";
 
 include 'template/header.php';
     echo '<section>';

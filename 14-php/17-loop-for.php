@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "17 - Loop For";
-    $descripcion = "Repeats a code block for a specified number of iterations";
+    $title = "17 - Loop For";
+    $description = "Repeats a code block for a specified number of iterations";
 
 include 'template/header.php';
     echo '<section>';

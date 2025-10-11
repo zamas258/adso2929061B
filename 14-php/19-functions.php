@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "19 - Functions";
-    $descripcion = "A block of code designed to perform a specific, reusable task";
+    $title = "19 - Functions";
+    $description = "A block of code designed to perform a specific, reusable task";
 
 include 'template/header.php';
     echo '<section>';

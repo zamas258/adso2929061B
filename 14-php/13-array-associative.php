@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "13 - Arrays Associative";
-    $descripcion = "Array using string keys to access corresponding values";
+    $title = "13 - Arrays Associative";
+    $description = "Array using string keys to access corresponding values";
 
 include 'template/header.php';
     echo '<section>';

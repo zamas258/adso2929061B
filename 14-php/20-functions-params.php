@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "20 - Functions With Params";
-    $descripcion = "A function that accepts input values to perform its specific task";
+    $title = "20 - Functions With Params";
+    $description = "A function that accepts input values to perform its specific task";
 
 include 'template/header.php';
     echo '<section>';

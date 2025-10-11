@@ -1,7 +1,7 @@
 <?php
 
-    $tittle = "16 - Loop Do While";
-    $descripcion = "Repeats a code block while condition is true";
+    $title = "16 - Loop Do While";
+    $description = "Repeats a code block while condition is true";
 
 include 'template/header.php';
     echo '<section>';
