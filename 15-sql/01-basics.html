@@ -1,60 +1,104 @@
-//Connect to MySQL
->mysql -u root - p 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        textarea {
+            width: 100%;
+            height: auto;
+            background-color: #222;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="sql">
+    <main>
+        <header>
+            <h1>
+                01-BASIC
+            </h1>
+            <P>
+                How to enter basic commands in MySQL
+            </P>
+        </header>
+        <section>
+            <h3>Connect to MySQL</h3>
+            <textarea>>mysql -u root - p </textarea>
 
-//MySQL version 
->mysql --version;
+            <h3>MySQL version</h3>
+            <textarea>>mysql --version</textarea>
 
-//Show all Databases 
->show databases;
+            <h3>Show all Databases </h3>
+            <textarea>>show databases;</textarea>
 
-//Create Database
->create database pokeadso;
+            <h3>Create Database</h3>
+            <textarea>>create database pokeadso;</textarea>
 
-//Use database
->use pokeadso;
+            <h3>Use database</h3>
+            <textarea>>use pokeadso;</textarea>
 
-//Create table gyms 
-create table gyms (
-    -> id int auto_increment,
-    -> name varchar(32) not null unique,
-    -> PRIMARY KEY(is));
+            <h3>Create table gyms </h3>
+            <textarea>>create table gyms (
+                        -> id int auto_increment,
+                        -> name varchar(32) not null unique,
+                        -> PRIMARY KEY(id)
+                        -> );
+                    </textarea>
 
-//Create table trainers
-create table trainers (
-    -> id int auto_increment,
-    -> name varchar(32) not null unique,
-    -> level int not null,
-    -> gym_id int,
-    -> PRIMARY KEY(id),
-    -> FOREIGN KEY (gym_id) REFERENCES gyms(id));
+            <h3>Create table trainers</h3>
+            <textarea>create table trainers (
+                        -> id int auto_increment,
+                        -> name varchar(32) not null unique,
+                        -> level int not null,
+                        -> gym_id int,
+                        -> PRIMARY KEY(id),
+                        -> FOREIGN KEY (gym_id) REFERENCES gyms(id)); 
+                    </textarea>
 
-//Create table pokemons
-create table pokemons(
-    -> id int auto_increment,
-    -> name varchar(32) not null unique,
-    -> type varchar(32) not null,
-    -> strength int not null,
-    -> staming int not null,
-    -> speed int not null,
-    -> accuracy int not null,
-    -> PRIMARY KEY(id),
-    -> trainer_id int,
-    -> FOREIGN KEY(trainer_id) REFERENCES trainers(id));
+            <h3>Create table pokemons</h3>
+            <textarea>create table pokemons(
+                        -> id int auto_increment,
+                        -> name varchar(32) not null unique,
+                        -> type varchar(32) not null,
+                        -> strength int not null,
+                        -> staming int not null,
+                        -> speed int not null,
+                        -> accuracy int not null,
+                        -> PRIMARY KEY(id),
+                        -> trainer_id int,
+                        -> FOREIGN KEY(trainer_id) REFERENCES trainers(id)); 
+                    </textarea>
 
-//Describe table
-    >describe pokemons;
+            <h3>Describe table</h3>
+            <textarea>>describe pokemons;</textarea>
 
-//Create Backup database 
->mysql -u root -p pokeadso > /Users/APRENDIZ/Desktop/backup_pokeadso.sql
+            <h3>Create Backup database </h3>
+            <textarea>>mysql -u root -p pokeadso > /Users/APRENDIZ/Desktop/backup_pokeadso.sql </textarea>
 
-//Drop database
-> drop database pokeadso;
+            <h3>Drop database</h3>
+            <textarea>> drop database pokeadso;</textarea>
 
-//Truncate table
-> truncate table pokemons;
-> delete * from pokemons;
+            <h3>Truncate table</h3>
+            <textarea>> truncate table pokemons;
+                    > delete * from pokemons;
+                </textarea>
 
-//Restore database from backup
->create database pokeadso;
->exit
->mysql -u root -p pokeadso < /Users/APRENDIZ/Desktop/backup_pokeadso.sql
+            <h3>Restore database from backup</h3>
+            <textarea>>create database pokeadso;
+                    >exit
+                    >mysql -u root -p pokeadso < /Users/APRENDIZ/Desktop/backup_pokeadso.sql 
+                </textarea>
+        </section>
+    </main>
+</body>
+</html>

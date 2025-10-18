@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        textarea {
+            width: 100%;
+            height: auto;
+            background-color: #222;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="sql">
+    <main>
+        <header>
+            <h1>
+                02-DDL
+            </h1>
+            <P>
+                Data Definition Language (DDL) commands in SQL
+            </P>
+        </header>
+        <section>
+            <h3>Create Table</h3>
+            <textarea>create table pokemons(
+                        id int auto_increment,
+                        name varchar(32) not null unique,
+                        type varchar(32) not null,
+                        strength int not null,
+                        staming int not null,
+                        speed int not null,
+                        accuracy int not null,
+                        PRIMARY KEY(id),
+                        trainer_id int,
+                        FOREIGN KEY(trainer_id) REFERENCES trainers(id)); 
+                    </textarea>
+
+                    <h3>ALTER TABLE FK</h3>
+            <textarea>ALTER TABLE pokemons
+                        ADD FOREIGN KEY (trainer_id) 
+                        REFERENCES trainers(id);
+                    </textarea>
+            <h3>Alter Table RENAME </h3>
+            <textarea>ALTER TABLE pokemons
+                        RENAME TO chachacha;
+                    </textarea>
+
+            <h3>ALTER TABLE RENAME COLUMN:  </h3>
+            <textarea>ALTER TABLE pokemons
+                        CHANGE  nickname name varchar(32) NOT NULL
+                        UNIQUE;
+                    </textarea>
+            <h3>ALTER TABLE ADD COLUMN;</h3>
+            <textarea>>ALTER TABLE pokemons
+                        ADD COLUMN color varchar(16);
+            </textarea>
+
+            <h3>DROP TABLE </h3>
+            <textarea>>DROP TABLE gyms;
+            </textarea>
+
+            <h3>ALTER TABLE DROP COLUMN;</h3>
+            <textarea>ALTER TABLE pokemons
+                        DROP COLUMN color;
+            </textarea>
+
+            <h3>ALTER TABLE ADD COLUMN AFTER COLUMN </h3>
+            <textarea>ALTER TABLE pokemons
+                        ADD COLUMN color varchar(16) AFTER accuracy;
+            </textarea>
+
+        </section>
+    </main>
+</body>
+</html>
