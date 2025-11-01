@@ -1,152 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <style>
-        textarea {
-            width: 100%;
-            height: auto;
-            background-color: #222;
-            color: #0f0;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            box-sizing: border-box;
-            margin-bottom: 1rem;
-        }
+      p.subtitulo {
+        color: #0f0;
+        text-align: center;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+      }
+      h1.titulo {
+        color: #0f0;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+      textarea {
+        width: 100%;
+        height: auto;
+        background-color: #222;
+        color: #0f0;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        padding: 1rem;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 1rem;
+      }
     </style>
     <title>Document</title>
-</head>
-<body class="sql">
+  </head>
+  <body class="sql">
     <main>
-        <header>
-            <h1>
-                02-DDL
-            </h1>
-            <P>
-                Data Definition Language (DDL) commands in SQL
-            </P>
-        </header>
-        <section>
-            <h3>INSERT INTO (ShortHand)</h3>
-            <textarea>
-                INSERT INTO gyms VALUES (DEFAULT,'Saffron');
-                -- Insert Short
-INSERT INTO trainers VALUES (
-DEFAULT, "Ash Ketchum", 2, 1);
+      <header>
+        <h1 class="titulo">02-DDL</h1>
+        <p class="subtitulo">Data Definition Language (DDL) commands in SQL</p>
+      </header>
+      <section>
+        <h3>INSERT INTO (ShortHAnd):</h3>
+        <textarea>
+INSERT INTO gyms VALUES (DEFAULT, 'saffrom');
+INSERT INTO gyms VALUES (DEFAULT, 'fucshia');
+INSERT INTO trainers VALUES (DEFAULT, "Ash Ketchum", 2, 1);
+INSERT INTO trainers VALUES ( DEFAULT, "Misty", 4, 2);
+INSERT INTO trainers VALUES ( DEFAULT, "Brok", 6, 2);</textarea
+        >
 
-INSERT INTO trainers VALUES ( 
-DEFAULT, "Misty", 4, 2);
+        <h3>INSER INTO (Long Form)</h3>
+        <textarea>
+INSERT INTO gyms (id, name) VALUES (DEFAULT, 'pallete');
+INSERT INTO trainers (id, name, level, gym_id) VALUES ( DEFAULT, "Serena", 4, 3);
+INSERT INTO trainers (id, name, level, gym_id) VALUES ( DEFAULT, "Oak", 9, 1);
+</textarea
+        >
+        <h3>SELECT ALL pokemons</h3>
+        <textarea>SELECT * FROM pokemons;</textarea>
+        <!---->
+        <h3>SELECT especific COLUMNS</h3>
+        <textarea>SELECT name, type, FROM pokemons;</textarea>
+        <!---->
+        <h3>SELECT COLUMNS DISTICTS</h3>
+        <textarea>SELECT DISTINCT type FROM pokemons;</textarea>
+        <!---->
+        <h3>SELECT WITH CONDITION (WHERE)</h3>
+        <textarea>
+SELECT name, type FROM pokemons WHERE type = 'Electric';</textarea
+        >
+        <!---->
+        <h3>SELECT WITH CONDITION (OR WHERE)</h3>
+        <textarea>
+SELECT name, type FROM pokemons WHERE type = 'Electric' OR type = 'Water';</textarea
+        >
+        <!---->
+        <h3>SELECT WITH CONDITION (AND WHERE)</h3>
+        <textarea>
+SELECT name, type FROM pokemons WHERE trainer_id = 2 AND type = 'Water';</textarea
+        >
+        <!---->
+        <h3>SELECT WHIT CONDITION(>)</h3>
+        <textarea>
+SELECT name, type FROM pokemons WHERE strength > 1000;</textarea
+        >
+        <!---->
+        <h3>SELECT WHIT CONDITION(<>)</h3>
+        <textarea>
+SELECT name, type FROM pokemons WHERE type <> 'Water';</textarea
+        >
+        <!---->
+        <h3>SELECT WHIT CONDITION(BETWEEN)</h3>
+        <textarea>
+SELECT name, type, speed FROM pokemons WHERE speed BETWEEN 50 AND 100;</textarea
+        >
+        <!---->
+        <h3>SELECT ORDER BY (ASC/DESC)</h3>
+        <textarea>
+SELECT name, type FROM pokemons WHERE type = 'Water' ORDER BY name ASC;
+SELECT name, type FROM pokemons WHERE type = 'Water' ORDER BY name DESC;
+            </textarea
+        >
+        <!---->
+        <h3>SELECT LIMIT</h3>
+        <textarea>SELECT id, name, type FROM pokemons LIMIT 5;</textarea>
+        <!---->
+        <h3>SELECT OFFSET</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons LIMIT 5 OFFSET 5;</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH(LIKE)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE name LIKE "%as%";</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH (LIKE: Start With W)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE type LIKE "W%";</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH (LIKE: End with e)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE type LIKE "%e";</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH (LIKE: Contains)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE name LIKE "%as%";</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH (NOT LIKE: Contains)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE name NOT LIKE "%ma%";</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH (LIKE: Complete)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE name LIKE "p_k_ch_";</textarea
+        >
+        <!---->
+        <h3>SELECT SEARCH (IN)</h3>
+        <textarea>
+SELECT id, name, type FROM pokemons WHERE type IN ('Fire','Electric');</textarea
+        >
 
-INSERT INTO trainers VALUES ( 
-DEFAULT, "Brok", 6, 2);
+        <h3>SELECT CHALLENGES</h3>
+        <small>List pokemons type water average speed</small>
+        <textarea>
+SELECT AVG(speed) AVERAGE_SPEED FROM pokemons WHERE type = 'Water';</textarea
+        >
+        <!---->
+        <small>List all pokemons total sum all skills</small>
+        <textarea>
+SELECT name, type, (strength + staming + speed + accuracy) AS total_skills FROM pokemons;</textarea
+        >
+        <!---->
+        <small>Sum all skills by type</small>
+        <textarea>
+SELECT type, SUM(strength + staming + speed + accuracy) AS total_skills_por_tipo FROM pokemons GROUP BY type;</textarea
+        >
+        <!---->
+        <small>Select COUNT(*)</small>
+        <textarea>
+SELECT COUNT(*) AS total_water_pokemons FROM pokemons WHERE type = 'water';</textarea
+        >
+        <!---->
+        <h3>Select (Two Tables)</h3>
+        <small>list all trainers whith their pokemons</small>
+        <textarea>
+SELECT t.name AS name_trainers,
+                p.name AS name_pokemons,
+                p.type AS type_pokemons
+                FROM trainers AS t, pokemons AS p 
+                WHERE t.id = p.trainer_id;</textarea
+        >
+        <!---->
+        <h3>Select (Two Tables(ORDER BY))</h3>
+        <small>list all trainers whith their pokemons</small>
+        <textarea>
+SELECT t.name AS name_trainers,
+                p.name AS name_pokemons,
+                p.type AS type_pokemons
+                FROM trainers AS t, pokemons AS p
+                WHERE t.id = p.trainer_id
+                ORDER BY p.name DESC;</textarea
+        >
+        <!---->
+        <h3>Select (ALIAS: Two Tables WHITH AND OR & ORDER BY)</h3>
+        <small>list all trainers whith number of pokemons</small>
+        <textarea>
+SELECT t.name AS name_trainer,
+COUNT(p.id) AS number_pokemons
+FROM trainers AS t, pokemons AS p
+WHERE t.id = p.trainer_id
+AND t.id = 1;
+            </textarea
+        >
+        <!---->
+        <!---->
+        <h3>Select (Alias: THREE Tables)</h3>
+        <small>list all trainers whith their pokemons & gym</small>
+        <textarea>
+SELECT t.name AS name_trainer,
+                p.name AS name_pokemon,
+                g.name AS name_gym
+                FROM trainers AS t, pokemons AS p,gyms AS g
+                WHERE t.id = p.trainer_id
+                AND g.id = t.gym_id;</textarea
+        >
+        <!---->
+        <h3>Select (INNER JOIN: THREE Tables)</h3>
+        <small>list all trainers whith their pokemons & gym</small>
+        <textarea>
+SELECT trainers.name,
+       pokemons.name, 
+       gyms.name
+FROM trainers
+INNER JOIN pokemons ON trainers.id = pokemons.trainer_id
+INNER JOIN gyms ON gyms.id = trainers.gym_id;</textarea
+        >
 
-                </textarea>
+        <h3>Select (LEFT JOIN: THREE Tables)</h3>
+        <small>list all trainers whith their pokemons & gym</small>
+        <textarea>
+SELECT trainers.name,
+       pokemons.name, 
+       gyms.name
+FROM trainers
+LEFT JOIN pokemons ON trainers.id = pokemons.trainer_id
+INNER JOIN gyms ON gyms.id = trainers.gym_id;</textarea
+        >
+        <!---->
 
-                <h3>INSERT INTO (Long Form)</h3>
-            <textarea>
-                INSERT INTO gyms (id, name) VALUES (DEFAULT,'fucsia');
-                INSERT INTO trainers (id, name, level, gym_id) VALUES ( 
-DEFAULT, "Serena", 4, 2);
+        <h3>Select (RING JOIN: THREE Tables)</h3>
+        <small>list all trainers whith their pokemons & gym</small>
+        <textarea>
+SELECT trainers.name,
+       pokemons.name, 
+       gyms.name
+FROM trainers
+RIGHT JOIN pokemons ON trainers.id = pokemons.trainer_id
+LEFT JOIN gyms ON gyms.id = trainers.gym_id;</textarea
+        >
+        <!---->
+        <h3>Select (UNION: THREE Tables)</h3>
+        <small>list all trainers whith their pokemons & gym</small>
+        <textarea>
+SELECT name FROM trainers,
+UNION
+SELECT name FROM gyms
+UNION
+SELECT name FROM pokemons;</textarea
+        >
 
-INSERT INTO trainers (id, name, level, gym_id) VALUES ( 
-DEFAULT, "Oak", 9, 1);
-                </textarea>
-                
-            <h3>SELECT ALL POKEMONS</h3>
-            <textarea>          
-                SELECT * FROM pokemons;    
-                </textarea>
-
-                <h3>SELECT specific POKEMONS</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons;    
-                </textarea>
-
-                <h3>SELECT COLUMNS DISTINCTS</h3>
-            <textarea>          
-                SELECT DISTINCT type FROM pokemons;    
-                </textarea>
-
-                <h3>SELECT WITH CONDITION (WHERE)</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons WHERE type = "electric";    
-                </textarea>
-
-                <h3>SELECT WITH CONDITION (OR WHERE)</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons WHERE type = "electric" OR type = "flying";    
-                </textarea>
-
-                <h3>SELECT WITH CONDITION (AND WHERE)</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons WHERE trainer_id = 1 AND type = "electric"; 
-                </textarea>
-
-                <h3>SELECT WITH CONDITION (>)</h3>
-            <textarea>          
-                SELECT name, type, strength FROM pokemons WHERE strength > 1000;
-            </textarea>
-
-            <h3>SELECT WITH CONDITION (<>)</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons WHERE type <> "water";
-            </textarea>
-
-            <h3>SELECT WITH CONDITION (BETWEEN)</h3>
-            <textarea>          
-                SELECT name, type, speed FROM pokemons WHERE speed BETWEEN 50 AND 100;
-            </textarea>
-
-            <h3>SELECT ORDER BY (ASC)</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons WHERE type = 'water' ORDER BY name ASC;
-            </textarea>
-
-            <h3>SELECT ORDER BY (DESC)</h3>
-            <textarea>          
-                SELECT name, type FROM pokemons WHERE type = 'water' ORDER BY name DESC;       
-            </textarea>
-
-            <h3>SELECT LIMIT</h3>
-            <textarea>          
-                SELECT id, name, type FROM pokemons LIMIT 5;
-            </textarea>
-
-            <h3>SELECT OFFSET</h3>
-            <textarea>          
-                SELECT id, name, type FROM pokemons LIMIT 5 OFFSET 5;
-            </textarea>
-
-            <h3>SELECT SEARCH (LIKE)</h3>
-            <textarea>          
-                SELECT id, name, type FROM pokemons WHERE name LIKE '%as%';
-            </textarea>
-
-            <h3>SELECT CHALLENGES(AVG)</h3>
-            <SMAll>LIST name, type, avg from pokemons type water average speed </SMAll>
-            <textarea>          
-                SELECT AVG(speed) FROM pokemons WHERE type = 'water';
-            </textarea>
-
-            <h3>SELECT CHALLENGES(AVG)</h3>
-            <SMAll>LIST all pokemons total sum all skills</SMAll>
-            <textarea>          
-                SELECT name, type, (strength + staming + speed + accuracy) AS total_skills FROM pokemons;
-            </textarea>
-
-            <h3>COUNT ALL POKEMONS </h3>
-            <SMAll>LIST all water pokemons</SMAll>
-            <textarea>          
-                SELECT COUNT(*) AS total_water_pokemons
-                FROM pokemons
-                WHERE type = 'water';
-            </textarea>
-        </section>
+        <!---->
+        <h3>Create View</h3>
+        <small
+          >CREATE A VIEW THAT CONTAINS ALL TRAINERS WHITH THEIR POKEMONS</small
+        >
+        <textarea>
+CREATE VIEW view_pokemons AS
+SELECT trainers.name AS trainer_name,
+       pokemons.name AS pokemon_name,
+       gyms.name AS gym_name
+FROM trainers
+INNER JOIN pokemons ON trainers.id = pokemons.trainer_id
+INNER JOIN gyms ON gyms.id = trainers.gym_id;</textarea
+        >
+        <!---->
+        <h3>Show View</h3>
+        <small
+          >SHOW THE VIEW THAT CONTAINS ALL TRAINERS WHITH THEIR POKEMONS</small
+        >
+        <textarea>SELECT * FROM view_pokemons;</textarea>
+        <!---->
+        <h3>UPDATE</h3>
+        <small>One or fields</small>
+        <textarea>UPDATE trainers SET level = 10 WHERE ID = 1;</textarea>
+        <!---->
+        <h3>UPDATE </h3>
+        <small>Two o more fields</small>
+        <textarea>UPDATE pokemons SET trainer_id = 3, speed = 69 WHERE id = 5 OR id = 10 OR id = 15;</textarea>
+        <!---->
+        <h3>DELETE </h3>
+        <small>One row</small>
+        <textarea>DELETE * FROM pokemons WHERE id = 12;</textarea>
+        <small>ALL rows</small>
+        <textarea>DELETE * FROM pokemons;</textarea>
+        <!---->
+        <h3>TRANSACTION</h3>
+        <small>Begin a transaction; delete something, rollback</small>
+        <textarea>BEGIN;
+DELETE FROM pokemons WHERE id = 13;
+ROLLBACK;
+        </textarea>
+        <small>ALL rows</small>
+      </section>
     </main>
-</body>
+  </body>
 </html>
