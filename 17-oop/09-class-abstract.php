@@ -48,13 +48,11 @@ if (empty($pokemons)) {
 } else {
     echo "<ul style='list-style: none; padding: 0;'>";
     foreach ($pokemons as $p) {
-        echo "<li style='font-size: 1.2em; padding: 10px; margin: 5px 0; background: #f8f9fa; border-left: 4px solid #3b4cca; border-radius: 4px;'>";
+        echo "<li style='font-size: 1.2em; padding: 10px; margin: 5px 0; background: #f8f9fa; border-left: 4px solid #000000FF; border-radius: 4px;'>";
         echo "#{$p['id']} - <strong>{$p['name']}</strong> - <span>{$p['type']}</span>";
         echo "</li>";
     }
-    echo "</ul>";
-    echo "<p style='margin-top: 20px;'><strong>Total:</strong> " . count($pokemons) . "</p>";
-}
+}  
 
 echo "</section>";
 
