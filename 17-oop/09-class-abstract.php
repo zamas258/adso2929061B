@@ -6,10 +6,12 @@ include 'template/header.php';
 
 echo "<section>";
 
-abstract class DataBase {
+abstract class DataBase
+{
     protected $connection;
 
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $dsn = "mysql:host=localhost;dbname=pokeadso;charset=utf8mb4";
             $this->connection = new PDO($dsn, 'root', '', [
@@ -24,14 +26,17 @@ abstract class DataBase {
     abstract public function getAll();
 }
 
-class Pokemon extends DataBase {
-    
-    public function getAll() {
+class Pokemon extends DataBase
+{
+
+    public function getAll()
+    {
         $stmt = $this->connection->query("SELECT * FROM pokemons ORDER BY id");
         return $stmt->fetchAll();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $stmt = $this->connection->prepare("SELECT * FROM pokemons WHERE id = :id");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch();
@@ -52,9 +57,9 @@ if (empty($pokemons)) {
         echo "#{$p['id']} - <strong>{$p['name']}</strong> - <span>{$p['type']}</span>";
         echo "</li>";
     }
-}  
+    echo "</ul>";
+}
 
 echo "</section>";
 
 include 'template/footer.php';
-?>
