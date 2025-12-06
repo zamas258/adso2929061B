@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /18-mvc/
+
+# Si el archivo o directorio existe, no hacer nada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirigir todo a index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
