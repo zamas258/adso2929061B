@@ -21,6 +21,14 @@ if ($page === 'pokemon') {
         case 'store':
             $controller->store();
             break;
+        case 'view':
+            if ($id) {
+                $controller->view($id);
+            } else {
+                header('Location: /18-mvc/pokemon');
+                exit;
+            }
+            break;
         case 'edit':
             if ($id) {
                 $controller->edit($id);

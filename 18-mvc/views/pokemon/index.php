@@ -15,23 +15,15 @@ $currentSearch = $searchTerm ?? '';
 <body>
     <div class="hero bg-base-200 min-h-screen py-8">
         <div class="hero-content text-center w-full">
-            <div class="max-w-6xl w-full">
+            <div class="max-w-2xl w-full">
                 <h1 class="text-5xl font-bold mb-2">Pokemon</h1>
-                <p class="mb-8 text-lg">Complete Pokemon Management System</p>
+                <br>
                 
                 <div class="flex gap-4 mb-8 justify-center flex-wrap">
                     <a href="<?= $baseUrl ?>/create" class="btn btn-success">
                         <i class="ph ph-plus-circle" style="font-size: 1.5rem;"></i>
                         Add Pokemon
                     </a>
-                    
-                    <form method="GET" action="<?= $baseUrl ?>" class="join">
-                        <input type="text" name="q" value="<?= htmlspecialchars($currentSearch) ?>" placeholder="Search..." class="input input-bordered join-item w-64" />
-                        <button type="submit" class="btn join-item btn-primary">Search</button>
-                        <?php if(!empty($currentSearch)): ?>
-                        <a href="<?= $baseUrl ?>" class="btn join-item btn-ghost">Clear</a>
-                        <?php endif; ?>
-                    </form>
                 </div>
 
                 <?php if(!empty($currentSearch)): ?>
@@ -40,25 +32,20 @@ $currentSearch = $searchTerm ?? '';
                 </div>
                 <?php endif; ?>
 
-                <div class="overflow-x-auto shadow-xl rounded-lg">
-                    <table class="table table-zebra w-full">
-                        <thead class="bg-primary text-primary-content">
+                <div class="overflow-x-auto rounded-lg border border-base-300">
+                    <table class="table table-zebra w-full table-sm">
+                        <thead class="bg-black text-white">
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Type</th>
-                                <th>Strength</th>
-                                <th>Stamina</th>
-                                <th>Speed</th>
-                                <th>Accuracy</th>
-                                <th>Trainer</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(empty($data)): ?>
                             <tr>
-                                <td colspan="9" class="text-center py-8">
+                                <td colspan="4" class="text-center py-8">
                                     <p class="text-lg font-semibold">No Pokemon found</p>
                                     <?php if(!empty($currentSearch)): ?>
                                     <a href="<?= $baseUrl ?>" class="btn btn-primary mt-4">View All</a>
@@ -77,19 +64,15 @@ $currentSearch = $searchTerm ?? '';
                                     ?>
                                     <span class="badge <?= $class ?> badge-lg"><?= htmlspecialchars($pokemon['type']) ?></span>
                                 </td>
-                                <td><span class="badge badge-outline"><?= $pokemon['strength'] ?></span></td>
-                                <td><span class="badge badge-outline"><?= $pokemon['staming'] ?></span></td>
-                                <td><span class="badge badge-outline"><?= $pokemon['speed'] ?></span></td>
-                                <td><span class="badge badge-outline"><?= $pokemon['accuracy'] ?></span></td>
                                 <td>
-                                    <?= !empty($pokemon['trainer_name']) ? '<span class="badge badge-ghost">'.htmlspecialchars($pokemon['trainer_name']).'</span>' : '<span class="text-gray-400">No trainer</span>' ?>
-                                </td>
-                                <td>
-                                    <div class="join">
-                                        <a href="<?= $baseUrl ?>/edit/<?= $pokemon['id'] ?>" class="btn btn-sm btn-info join-item">
+                                    <div class="flex gap-1">
+                                        <a href="<?= $baseUrl ?>/view/<?= $pokemon['id'] ?>" class="btn btn-sm btn-neutral">
+                                            <i class="ph ph-magnifying-glass"></i>
+                                        </a>
+                                        <a href="<?= $baseUrl ?>/edit/<?= $pokemon['id'] ?>" class="btn btn-sm btn-neutral">
                                             <i class="ph ph-pencil-simple"></i>
                                         </a>
-                                        <a href="<?= $baseUrl ?>/delete/<?= $pokemon['id'] ?>" onclick="return confirm('Delete <?= htmlspecialchars($pokemon['name']) ?>?')" class="btn btn-sm btn-error join-item">
+                                        <a href="<?= $baseUrl ?>/delete/<?= $pokemon['id'] ?>" onclick="return confirm('Delete <?= htmlspecialchars($pokemon['name']) ?>?')" class="btn btn-sm btn-error">
                                             <i class="ph ph-trash"></i>
                                         </a>
                                     </div>

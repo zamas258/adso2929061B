@@ -1,32 +1,37 @@
 <?php
 require_once __DIR__ . '/../models/Pokemon.php';
 
-class PokemonController {
+class PokemonController
+{
     private $model;
     private $baseUrl = '/18-mvc/pokemon';
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Pokemon();
     }
 
-    public function index() {
+    public function index()
+    {
         $searchTerm = $_GET['q'] ?? '';
-        
+
         if (!empty($searchTerm)) {
             $data = $this->model->search($searchTerm);
         } else {
             $data = $this->model->getAll();
         }
-        
+
         require __DIR__ . '/../views/pokemon/index.php';
     }
 
-    public function create() {
+    public function create()
+    {
         require __DIR__ . '/../views/pokemon/create.php';
         exit;
     }
 
-    public function store() {
+    public function store()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $data = [
@@ -38,7 +43,7 @@ class PokemonController {
                     'accuracy' => (int)($_POST['accuracy'] ?? 100),
                     'trainer_id' => !empty($_POST['trainer_id']) ? (int)$_POST['trainer_id'] : null
                 ];
-                
+
                 if ($this->model->create($data)) {
                     header('Location: ' . $this->baseUrl);
                     exit;
@@ -54,7 +59,8 @@ class PokemonController {
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $pokemon = $this->model->getById($id);
         if (!$pokemon) {
             header('Location: ' . $this->baseUrl);
@@ -64,7 +70,8 @@ class PokemonController {
         exit;
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $data = [
@@ -76,7 +83,7 @@ class PokemonController {
                     'accuracy' => (int)($_POST['accuracy'] ?? 100),
                     'trainer_id' => !empty($_POST['trainer_id']) ? (int)$_POST['trainer_id'] : null
                 ];
-                
+
                 if ($this->model->update($id, $data)) {
                     header('Location: ' . $this->baseUrl);
                     exit;
@@ -92,7 +99,8 @@ class PokemonController {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         try {
             $this->model->delete($id);
         } catch (Exception $e) {
@@ -100,6 +108,19 @@ class PokemonController {
             exit;
         }
         header('Location: ' . $this->baseUrl);
+        exit;
+    }
+
+    public function view($id) {
+        $pokemon = $this->model->getById($id);
+        
+        if (!$pokemon) {
+            header('Location: ' . $this->baseUrl);
+            exit;
+        }
+        
+        $data = $pokemon;
+        require __DIR__ . '/../views/pokemon/view.php';
         exit;
     }
 }

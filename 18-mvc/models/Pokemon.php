@@ -21,10 +21,15 @@ class Pokemon {
     }
 
     public function getById($id) {
-        $query = "SELECT * FROM {$this->table} WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conn->prepare("
+            SELECT p.*, t.name as trainer_name 
+            FROM {$this->table} p 
+            LEFT JOIN trainers t ON p.trainer_id = t.id 
+            WHERE p.id = ?
+        ");
         $stmt->execute([$id]);
-        return $stmt->fetch();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data;
     }
 
     public function create($data) {
