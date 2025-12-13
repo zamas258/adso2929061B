@@ -48,20 +48,15 @@ class PokemonController {
                 }
             } catch (Exception $e) {
                 echo "Error: " . $e->getMessage();
-                echo "<br><a href='/18-mvc/pokemon'>Go back</a>";
+                echo "<br><a href='/pokemon'></a>";
                 exit;
             }
         }
     }
 
     public function edit($id) {
-        $pokemon = $this->model->getById($id);
-        if (!$pokemon) {
-            header('Location: ' . $this->baseUrl);
-            exit;
-        }
+        $pokemon = $this->model->find($id);
         require __DIR__ . '/../views/pokemon/edit.php';
-        exit;
     }
 
     public function update($id) {
@@ -86,7 +81,7 @@ class PokemonController {
                 }
             } catch (Exception $e) {
                 echo "Error: " . $e->getMessage();
-                echo "<br><a href='/18-mvc/pokemon'>Go back</a>";
+                echo "<br><a href='/pokemon'>Go back</a>";
                 exit;
             }
         }

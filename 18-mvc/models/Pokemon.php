@@ -1,16 +1,19 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 
-class Pokemon {
+class Pokemon
+{
     private $conn;
     private $table = 'pokemons';
 
-    public function __construct() {
+    public function __construct()
+    {
         $database = new Database();
         $this->conn = $database->getConnection();
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $query = "SELECT p.*, t.name as trainer_name 
                   FROM {$this->table} p 
                   LEFT JOIN trainers t ON p.trainer_id = t.id 
@@ -20,20 +23,22 @@ class Pokemon {
         return $stmt->fetchAll();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $query = "SELECT * FROM {$this->table} WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
 
-    public function create($data) {
+    public function create($data)
+    {
         try {
             $query = "INSERT INTO {$this->table} (name, type, strength, staming, speed, accuracy, trainer_id) 
                       VALUES (?, ?, ?, ?, ?, ?, ?)";
-            
+
             $stmt = $this->conn->prepare($query);
-            
+
             return $stmt->execute([
                 $data['name'],
                 $data['type'],
@@ -51,7 +56,8 @@ class Pokemon {
         }
     }
 
-    public function update($id, $data) {
+    public function update($id, $data)
+    {
         try {
             $query = "UPDATE {$this->table} 
                       SET name=?, type=?, strength=?, staming=?, speed=?, accuracy=?, trainer_id=? 
@@ -75,21 +81,29 @@ class Pokemon {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $query = "DELETE FROM {$this->table} WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         return $stmt->execute([$id]);
     }
 
-    public function search($term) {
-        $query = "SELECT p.*, t.name as trainer_name 
-                  FROM {$this->table} p 
-                  LEFT JOIN trainers t ON p.trainer_id = t.id 
-                  WHERE p.name LIKE ? OR p.type LIKE ? OR t.name LIKE ?
-                  ORDER BY p.id ASC";
+    public function search($term)
+    {
+        $query = "SELECT * FROM {$this->table} 
+                  WHERE name LIKE ? OR type LIKE ?
+                  ORDER BY id ASC";
         $stmt = $this->conn->prepare($query);
         $searchTerm = "%{$term}%";
-        $stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
+        $stmt->execute([$searchTerm, $searchTerm]);
         return $stmt->fetchAll();
+    }
+
+    public function find($id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetch();
     }
 }

@@ -2,53 +2,32 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : 'pokemon';
-$url = filter_var($url, FILTER_SANITIZE_URL);
-$url = explode('/', $url);
+require_once 'controllers/PokemonController.php';
 
-$page = $url[0] ?? 'pokemon';
-$action = $url[1] ?? 'index';
-$id = $url[2] ?? null;
+$uri = $_SERVER['REQUEST_URI'];
 
-if ($page === 'pokemon') {
-    require_once __DIR__ . '/controllers/PokemonController.php';
+$uri = parse_url($uri, PHP_URL_PATH);
+$uri = str_replace('/18-mvc', '', $uri);
+
+if ($uri === '/pokemon' || $uri === '/pokemon/') {
     $controller = new PokemonController();
-    
-    switch ($action) {
-        case 'create':
-            $controller->create();
-            break;
-        case 'store':
-            $controller->store();
-            break;
-        case 'edit':
-            if ($id) {
-                $controller->edit($id);
-            } else {
-                header('Location: /18-mvc/pokemon');
-                exit;
-            }
-            break;
-        case 'update':
-            if ($id) {
-                $controller->update($id);
-            } else {
-                header('Location: /18-mvc/pokemon');
-                exit;
-            }
-            break;
-        case 'delete':
-            if ($id) {
-                $controller->delete($id);
-            } else {
-                header('Location: /18-mvc/pokemon');
-                exit;
-            }
-            break;
-        default:
-            $controller->index();
-    }
+    $controller->index();
+} elseif ($uri === '/pokemon/create') {
+    $controller = new PokemonController();
+    $controller->create();
+} elseif ($uri === '/pokemon/store') {
+    $controller = new PokemonController();
+    $controller->store();
+} elseif (preg_match('#^/pokemon/edit/(\d+)$#', $uri, $matches)) {
+    $controller = new PokemonController();
+    $controller->edit($matches[1]);
+} elseif (preg_match('#^/pokemon/update/(\d+)$#', $uri, $matches)) {
+    $controller = new PokemonController();
+    $controller->update($matches[1]);
+} elseif (preg_match('#^/pokemon/delete/(\d+)$#', $uri, $matches)) {
+    $controller = new PokemonController();
+    $controller->delete($matches[1]);
 } else {
-    header('Location: /18-mvc/pokemon');
-    exit;
+    http_response_code(404);
+    echo "404 Not Found";
 }
