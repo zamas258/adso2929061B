@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class pet extends Model
 {
-    //
+    //@var array
+    protected $fillable = [
+        'name',
+        'image',
+        'kind',
+        'weight',
+        'age',
+        'bread',
+        'location',
+        'description',
+        'active',
+        'adopted',
+    ];
 }
