@@ -4,9 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use App\Models\Pet;
-
 
 class PetSeeder extends Seeder
 {
@@ -15,43 +13,56 @@ class PetSeeder extends Seeder
      */
     public function run(): void
     {
-                //Eloquent: ORM
+        // Eloquent : ORM
         $pet = new Pet;
-        $pet->name = 'Merlin';
-        $pet->kind = 'Cat';
-        $pet->weight = 4.5;
-        $pet->age = 3;
-        $pet->bread = 'Siamese';
-        $pet->location = 'Bogotá';
-        $pet->description = 'Friendly and playful cat looking for a loving home.';
+        $pet->name = 'Rocko';
+        $pet->kind = 'dog';
+        $pet->weight = 4;
+        $pet->age = 6;
+        $pet->bread = 'creole';
+        $pet->location = 'villamaria caldas';
+        $pet->description = 'He is a calm dog and is friendly to everyone.';
+        
         $pet->save();
-        //Array
-        DB::table('pets')->insert([
-            'name' => 'Luna',
-            'kind' => 'Cat',
-            'weight' => 3.8,
-            'age' => 2,
-            'bread' => 'Persian',
-            'location' => 'Medellín',
-            'description' => 'Calm and affectionate cat looking for a quiet home.',
-        ]);
-        DB::table('pets')->insert([
-            'name' => 'Kity',
-            'kind' => 'Cat',
-            'weight' => 3.8,
-            'age' => 2,
-            'bread' => 'Maine Coon',
-            'location' => 'Bogotá',
-            'description' => 'Playful and curious cat looking for an active home.',
-        ]);
-        DB::table('pets')->insert([
-            'name' => 'Bella',
-            'kind' => 'Cat',
-            'weight' => 3.8,
-            'age' => 2,
-            'bread' => 'Scottish Fold',
-            'location' => 'Bogotá',
-            'description' => 'Playful and curious cat looking for an active home.',
-        ]);
-}
+
+        $pet =new Pet;
+        $pet->name = 'Tiger';
+        $pet->kind = 'cat';
+        $pet->weight = 2;
+        $pet->age = 8;
+        $pet->bread = 'orange';
+        $pet->location = 'villamaria caldas';
+        $pet->description = 'He is a calm and sleepy cat.';
+        $pet->save();
+
+        $pet = new Pet;
+        $pet->name = 'Juan';
+        $pet->kind = 'Horse';
+        $pet->weight = 16;
+        $pet->age = 2;
+        $pet->bread = 'friesian';
+        $pet->location = 'Llanitos villamaria Caldas';
+        $pet->description = 'He is a beautiful and calm horse who loves to trot all over the countryside, happy with life.';
+        $pet->save();
+
+        $pet = new Pet;
+        $pet->name = 'Roberto';
+        $pet->kind = 'pig';
+        $pet->weight = 5;
+        $pet->age = 1;
+        $pet->bread = 'mini pig';
+        $pet->location = 'buenaventura Valle del cauca';
+        $pet->description = 'Its a pig that eats people and loves pork.';
+        $pet->save();
+
+        $pet = new Pet;
+        $pet->name = 'chilindrina';
+        $pet->kind = 'cow';
+        $pet->weight = 15;
+        $pet->age = 3;
+        $pet->bread = 'angus';
+        $pet->location = 'Bereira risaralda';
+        $pet->description = 'Shes a quiet cow, bored of living in Bereira.';
+        $pet->save();
+    }
 }
