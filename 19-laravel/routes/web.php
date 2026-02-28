@@ -1,6 +1,25 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,15 +34,63 @@ Route::get('sayhello/{name}', function() {
 });
 
 Route::get('getall/pets', function() {
-    $pets = \App\Models\Pet::all();
+    $pets = App\Models\Pet::all();
     dd($pets->toArray());
 });
 
-Route::get('show/pet/{id}', function($id) {
-    $pet = \App\Models\Pet::find($id);
-    dd($pet);
+Route::get('show/pet/{id}', function() {
+    $pet = App\Models\Pet::find(request()->id);
+    dd($pet->toArray());
 });
-Route::get('show/users', function() {
-    $users = \App\Models\User::select('name', 'edad', 'created_at as fecha_creacion')->get();
-    dd($users);
+
+Route::get('challenge', function() {
+    $users = App\Models\User::take(20)->get();
+    $styleTable = "<style>
+                        table {
+                            border-collapse: collapse;
+                            width: 80%;
+                            margin: 0 auto;
+                        }
+
+                        th, td {
+                            border: 1px solid #ccc;
+                            padding: 0.5rem 1rem;
+                            text-align: center;
+                        }
+
+                        th {
+                            background: #4d8076;
+                            color: white;
+                        }
+                    </style>";
+
+    $createAt = function($created_at) {
+        return Carbon::parse($created_at)->diffForHumans();
+    };
+
+    $table = "<table>";
+    $table .= "<tr><th>ID</th><th>Photo</th><th>Fullname</th><th>Age</th><th>Create At</th></tr>";
+    foreach ($users as $user) {
+        $table .= "<tr>";
+        $table .= "<td>" . $user->id . "</td>";
+        $table .= "<td><img src='" . asset('images/' . $user->photo) . "' width='50'></td>";
+        $table .= "<td>" . $user->fullname . "</td>";
+        $table .= "<td>" . Carbon::parse($user->birthdate)->age . " Years old" . "</td>";
+        $table .= "<td>" . $createAt($user->created_at) . "</td>";
+        $table .= "</tr>";
+    }
+    $table .= "</table>";
+    return $styleTable . $table;
+});
+
+// Ruta para la lista principal (getallpets)
+Route::get('/getall/pets', function(){
+    $pets = Pet::all();
+    return view('getallpets', compact('pets'));
+});
+
+// Ruta para ver el detalle de una mascota
+Route::get('show/pet/{id}', function($id){
+    $pet = Pet::find($id);
+    return view('showpet')->with('pet', $pet);
 });
