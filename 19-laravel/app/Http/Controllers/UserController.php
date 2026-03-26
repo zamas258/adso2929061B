@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Barryvdh\DomPDF\Facade\pdf;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
+
 class UserController extends Controller
 {
     /**
@@ -118,14 +123,36 @@ public function edit(User $user)
 
     if ($user->save()) {
         return redirect('users')
-            ->with('message', 'The User: ' . $user->fullname . ' was updated successfully!');
+            ->with('message', 'The User: ' . $user->fullname . ' was edited successfully!');
     }
 }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user)
-    {
-        //
+    {    
+        if($user->photo != 'no-photo.png' &&
+            file_exists(public_path('images/'.$user->photo))){
+                unlink(public_path('images/'.$user->photo));
+            }
+        if ($user->delete()) {
+        return redirect('users')
+            ->with('message', 'The User: ' . $user->fullname . ' was delete successfully!');
+      }
     }
+
+    public function pdf() {
+    $users  =User::all();
+    $pdf    = PDF::loadView('users.pdf', compact('users'));
+    return $pdf->download('allusers.pdf');
+ }
+
+
+ public function excel() {
+    return Excel::download(new UsersExport, 'allusers.xlsx'); 
 }
+
+}
+
+
+
