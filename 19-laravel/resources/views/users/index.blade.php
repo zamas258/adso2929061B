@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Larapets: Dashboard')
+@section('title', 'Larapets: Module Users')
 
 @section('content')
     @include('partials.navbar')
     <h1 class="mt-6 text-4xl text-white flex gap-2 items-center justify-center pb-4 border-b-2 border-neutral-50 mb-10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="currentColor" viewBox="0 0 256 256">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-10" fill="currentcolor" viewBox="0 0 256 256">
             <path
-                d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z">
+                d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z">
             </path>
         </svg>
         Module Users
     </h1>
+    {{-- Options --}}
     <div class="flex flex-col gap-4 justify-center items-center">
-        {{-- Options --}}
         <div class="join mx-auto">
             <a class="btn btn-outline btn-success join-item" href="{{ url('users/create') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
@@ -46,7 +46,7 @@
                 <input type="file" name="file" id="file" class="hidden"
                     accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                 <button type="button"
-                    class="btn btn-outline rounded-s-none text-white hover:bg-[#fff6] hover:text-white btn-import">
+                    class="btn btn-outline rounded-l-none text-white hover:bg-[#fff6] hover:text-white btn-import">
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
                         <path
                             d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-42.34-77.66a8,8,0,0,1-11.32,11.32L136,139.31V184a8,8,0,0,1-16,0V139.31l-10.34,10.35a8,8,0,0,1-11.32-11.32l24-24a8,8,0,0,1,11.32,0Z">
@@ -57,7 +57,7 @@
             </form>
         </div>
         {{-- Search --}}
-        <label class="input text-white bg-[#0009] w-58 md:w-110 outline mb-10 outline-white">
+        <label class="input text-white bg-[#0009] md:w-110 w-57 outline mb-10 outline-white">
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -67,11 +67,11 @@
             <input type="search" placeholder="Search..." name="qsearch" id="qsearch" />
         </label>
     </div>
-    <div class="overflow-x-auto mb-10 rounded-box border border-base-content/5 bg-black/50 text-white">
+    <div class="overflow-x-auto mb-10 rounded-box border border-base-content/5 bg-black/50 text-white ">
         <table class="table">
             <!-- head -->
-            <thead class="text-white bg-black">
-                <tr>
+            <thead>
+                <tr class="text-white bg-black">
                     <th class="p-4 hidden md:table-cell">ID</th>
                     <th>Photo</th>
                     <th class="hidden md:table-cell">Document</th>
@@ -81,7 +81,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="datalist">
                 @foreach ($users as $user)
                     <tr class="even:bg-white/5">
                         <td class="hidden md:table-cell">{{ $user->id }}</td>
@@ -103,73 +103,121 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ url('users/' . $user->id) }}" class="btn btn-xs btn-outline btn-default"><svg
-                                    xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentColor"
+                            <a href=" {{ url('users/' . $user->id) }}" class="btn btn-xs btn-outline btn-default "><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentcolor"
                                     viewBox="0 0 256 256">
                                     <path
                                         d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
                                     </path>
                                 </svg></a>
-                            <a href="{{ url('users/' . $user->id . '/edit') }}"
-                                class="btn btn-xs btn-outline btn-default"><svg xmlns="http://www.w3.org/2000/svg"
+                            <a href=" {{ url('users/' . $user->id . '/edit') }}"
+                                class="btn btn-xs btn-outline btn-default "><svg xmlns="http://www.w3.org/2000/svg"
                                     class="size-4" fill="currentcolor" viewBox="0 0 256 256">
                                     <path
                                         d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z">
                                     </path>
                                 </svg></a>
-                            <a href="javascript:;"
-                                class="btn btn-xs btn-outline btn-error btn-delete"
+                            <a href="javascript:;" class="btn btn-xs btn-outline btn-error btn-delete"
                                 data-fullname="{{ $user->fullname }}">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentcolor"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentcolor"
                                     viewBox="0 0 256 256">
                                     <path
                                         d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
                                     </path>
                                 </svg></a>
-                                <form class="hidden" method="POST" action="{{ url('users/'.$user->id) }}">
+                            <form class="hidden" method="POST" action="{{ url('users/' . $user->id) }}">
                                 @csrf
                                 @method('delete')
-                                </form>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="6">{{ $users->links('partials.pagination') }}</td>
+                    <td colspan="6"> {{ $users->links('partials.pagination') }} </td>
                 </tr>
             </tfoot>
         </table>
     @endsection
     @section('js')
-<script>
-    // Messages - - - 
-    @if(session('message'))
-       Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "{{ session('message') }}",
-            showConfirmButton: false,
-            timer: 4500
-        });
-    @endif
-    // Delete - - -
-    $('.btn-delete').click(function() {
-        $fullname = $(this).attr('data-fullname')
-        Swal.fire({
-            title: "Are you sure?",
-            text: "The User: "+$fullname+"  will be deleted!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-            if (result.isConfirmed) {
-                $(this).next().submit();
+        <script>
+            // Messages - - -
+            @if (session('message'))
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "{{ session('message') }}",
+                    showConfirmButton: false,
+                    timer: 4500
+                });
+            @endif
+            // Delete - - -
+            $('.btn-delete').click(function() {
+                $fullname = $(this).attr('data-fullname')
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "The User: " + $fullname + "  will be deleted!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).next().submit();
+                    }
+                });
+            });
+
+            // Import File - - -
+            $('.btn-import').click(function(e) {
+                $('#file').click()
+            })
+            $('#file').change(function(e) {
+                $(this).parent().submit()
+            })
+            // Search - - - - - - - - - - - - - - - -
+            function debounce(func, wait) {
+                let timeout
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout)
+                        func(...args)
+                    };
+                    clearTimeout(timeout)
+                    timeout = setTimeout(later, wait)
+                }
             }
-        });
-    });
-</script>
-@endsection
+            const search = debounce(function(query) {
+
+                $token = $('input[name=_token]').val()
+
+                $.post("search/users", {
+                        'q': query,
+                        '_token': $token
+                    },
+                    function(data) {
+                        $('.datalist').html(data).hide().fadeIn(1000)
+                    }
+                )
+            }, 500)
+            $('body').on('input', '#qsearch', function(event) {
+                event.preventDefault()
+                const query = $(this).val()
+
+                $('.datalist').html(`<tr>
+                                        <td colspan="7" class="text-center py-18">
+                                            <span class="loading loading-spinner loading-xl"></span>
+                                        </td>
+                                    </tr>`)
+                if (query != '') {
+                    search(query)
+                } else {
+                    setTimeout(() => {
+                        window.location.replace('users')
+                    }, 500)
+                }
+            })
+        </script>
+    @endsection
