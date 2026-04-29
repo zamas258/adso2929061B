@@ -19,27 +19,27 @@ Route::get('/dashboard', function () {
 
 // Middleware Auth
 Route::middleware('auth')->group(function () {
-    // Exports PDF - DEBEN IR ANTES que los resources
-    Route::get('export/users/pdf', [UserController::class, 'pdf'])->name('users.pdf');
+    // Exports PDF
     Route::get('export/pets/pdf', [PetController::class, 'pdf'])->name('pets.pdf');
     
     // Exports Excel
-    Route::get('export/users/excel', [UserController::class, 'excel'])->name('users.excel');
     Route::get('export/pets/excel', [PetController::class, 'excel'])->name('pets.excel');
     
     // Search
-    Route::post('search/users', [UserController::class, 'search'])->name('users.search');
     Route::post('search/pets', [PetController::class, 'search'])->name('pets.search');
     
-    // Imports Users
+    // Rutas para cualquier usuario autenticado
+    Route::resource('pets', PetController::class);
+    Route::resource('adoptions', AdoptionController::class);
+});
+
+Route::middleware(['auth', 'role:Admin'])->group(function () {
+    // Users
+    Route::get('export/users/pdf', [UserController::class, 'pdf'])->name('users.pdf');
+    Route::get('export/users/excel', [UserController::class, 'excel'])->name('users.excel');
+    Route::post('search/users', [UserController::class, 'search'])->name('users.search');
     Route::post('import/users', [UserController::class, 'import'])->name('users.import');
-    
-    // Resources - DEBEN IR AL FINAL
-    Route::resources([
-        'users'       => UserController::class,
-        'pets'        => PetController::class,
-        'adoptions'   => AdoptionController::class,
-    ]);
+    Route::resource('users', UserController::class);
 });
 
 
@@ -47,21 +47,21 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 Route::get('hello', function () {
     return "<h1>Hello Laravel 🚀</h1>";
-});
+})->middleware(['auth', 'role:Admin']);
 
 Route::get('sayhello/{name}', function () {
     return "<h1>Hello: ".request()->name."</h1>";
-});
+})->middleware(['auth', 'role:Admin']);
 
 Route::get('getall/pets', function(){
     $pets = App\Models\Pet::all();
     dd($pets->toArray());
-});
+})->middleware(['auth', 'role:Admin']);
 
 Route::get('show/pet/{id}', function(){
     $pet = App\Models\Pet::find(request()->id);
     dd($pet->toArray());
-});
+})->middleware(['auth', 'role:Admin']);
 Route::get('challenge', function () {
     if (!file_exists(public_path('images'))) {
         mkdir(public_path('images'), 0777, true);
@@ -120,15 +120,15 @@ Route::get('challenge', function () {
     $code .= "</table>";
 
     return $code;
-});
+})->middleware(['auth', 'role:Admin']);
 
 // Rutas de prueba (sin auth)
 Route::get('getall/pets', function(){
     $pets = Pet::all();
     return view('getallpets')->with('pets', $pets);
-});
+})->middleware(['auth', 'role:Admin']);
 
 Route::get('show/pet/{id}', function($id){
     $pet = Pet::findOrFail($id);
     return view('showpet')->with('pet', $pet);
-});
+})->middleware(['auth', 'role:Admin']);
