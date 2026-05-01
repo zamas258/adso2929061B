@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
     
     // Exports Excel
     Route::get('export/pets/excel', [PetController::class, 'excel'])->name('pets.excel');
+
+    // Exports Adoptions
+    Route::get('export/adoptions/pdf', [AdoptionController::class, 'pdf'])->name('adoptions.pdf');
+    Route::get('export/adoptions/excel', [AdoptionController::class, 'excel'])->name('adoptions.excel');
     
     // Search
     Route::post('search/pets', [PetController::class, 'search'])->name('pets.search');

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Adoption;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AdoptionsExport;
 
 class AdoptionController extends Controller
 {
@@ -12,7 +15,8 @@ class AdoptionController extends Controller
      */
     public function index()
     {
-        //
+        $adopts = Adoption::with(['user', 'pet'])->latest()->get();
+        return view('adoptions.index', compact('adopts'));
     }
 
     /**
@@ -36,7 +40,8 @@ class AdoptionController extends Controller
      */
     public function show(Adoption $adoption)
     {
-        //
+        $adopt = Adoption::with(['user', 'pet'])->findOrFail($adoption->id);
+        return view('adoptions.show', compact('adopt'));
     }
 
     /**
@@ -61,5 +66,17 @@ class AdoptionController extends Controller
     public function destroy(Adoption $adoption)
     {
         //
+    }
+
+    public function pdf()
+    {
+        $adopts = Adoption::with(['user', 'pet'])->latest()->get();
+        $pdf = Pdf::loadView('adoptions.pdf', compact('adopts'));
+        return $pdf->download('adoptions-' . date('Y-m-d') . '.pdf');
+    }
+
+    public function excel()
+    {
+        return Excel::download(new AdoptionsExport, 'adoptions-' . date('Y-m-d') . '.xlsx');
     }
 }

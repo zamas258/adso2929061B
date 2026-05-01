@@ -155,20 +155,29 @@
         <thead>
             <tr>
                 <th width="5%">ID</th>
+                <th width="8%">FOTO</th>
                 <th width="10%">NOMBRE</th>
                 <th width="8%">TIPO</th>
                 <th width="8%">PESO</th>
                 <th width="8%">EDAD</th>
                 <th width="12%">RAZA</th>
                 <th width="12%">UBICACIÓN</th>
-                <th width="25%">DESCRIPCIÓN</th>
-                <th width="12%">ESTADO</th>
+                <th width="21%">DESCRIPCIÓN</th>
+                <th width="8%">ESTADO</th>
             </tr>
         </thead>
         <tbody>
             @forelse($pets as $pet)
+            @php
+                $petImgPath = (!empty($pet->image) && file_exists(public_path('images/pets/' . $pet->image)))
+                    ? public_path('images/pets/' . $pet->image)
+                    : ((!empty($pet->image) && file_exists(public_path('images/' . $pet->image)))
+                        ? public_path('images/' . $pet->image)
+                        : public_path('images/no-image.png'));
+            @endphp
             <tr>
                 <td class="text-center">{{ $pet->id }}</td>
+                <td class="text-center"><img src="{{ $petImgPath }}" class="pet-photo" alt="Pet photo"></td>
                 <td class="font-bold">{{ $pet->name }}</td>
                 <td class="text-center">
                     @if($pet->kind == 'Perro')
@@ -200,7 +209,7 @@
             </tr>
             @empty
                 <tr>
-                    <td colspan="9" class="text-center">No hay mascotas registradas</td>
+                    <td colspan="10" class="text-center">No hay mascotas registradas</td>
                 </tr>
             @endforelse
         </tbody>

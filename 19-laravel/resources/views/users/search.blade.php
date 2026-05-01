@@ -1,10 +1,15 @@
 @forelse($users as $user)
+            @php
+                $userPhoto = (!empty($user->photo) && file_exists(public_path('images/' . $user->photo)))
+                    ? asset('images/' . $user->photo)
+                    : asset('images/no-image.png');
+            @endphp
             <tr class="even:bg-white/5">
                         <td>{{ $user->id }}</td>
                         <td>
                             <div class="avatar">
                                 <div class="mask mask-squircle w-24">
-                                    <img src="{{ asset('images/' . $user->photo) }}" />
+                                    <img src="{{ $userPhoto }}" />
                                 </div>
                             </div>
                         </td>

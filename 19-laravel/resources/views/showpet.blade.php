@@ -18,8 +18,15 @@
         </h1>
 
         @if ($pet->image)
+            @php
+                $petPhoto = file_exists(public_path('images/pets/' . $pet->image))
+                    ? asset('images/pets/' . $pet->image)
+                    : (file_exists(public_path('images/' . $pet->image))
+                        ? asset('images/' . $pet->image)
+                        : asset('images/no-image.png'));
+            @endphp
             <div class="flex justify-center mb-4">
-                <img src="{{ asset('images/'.$pet->image) }}" alt="{{ $pet->name }}"
+                <img src="{{ $petPhoto }}" alt="{{ $pet->name }}"
                     class="w-48 h-48 object-cover rounded-lg shadow-lg border-4 border-cyan-300">
             </div>
         @endif

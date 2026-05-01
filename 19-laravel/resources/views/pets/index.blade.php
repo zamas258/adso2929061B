@@ -73,12 +73,19 @@
             </thead>
             <tbody>
                 @foreach ($pets as $pet)
+                    @php
+                        $petPhoto = (!empty($pet->image) && file_exists(public_path('images/pets/' . $pet->image)))
+                            ? asset('images/pets/' . $pet->image)
+                            : ((!empty($pet->image) && file_exists(public_path('images/' . $pet->image)))
+                                ? asset('images/' . $pet->image)
+                                : asset('images/no-image.png'));
+                    @endphp
                     <tr class="even:bg-white/5">
                         <td class="hidden md:table-cell font-bold">{{ $pet->name }}</td>
                         <td>
                             <div class="avatar">
                                 <div class="mask mask-squircle w-12 h-12">
-                                    <img src="{{ asset('images/pets/' . $pet->image) }}" class="object-cover w-full h-full" />
+                                    <img src="{{ $petPhoto }}" class="object-cover w-full h-full" />
                                 </div>
                             </div>
                         </td>

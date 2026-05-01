@@ -45,7 +45,7 @@ class PetController extends Controller
         ]);
 
         // Manejar la imagen
-        $imageName = 'no-photo.png';
+        $imageName = 'no-image.png';
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images/pets'), $imageName);

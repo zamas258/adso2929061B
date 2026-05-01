@@ -155,14 +155,21 @@
             <tr>
                 <th>#</th>
                 <th>ID</th>
+                <th>Photo</th>
                 <th>Nombre completo</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $index => $user)
+            @php
+                $userImgPath = (!empty($user->photo) && file_exists(public_path('images/' . $user->photo)))
+                    ? public_path('images/' . $user->photo)
+                    : public_path('images/no-image.png');
+            @endphp
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td><span class="id-pill">{{ $user->id }}</span></td>
+                <td><img src="{{ $userImgPath }}" width="42" height="42" alt="Photo"></td>
                 <td>{{ $user->fullname }}</td>
             </tr>
             @endforeach

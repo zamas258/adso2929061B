@@ -103,6 +103,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>FOTO</th>
                 <th>NOMBRE</th>
                 <th>TIPO</th>
                 <th>PESO (kg)</th>
@@ -115,8 +116,16 @@
         </thead>
         <tbody>
             @foreach($pets as $pet)
+            @php
+                $petImgPath = (!empty($pet->image) && file_exists(public_path('images/pets/' . $pet->image)))
+                    ? public_path('images/pets/' . $pet->image)
+                    : ((!empty($pet->image) && file_exists(public_path('images/' . $pet->image)))
+                        ? public_path('images/' . $pet->image)
+                        : public_path('images/no-image.png'));
+            @endphp
             <tr>
                 <td class="text-center">{{ $pet->id }}</td>
+                <td class="text-center"><img src="{{ $petImgPath }}" width="45" height="45" alt="Pet photo"></td>
                 <td><strong>{{ $pet->name }}</strong></td>
                 <td class="text-center">{{ $pet->kind }}</td>
                 <td class="text-center">{{ number_format($pet->weight, 1) }}</td>

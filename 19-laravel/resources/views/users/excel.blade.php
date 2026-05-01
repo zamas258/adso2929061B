@@ -20,6 +20,11 @@
         </thead>
         <tbody>
             @foreach ($users as $user)
+            @php
+                $userImgPath = (!empty($user->photo) && file_exists(public_path('images/' . $user->photo)))
+                    ? public_path('images/' . $user->photo)
+                    : public_path('images/no-image.png');
+            @endphp
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->fullname }}</td>
@@ -27,7 +32,7 @@
                 <td>{{ $user->phone }}</td>
                 <td>{{ $user->role }}</td>
                 <td>
-                    <img src="{{ public_path().'/images/'.$user->photo }}" width="50px">
+                    <img src="{{ $userImgPath }}" width="50" height="50" alt="Photo">
                 </td>
             </tr>
             @endforeach
