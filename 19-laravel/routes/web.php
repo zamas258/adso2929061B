@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -8,6 +9,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +47,18 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('import/users', [UserController::class, 'import'])->name('users.import');
     Route::resource('users', UserController::class);
 });
+Route::get('myprofile/', [CustomerController::class, 'myprofile']);
+    Route::put('myprofile/{user}', [CustomerController::class, 'updatemyprofile']); // ← CORREGIDO: usa updatemyprofile y {user} para Route Model Binding
+
+    Route::get('myadoptions/', [CustomerController::class, 'myadoptions']);
+    Route::get('myadoption/{id}', [CustomerController::class, 'showadoption']);
+
+    Route::get('listpets/', [CustomerController::class, 'listpets']);
+    Route::post('search/adoptionpets', [CustomerController::class, 'search']);
+    Route::get('showpet/{id}', [CustomerController::class, 'showpet']);
+    Route::post('makeadoption', [CustomerController::class, 'makeadoption']);
+
+    Route::get('myadoptions/search', [CustomerController::class, 'searchAdoptions']);
 
 
 
