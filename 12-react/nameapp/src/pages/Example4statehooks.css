@@ -1,0 +1,464 @@
+/* ============================================
+   POKÉMON STATE HOOKS - Example4StateHooks.css
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ---- Shell ---- */
+.poke-game-shell {
+  font-family: 'Press Start 2P', monospace;
+  background: #1a1a2e;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 480px;
+  margin: 20px auto;
+  border: 3px solid #0f3460;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Header ---- */
+.poke-header {
+  background: #e3350d;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid #b02209;
+}
+
+.poke-title {
+  color: #ffcb05;
+  font-size: 11px;
+  text-shadow: 2px 2px #000;
+  letter-spacing: 1px;
+}
+
+/* ---- Pokeball icon ---- */
+.pokeball-icon {
+  width: 28px;
+  height: 28px;
+  background: conic-gradient(#fff 0% 50%, #e3350d 50% 100%);
+  border-radius: 50%;
+  border: 3px solid #111;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pokeball-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #111;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pokeball-center {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ---- Battle Scene ---- */
+.poke-battle-scene {
+  background: linear-gradient(180deg, #87ceeb 0%, #87ceeb 55%, #4a7c59 55%, #3a6644 100%);
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #222;
+}
+
+.poke-ground {
+  position: absolute;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.enemy-ground {
+  bottom: 20px;
+  right: 40px;
+  width: 110px;
+  background: #5a9e6a;
+  box-shadow: 0 4px 0 #2e5c38;
+}
+
+.player-ground {
+  bottom: 20px;
+  left: 40px;
+  width: 90px;
+  background: #5a9e6a;
+  box-shadow: 0 4px 0 #2e5c38;
+}
+
+.poke-trainer {
+  position: absolute;
+  left: 45px;
+  bottom: 36px;
+  font-size: 40px;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.5));
+}
+
+/* ---- Wild Pokemon ---- */
+.poke-wild {
+  position: absolute;
+  right: 55px;
+  bottom: 36px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.poke-wild img {
+  width: 72px;
+  height: 72px;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 4px 0 rgba(0, 0, 0, 0.4));
+  display: block;
+}
+
+.poke-wild img.poke-fainted {
+  opacity: 0.2;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.poke-captured-anim img {
+  animation: capturePokemon 0.6s forwards;
+}
+
+@keyframes capturePokemon {
+  0%   { transform: scale(1); opacity: 1; }
+  40%  { transform: scale(0.3) rotate(10deg); opacity: 0.6; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.poke-shake {
+  animation: pokemonShake 0.5s;
+}
+
+@keyframes pokemonShake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* ---- Throw ball ---- */
+.poke-throw-ball {
+  position: absolute;
+  font-size: 20px;
+  left: 100px;
+  bottom: 50px;
+  pointer-events: none;
+  z-index: 10;
+  animation: throwBall 0.5s forwards;
+}
+
+@keyframes throwBall {
+  0%   { left: 100px; bottom: 50px; transform: scale(1) rotate(0deg); opacity: 1; }
+  60%  { left: 200px; bottom: 90px; transform: scale(0.7) rotate(360deg); opacity: 1; }
+  100% { left: 240px; bottom: 50px; transform: scale(0.4) rotate(540deg); opacity: 0; }
+}
+
+/* ---- HP Bar ---- */
+.poke-hp-box {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  background: #f5f5dc;
+  border: 3px solid #333;
+  border-radius: 4px;
+  padding: 6px 10px;
+  min-width: 130px;
+}
+
+.poke-hp-name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7px;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.poke-hp-track {
+  background: #555;
+  height: 6px;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 3px;
+}
+
+.poke-hp-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+/* ---- Dialog ---- */
+.poke-dialog {
+  background: #f5f5dc;
+  border-top: 4px solid #333;
+  padding: 10px 14px;
+  min-height: 64px;
+}
+
+.poke-dialog-text {
+  font-size: 8px;
+  color: #111;
+  line-height: 1.9;
+  letter-spacing: 0.5px;
+}
+
+.poke-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #111;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---- Pokemon Select ---- */
+.poke-select-area {
+  background: #16213e;
+  padding: 10px 12px;
+  border-top: 3px solid #0f3460;
+}
+
+.poke-select-label {
+  color: #ffcb05;
+  font-size: 7px;
+  margin-bottom: 8px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.poke-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.poke-card {
+  background: #0d1b2a;
+  border: 2px solid #0f3460;
+  border-radius: 6px;
+  padding: 8px 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  position: relative;
+}
+
+.poke-card:hover {
+  border-color: #ffcb05;
+  background: #0f3460;
+}
+
+.poke-card-selected {
+  border-color: #ffcb05 !important;
+  background: #0f3460 !important;
+  box-shadow: 0 0 0 2px #ffcb05;
+}
+
+.poke-card-captured {
+  border-color: #4caf50;
+  opacity: 0.65;
+}
+
+.poke-card img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto;
+}
+
+.poke-card-name {
+  color: #fff;
+  font-size: 6px;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+.poke-card-type {
+  font-size: 5px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-top: 3px;
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.poke-captured-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #4caf50;
+  color: #fff;
+  font-size: 5px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: 2px solid #2e7d32;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* ---- Action Buttons ---- */
+.poke-actions {
+  background: #1a1a2e;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border-top: 3px solid #333;
+}
+
+.poke-btn {
+  background: #16213e;
+  border: none;
+  color: #ffcb05;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: background 0.1s, transform 0.1s;
+  text-align: center;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.poke-btn span {
+  font-size: 18px;
+}
+
+.poke-btn:hover:not(:disabled) {
+  background: #0f3460;
+  color: #fff;
+}
+
+.poke-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.poke-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ---- Info Panel ---- */
+.poke-info-panel {
+  background: #0d1b2a;
+  border-top: 3px solid #333;
+  padding: 12px 14px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.poke-info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #333;
+}
+
+.poke-info-img {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+  background: #16213e;
+  border-radius: 8px;
+  padding: 4px;
+  border: 2px solid #0f3460;
+  flex-shrink: 0;
+}
+
+.poke-info-name {
+  color: #ffcb05;
+  font-size: 9px;
+  text-shadow: 1px 1px #000;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.poke-info-id {
+  color: #888;
+  font-size: 7px;
+  margin-bottom: 5px;
+}
+
+.poke-legendary-badge {
+  background: linear-gradient(90deg, #b8860b, #ffcb05, #b8860b);
+  background-size: 200%;
+  color: #000;
+  font-size: 6px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+  font-family: 'Press Start 2P', monospace;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+.poke-type-pill {
+  font-size: 6px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  margin-top: 2px;
+}
+
+.poke-info-rows {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.poke-info-row {
+  background: #16213e;
+  border-radius: 4px;
+  padding: 6px 8px;
+  border-left: 3px solid #3b4cca;
+}
+
+.poke-info-label {
+  color: #888;
+  font-size: 6px;
+  margin-bottom: 3px;
+  letter-spacing: 0.5px;
+}
+
+.poke-info-val {
+  color: #eee;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
+
+.poke-status-ok {
+  color: #4caf50 !important;
+}
