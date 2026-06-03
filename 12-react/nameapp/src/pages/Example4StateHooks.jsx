@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import BtnBack from '../components/BtnBack';
-import './Example4StateHooks.css';
+import './Example4statehooks.css';
 
 const pokemons = [
   {
