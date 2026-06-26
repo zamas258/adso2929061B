@@ -12,7 +12,7 @@ class Pet extends Model
         'kind',
         'weight',
         'age',
-        'bread',  // ← Cambiado de 'breed' a 'bread'
+        'breed',
         'location',
         'description',
         'active',

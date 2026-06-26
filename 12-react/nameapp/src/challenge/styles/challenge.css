@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.challenge-wrapper {
+  margin: -20px auto 0;
+  max-width: 430px;
+}
+
+.challenge-app {
+  --navy: #0c1a2e;
+  --navy-light: #12243d;
+  --cream: #f6f3eb;
+  --cream-light: #eae3d2;
+  --card-beige: #eae3d2;
+  --brown: #7c6354;
+  --brown-dark: #644f42;
+  --green: #1b5e20;
+  --white: #ffffff;
+  --gray-card: #eae3d2;
+  --text-dark: #1a1a1a;
+
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--cream);
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.challenge-app button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.challenge-app input,
+.challenge-app select {
+  font-family: inherit;
+}
+
+.challenge-app a {
+  color: inherit;
+  text-decoration: none;
+}
